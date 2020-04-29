@@ -1,0 +1,97 @@
+<div>
+    <form method="GET">
+        <div class="pn-form-divider"></div>
+        <div class="heading">{% if language_abbr == 'de' %} Influencerbezogen {% else %} Influencer
+            facts {% endif %}</div>
+        {% include "search_and_filter/influencer_related/index.jinja2" %}
+        <div class="pn-form-divider"></div>
+        <div class="channelSelect pn-gl-mb-20 search-element-margin">
+            <label for="channelSelect" class="heading">{% if language_abbr == 'de' %}Kanalspezifische
+                Filterung{% else %}Channel-specific filtering{% endif %}</label>
+            <select class="selectpicker form-control-sm form-control dropdown" name="channelSelect" id="channelSelect"
+                    onchange="setChannelSpecificOptions(value);">
+                <option value="0" {% if channelSelect == '0' %}selected{% endif %}>{% if language_abbr == 'de' %}
+                    keine{% else %}none{% endif %}</option>
+                <option value="1" {% if channelSelect == '1' %}selected{% endif %}>Instagram</option>
+                <option value="2" {% if channelSelect == '2' %}selected{% endif %}>Facebook</option>
+                <option value="3" {% if channelSelect == '3' %}selected{% endif %}>YouTube</option>
+                <option value="4" {% if channelSelect == '4' %}selected{% endif %}>Pinterest</option>
+                <option value="5" {% if channelSelect == '5' %}selected{% endif %}>eigener Blog</option>
+            </select>
+        </div>
+        <div class="search-element">
+            <div class="{% if channelSelect != '1' %}hidden{% endif %}" id="instagramFilters">
+                <strong><u>{% if language_abbr == 'de' %}Instagram-bezogen{% else %}
+                    Instagram-related{% endif %}</u>:</strong>
+                {% include "search_and_filter/channel_relations/instagram_related/index.jinja2" %}
+            </div>
+            <div class="{% if channelSelect != '2' %}hidden{% endif %}" id="facebookFilters">
+                <strong><u>{% if language_abbr == 'de' %}Facebook-bezogen{% else %}
+                    Facebook-related{% endif %}</u>:</strong>
+                {% include "search_and_filter/channel_relations/facebook-related/index.jinja2" %}
+            </div>
+            <div class="{% if channelSelect != '3' %}hidden{% endif %}" id="youtubeFilters">
+                <strong><u>{% if language_abbr == 'de' %}YouTube-bezogen{% else %}
+                    YouTube-related{% endif %}</u>:</strong>
+                {% include "search_and_filter/channel_relations/youtube-related/index.jinja2" %}
+            </div>
+            <div class="{% if channelSelect != '4' %}hidden{% endif %}" id="pinterestFilters">
+                <strong><u>{% if language_abbr == 'de' %}Pinterest-bezogen{% else %}
+                    Pinterest-related{% endif %}</u>:</strong>
+                {% include "search_and_filter/channel_relations/pinterest_related/index.jinja2" %}
+            </div>
+            <div class="{% if channelSelect != '5' %}hidden{% endif %}" id="blogFilters">
+                <strong><u>{% if language_abbr == 'de' %}Blog-bezogen{% else %}Blog-related{% endif %}</u>:</strong>
+                {% include "search_and_filter/channel_relations/personal_blog_related/index.jinja2" %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 pn-gl-mt-35">
+                <input type="submit" class="pn-total-width pn-gl-mt-15 btn btn-outline-info btn-sm text-center"
+                       id="performSearch"
+                       value="{% if language_abbr == 'de' %}Suche starten{% else %}Start search{% endif %}">
+            </div>
+            <div class="col-md-4 pn-gl-mt-35">
+                {% if logged_in and kind == 2 and channelSelect %}
+                    <button type="button" class="pn-total-width pn-gl-mt-15 btn btn-outline-dark btn-sm text-center"
+                            id="save_search_button" data-toggle="modal" data-target="#save_query_modal">
+                        <i class="fas fa-bookmark"></i> {% if language_abbr == 'de' %}Diese Suche speichern{% else %}
+                        Save this query{% endif %}
+                    </button>
+
+                    <div class="modal fade" id="save_query_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{% if language_abbr == 'de' %}
+                                        Aktuelle Suche abspeichern{% else %}Save current query{% endif %}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text"
+                                           placeholder="{% if language_abbr == 'de' %}Titel hier vergeben{% else %}Assign title here{% endif %}"
+                                           class="form-control-sm form-control" name="title_of_query"
+                                           id="modal_query_title">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                                        {% if language_abbr == 'de' %}Abbrechen{% else %}Close{% endif %}</button>
+                                    <button type="button" class="btn btn-sm btn-outline-info" onclick="save_search()">
+                                        {% if language_abbr == 'de' %}Diese Suche speichern{% else %}Save this
+                                            query{% endif %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+<script src="/static/js/filter.js"></script>

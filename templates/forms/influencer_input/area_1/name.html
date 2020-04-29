@@ -1,0 +1,17 @@
+<div class="form-group row">
+    <label for="firstNameInput" class="col-sm-2 col-form-label col-form-label-sm">
+        <strong>{% if language_abbr == 'de' %}Vorname, Name{% else %}First name, last name{% endif %}</strong>
+    </label>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm" required="true" id="firstNameInput"
+                       name="firstName" placeholder="Max">
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm" required="true" id="lastNameInput"
+                       name="lastName" placeholder="Mustermann">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="col-lg-6">
+    <label for="instagram_content">Content</label>
+    <select multiple="true" class="selectpicker form-control-sm form-control dropdown" name="instagram_content"
+            id="instagram_content">
+        <option value="1" {% if '1' in instagram_content %}selected{% endif %}>Post
+        </option>
+        <option value="2" {% if '2' in instagram_content %}selected{% endif %}>Story
+        </option>
+        <option value="3" {% if '3' in instagram_content %}selected{% endif %}>Video
+        </option>
+    </select>
+</div>

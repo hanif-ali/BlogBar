@@ -1,0 +1,143 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Einstellungen{% else %}Settings{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}
+                    Premiumpakete{% else %}premium packages{% endif %}</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container pn-gl-mt-75">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">{% if language_abbr == 'de' %}Premiumpakete{% else %}premium packages{% endif %}</h1>
+        </div>
+        <div class="card-deck mb-3 text-center ">
+            <div class="card mb-4 shadow-sm {% if package == "basic" %}bordered_ugly{% endif %}">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Basic</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">0€
+                        <small class="text-muted"></small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><strong>{% if language_abbr == 'de' %} Filtermöglichkeiten {% else %} Search
+                            parameters {% endif %}</strong></li>
+                        <li>{% if language_abbr == 'de' %} Alter, Geschlecht, Profilname {% else %} Age, gender, profile
+                            name {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Homebase der Influencer {% else %} Homebase of
+                            influencers {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Themenbereiche {% else %} Themes  {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Anzahl der Follower/Abonnenten {% else %} Number of
+                            followers/subscribers {% endif %}</li>
+                        <li><strong>{% if language_abbr == 'de' %} Informationen {% else %}
+                            Information {% endif %}</strong></li>
+                        <li>1 {% if language_abbr == 'de' %} Bild {% else %} Image {% endif %}</li>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary disabled"
+                        {% if package == "basic" %}disabled{% endif %} style="margin: 20px">{% if package == "basic" %}
+                    GEBUCHT{% else %}Kostenlose Suche{% endif %}</button>
+            </div>
+            <div class="card mb-4 shadow-sm {% if package == "pro" %}bordered_ugly{% endif %}">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Pro</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">119€ <span class="text-muted" style="font-size: 0.5rem;">(netto)/
+                        {% if language_abbr == 'de' %}einmalig für 6 Monate{% else %}once for 6
+                            months{% endif %}</span></h1>
+                    {#        <h1 class="card-title pricing-card-title">199€ <small class="text-muted">/ 12 {% if language_abbr == 'de' %}Monate{% else %}Months{% endif %}</small></h1>#}
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><strong>{% if language_abbr == 'de' %} Zusätzliche Filtermöglichkeiten {% else %} Additional
+                            Search parameters {% endif %}</strong></li>
+                        <li>{% if language_abbr == 'de' %} Verteilung Geschlecht der
+                            Follower {% else %}  {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Altersstruktur der Follower {% else %}  {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} aktive Länder {% else %}  {% endif %}</li>
+
+                        <li><strong>{% if language_abbr == 'de' %} Zusätzliche Informationen {% else %} Additional
+                            Information {% endif %}</strong></li>
+                        <li>{% if language_abbr == 'de' %} bis zu 5 Bilder {% else %} Up to 5 images {% endif %}</li>
+
+                        <li><strong>{% if language_abbr == 'de' %} Zusätzliche Features {% else %} Additional
+                            Features {% endif %}</strong></li>
+                        <li>{% if language_abbr == 'de' %} direkter Link zum Profil {% else %} direct link to Instagram
+                            profile {% endif %}</li>
+                    </ul>
+                    <p>
+
+                    </p>
+                </div>
+                <a href="/{{ language_abbr }}/book/pro"
+                   class="btn btn-sm btn-primary {% if package != "basic" %}disabled{% endif %}" style="margin: 20px">
+                    {% if package == "pro" %}verfällt am {{ expires }}{% elif package == 'prime' %}&nbsp;{% else %}
+                        Buchen{% endif %}</a>
+
+            </div>
+            <div class="card mb-4 shadow-sm {% if package == "prime" %}bordered_ugly{% endif %}">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Prime</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">239€
+                        <small class="text-muted">/ <span class="text-muted" style="font-size: 0.5rem;">(netto)/
+                            {% if language_abbr == 'de' %}einmalig für 6 Monate{% else %}once for 6
+                                months{% endif %}</span></small>
+                    </h1>
+                    {#        <h1 class="card-title pricing-card-title">399€ <small class="text-muted">/ 12 {% if language_abbr == 'de' %}Monate{% else %}Months{% endif %}</small></h1>#}
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><strong>{% if language_abbr == 'de' %} Zusätzliche Filtermöglichkeiten {% else %} Additional
+                            Search parameters {% endif %}</strong></li>
+                        <li>{% if language_abbr == 'de' %} Anzahl der Post/Veröffentlichungen {% else %} Number of
+                            post/publications {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Deal- und Preisvorstellung {% else %} Deal and price
+                            idea {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} verwendete Sprachen {% else %} Languages
+                            used {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Rhythmus {% else %} Rhythm {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Content {% else %} Content {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Beitragsinteraktion / Klickrate * {% else %} Contribution
+                            interaction / click rate * {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Reichweite / Impressions * {% else %} Range / Impressions
+                            * {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Engagement Rate * {% else %} Engagement Rate
+                            * {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Follower Ratio * {% else %} Follower Ratio * {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Seitenaktivität * {% else %} Page activity * {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Likes * {% else %} Likes * {% endif %}</li>
+
+                        <li><strong>{% if language_abbr == 'de' %} Zusätzliche Informationen {% else %} Additional
+                            Information {% endif %}</strong></li>
+                        <li>{% if language_abbr == 'de' %} bisherige Kooperationen {% else %} Previous
+                            cooperation's {% endif %}</li>
+
+                        <li><strong>{% if language_abbr == 'de' %} Zusätzliche Features {% else %} Additional
+                            Features {% endif %}</strong></li>
+                        <li>{% if language_abbr == 'de' %} Marktplatz {% else %} Market-place {% endif %}</li>
+                    </ul>
+                    <p>
+
+                    </p>
+                </div>
+                <a href="/{{ language_abbr }}/book/prime"
+                   class="btn btn-sm btn-primary {% if package != "basic" %}disabled{% endif %}" style="margin: 20px">
+                    {% if package == "prime" %}verfällt am {{ expires }}{% else %}Buchen{% endif %}</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body small">
+                {% if language_abbr == 'de' %}  *= Nicht alle Angaben sind für jeden Social Media Kanal abrufbar, aber
+                    Sie erhalten alle relevanten und verfügbaren Daten für Ihren favorisierten Social Media
+                    Channel.{% else %} *= Not all details are available for every social media channel, but you will
+                    receive all relevant and available data for your favorite social media channel. {% endif %}
+                <a href="/{{ language_abbr }}/download/kpis">{% if language_abbr == 'de' %}Hier finden Sie eine
+                    detaillierte Auflistung{% else %}Here you will find a detailed listing{% endif %}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

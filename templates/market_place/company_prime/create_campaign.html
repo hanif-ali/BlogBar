@@ -1,0 +1,144 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <div class="display-4">{% if language_abbr == 'de' %}Kampagne veröffentlichen{% else %}Publish
+            campaign{% endif %}</div>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group row pn-gl-mt-35">
+                <label for="campaign_name" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Kampagnenname{% else %}Campaign name{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" maxlength="75" class="form-control font-weight-bold" required="true"
+                                   id="campaign_name" name="campaign_name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="campaign_name" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Beschreibung{% else %}Description{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea required="true" id="campaign_name" maxlength="500"
+                                      class="form-control form-control-sm" name="campaign_description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="price" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Themenbereich{% else %}Theme{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class="selectpicker form-control-sm form-control dropdown" data-live-search="true"
+                                    required="true" name="topic" id="topic">
+                                {% if language_abbr == 'de' %}
+                                    {% set categories = ['Auto und Motorrad','Beauty / Kosmetik','Bildung','Computer und Elektronik','DIY','Design',
+                                    'Erfolg und Karriere','Essen und Trinken / Food','Fashion / Mode','Finanzen','Fotografie','Frauen / Männer',
+                                    'Garten und Natur','Gesellschaft und Politik','Gesundheit','Home und Living','Humor und Spaß','Kinder und Familie',
+                                    'Kino, Film, TV','Kunst und Kultur','Liebe und Sexualität','Lifestyle','Luxus','Marketing','Musik','Recht und Gesetz',
+                                    'Reise / Travel','Social Media','Spiele und Gaming','Sport und Fitness','Tattos','Technik','Tiere'] %}
+                                {% else %}
+                                    {% set categories = ['Car and Motorcycle','Beauty / Cosmetics','Education','Computers and Electronics','DIY','Design',
+                                    'success and career','food and drink / food','fashion / fashion','finances','photography','women / men',
+                                    'Garden and nature', 'Society and politics', 'Health', 'Home and living', 'Humour and fun', 'Children and family',
+                                    'cinema, film, TV','art and culture','love and sexuality','lifestyle','luxury','marketing','music','law and order',
+                                    'Travel','Social Media','Games and Gaming','Sports and Fitness','Tattos','Technology','Animals'] %}
+                                {% endif %}
+
+                                {% for category in categories %}
+                                    <option value="{{ loop.index }}"
+                                            {% if loop.index|string in topicidentifiers %}selected{% endif %}>{{ category }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="format" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>Format</strong>
+                </label>
+                <div class="col-sm-10">
+                    <select class="selectpicker form-control-sm form-control dropdown" required name="format"
+                            id="format">
+                        <option value="1">{% if language_abbr == 'de' %}Bilder{% else %}pictures{% endif %}</option>
+                        <option value="2">{% if language_abbr == 'de' %}Video{% else %}video{% endif %}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="channels" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Kanäle{% else %}Channels{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <select class="selectpicker form-control-sm form-control dropdown" multiple required name="channels"
+                            id="channels">
+                        <option value="1">Instagram</option>
+                        <option value="2">Facebook</option>
+                        <option value="3">YouTube</option>
+                        <option value="4">Pinterest</option>
+                        <option value="5">Blog</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="format" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Vergütung{% else %}Deal{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <select class="selectpicker form-control-sm form-control dropdown" required name="remuneration"
+                            id="format">
+                        <option value="1">{% if language_abbr == 'de' %}Bartausch{% else %}Goods
+                            exchange{% endif %}</option>
+                        <option value="2">{% if language_abbr == 'de' %}Rabattcode{% else %}Discount
+                            code{% endif %}</option>
+                        <option value="3">{% if language_abbr == 'de' %}Cash{% else %}Cash{% endif %}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="format" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>Mehr Details (PDF)</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                   name="pdf_further_information" aria-describedby="inputGroupFileAddon01"
+                                   accept="application/pdf">
+                            <label class="custom-file-label" for="inputGroupFile01">{% if language_abbr == 'de' %}
+                                Details-PDF{% else %}Details-PDF{% endif %}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="submit"
+                           value="{% if language_abbr == 'de' %}Veröffentlichen{% else %}Publish{% endif %}"
+                           class="btn btn-sm btn-outline-success pn-total-width">
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

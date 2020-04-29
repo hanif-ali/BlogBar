@@ -1,0 +1,61 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <h1 class="display-4">
+            {% if language_abbr == 'de' %}{% if language_abbr == 'de' %}Influencer-Profil melden{% else %}
+                Influencer-Profil melden{% endif %}{% else %}{% if language_abbr == 'de' %}Influencer-Profil melden
+            {% else %}Report Influencer-profile{% endif %}{% endif %}:</h1>
+        <form method="POST">
+
+            <div class="form-group row">
+                <label for="reason" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Ursache{% else %}Reason{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <select class="selectpicker form-control-sm form-control dropdown" required name="reportReason"
+                            id="reason">
+                        <option value="1">{% if language_abbr == 'de' %}gibt ein fremdes Profil vor{% else %}Specifies a
+                            foreign profile{% endif %}</option>
+                        <option value="2">{% if language_abbr == 'de' %}Nutzer antwortet auf mehrfache Anfrage
+                            nicht{% else %}User does not respond to multiple request{% endif %}</option>
+                        <option value="3">{% if language_abbr == 'de' %}anderer Missbrauchsverdacht{% else %}other
+                            suspicion of misuse{% endif %}</option>
+                        <option value="4">{% if language_abbr == 'de' %}sonstiges (Bitte im Kommentarbereich
+                            beschreiben){% else %}other (please describe in comment area){% endif %}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="contact" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}eMail für Rückfragen{% else %}eMail for
+                        questions{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <input type="email" required class="form-control-sm form-control"
+                           placeholder="{% if language_abbr == 'de' %}Bitte tragen Sie hier Ihre eMail-Adresse für Rückfragen bzw. eine Stellungnahme ein{% else %}Please enter your e-mail address here for any queries or comments.{% endif %}"
+                           name="contact" id="contact">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="remark" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Bemerkung (max. 750 Zeichen){% else %}Remark (max. 750
+                        characters){% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <textarea class="form-control form-control-sm"
+                              placeholder="{% if language_abbr == 'de' %}Bemerkung...{% else %}Remark...{% endif %}"
+                              name="remark" id="remark" maxlength="750"></textarea>
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-outline-info btn-sm pn-total-width pn-gl-mt-75"
+                   value="{% if language_abbr == 'de' %}Profil wirklich melden{% else %}Really report profile{% endif %}">
+
+        </form>
+    </div>
+
+{% endblock %}

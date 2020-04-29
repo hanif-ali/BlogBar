@@ -1,0 +1,72 @@
+{
+  "private_campaigns": [
+    {
+      "timestamp": "2019-08-02-12-09"
+    }
+  ],
+  "stored_searches": [
+    {
+      "timestamp": "2019-08-02-15:32"
+    }
+  ],
+  "public_campaigns": [
+    {
+      "timestamp": "2019-08-02-12-09"
+    },
+    {
+      "timestamp": 1564905899.735511
+    },
+    {
+      "timestamp": 1564905911.22272
+    }
+  ],
+  "sign_outs": {
+    "companies": [
+      {
+        "timestamp": "2019-08-02-12-03",
+        "id": "209"
+      }
+    ],
+    "influencer": [
+      {
+        "timestamp": "2019-08-02-12-03",
+        "id": "209"
+      }
+    ]
+  },
+  "searches": [
+    {
+      "timestamp": "2019-08-02-12-09",
+      "package": "prime",
+      "channel": "instagram"
+    }
+  ],
+  "sign_ups": {
+    "companies": [
+      {
+        "timestamp": "2019-08-02-12-09",
+        "id": "209"
+      }
+    ],
+    "influencer": [
+      {
+        "timestamp": "2019-08-02-12-03",
+        "id": "209"
+      }
+    ]
+  },
+  "sign_ins": {
+    "companies": [
+      {
+        "timestamp": "2019-08-02-12-09",
+        "id": "209"
+      }
+    ],
+    "influencer": [
+      {
+        "timestamp": "2019-08-02-12-03",
+        "id": "209"
+      }
+    ]
+  }
+}

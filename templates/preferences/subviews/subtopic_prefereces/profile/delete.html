@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences/profile">
+                    {% if language_abbr == 'de' %}Profil{% else %}Profile{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Profil löschen</li>
+            </ol>
+        </nav>
+        <h1 class="display-4">{% if language_abbr == 'de' %}Profil löschen{% else %}Delete profile{% endif %}</h1>
+        <p>
+            {% if language_abbr == 'de' %}
+            {% else %}
+                So sad that you don't want to use BlogBar anymore.
+                Please give us feedback why you don't want to be part of the community anymore:
+            {% endif %}
+        </p>
+        <form method="POST">
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <h2 class="card-title">{% if language_abbr == 'de' %}Unwiderruflich löschen{% else %}Delete
+                        irrevocably{% endif %}</h2>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input text-danger" id="exampleCheck1"
+                               name="deletePersistent">
+                        <label class="form-check-label text-danger" for="exampleCheck1">{% if language_abbr == 'de' %}
+                            Profildaten dauerhaft löschen{% else %}Permanently delete profile data{% endif %}</label>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="deletionReason" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Grund{% else %}Reason{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown" required="true"
+                                            name="deletionReason" id="deletionReason">
+                                        <option value="1">{% if language_abbr == 'de' %}Social Media Präsenz wurde
+                                            aufgelöst{% else %}Social Media Presence has been closed
+                                            down{% endif %}</option>
+                                        <option value="2">{% if language_abbr == 'de' %}Zu wenig Anfragen
+                                            erhalten{% else %}Too few requests received{% endif %}</option>
+                                        <option value="3">{% if language_abbr == 'de' %}Gefällt nicht mehr{% else %}I
+                                            don't like it any more{% endif %}</option>
+                                        <option value="3">{% if language_abbr == 'de' %}kein Interesse mehr{% else %}No
+                                            longer interested {% endif %}</option>
+                                        <option value="4">{% if language_abbr == 'de' %}Sonstiges{% else %}
+                                            Other{% endif %}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" class="btn btn-sm btn-outline-primary pn-gl-mt-15 col-md-4"
+                           name="submit"
+                           value="{% if language_abbr == 'de' %}Profil unwideruflich und dauerhaft löschen{% else %}Delete irrevocably{% endif %}">
+                </li>
+
+            </ul>
+        </form>
+    </div>
+
+{% endblock %}

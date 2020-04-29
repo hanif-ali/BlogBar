@@ -1,0 +1,30 @@
+<div class="col-lg-2">
+    <label for="facebook_page_activity_From">{% if language_abbr == 'de' %}Seitenaktivität von{% else %}Page activity
+        from  {% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="facebook_page_activity_From"
+            id="facebook_page_activity_From">
+        <option value="UNDEFINED"
+                {% if facebook_page_activity_From == 'UNDEFINED' or facebook_page_activity_From is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if facebook_page_activity_From == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="facebook_page_activity_To">{% if language_abbr == 'de' %}Seitenaktivität bis{% else %}Page activity
+        to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="facebook_page_activity_To"
+            id="facebook_page_activity_To">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if facebook_page_activity_To == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if facebook_page_activity_To == 'UNDEFINED' or facebook_page_activity_To is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

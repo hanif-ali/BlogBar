@@ -1,0 +1,63 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container">
+        <div class="pn-gl-mt-25">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">
+                        {% if language_abbr == 'de' %}Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}
+                        Profil{% else %}Profile{% endif %}</li>
+                </ol>
+            </nav>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/profile/user"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fas fa-user-tag"></i> <i class="fas fa-mail-bulk"></i><br>
+                        {% if language_abbr == 'de' %}Userdaten{% else %}user data{% endif %}
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/profile/pwd"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fas fa-key"></i><br>
+                        {% if language_abbr == 'de' %}Zugangsdaten{% else %}access data{% endif %}
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/profile/galery"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fas fa-picture-o"></i><br>
+                        {% if language_abbr == 'de' %}Profilbilder{% else %}profile pictures{% endif %}
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/profile/support"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fas fa-question"></i><br>
+                        {% if language_abbr == 'de' %}Support{% else %}Support{% endif %}
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/profile/cooperations"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fas fa-pause"></i><br>
+                        {% if language_abbr == 'de' %}bisherige Kooperationen{% else %}previous cooperations{% endif %}
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/profile/delete"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fas fa-trash-alt"></i><br>
+                        {% if language_abbr == 'de' %}Profil löschen{% else %}Delete profile{% endif %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

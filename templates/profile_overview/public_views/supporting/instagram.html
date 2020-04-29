@@ -1,0 +1,72 @@
+{% if influencer_data["is_listed_on_instagram"] is defined %}
+    <div class="card pn-total-width pn-gl-mt-15">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-9">
+                    <h5 class="card-title"><i class="fab fa-instagram" style="color:#bcbcbc;"></i> Instagram</h5>
+                    {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+                        <a target="_blank" rel="noopener noreferrer"
+                           href="https://www.instagram.com/{{ influencer_data["is_listed_on_instagram"]["instagram_username"] }}">
+                            <h6 class="card-subtitle mb-2 card-link">
+                                @{{ influencer_data["is_listed_on_instagram"]["instagram_username"] }}</h6>
+                        </a>{% else %}<h6 class="card-subtitle mb-2 text-muted">
+                        @{{ influencer_data["is_listed_on_instagram"]["instagram_username"] }}</h6>{% endif %}
+                </div>
+                <div class="col-md-3">
+                    <div class="display-3 text-right inline-group" style="padding-right: 20px;">
+                        <i class="fab fa-instagram" style="color:#bcbcbc;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ influencer_data["is_listed_on_instagram"]["instagram_follower_amount"] }}
+                        Follower
+                    </li>
+                    <li class="list-group-item">{% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_post_amount"] }} Posts
+                        {% else %}{% if language_abbr == 'de' %}Postanzahl{% else %}Number of posts{% endif %}:
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Content{% else %}Content{% endif %}:
+                        {% if subscription_packet == "prime" %}
+                            {% for content in influencer_data["is_listed_on_instagram"]["content_types"] %}{{ content }}
+                                , {% endfor %}{% else %}
+                            <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible
+                                from PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Rhythmus{% else %}rhythm{% endif %}:
+                        {% if subscription_packet == "prime" %}
+                            {{ influencer_data["is_listed_on_instagram"]["instagram_rhythm"] }}{% else %}
+                            <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible
+                                from PRIME{% endif %}</span> {% endif %}</li>
+                    {#                <li class="list-group-item">aktive Länder: {% for deal in influencer_data["is_listed_on_instagram"]["languages"] %}{{ deal }}, {% endfor %}</li> TODO: Implement this!#}
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Geschlechtsverteilung{% else %}Gender
+                        distribution{% endif %}: {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_gender_distribution_male"] }}% männlich,
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_gender_distribution_female"] }}%
+                        weiblich{% else %}
+                        <span class="text-primary"> {% if language_abbr == 'de' %}ab PRO sichtbar{% else %}visible from
+                            PRO{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Altersverteilung{% else %}Age
+                        distribution{% endif %}: {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_age_distribution_min"] }} Jahre -
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_age_distribution_max"] }}
+                        Jahre{% else %}
+                        <span class="text-primary"> {% if language_abbr == 'de' %}ab PRO sichtbar{% else %}visible from
+                            PRO{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">Engagement Rate: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_engagement_rate_min"] }}%-
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_engagement_rate_max"] }}%{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">Follower Ratio: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_follower_ratio_min"] }}%-
+                        {{ influencer_data["is_listed_on_instagram"]["instagram_follower_ratio_max"] }}%{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

@@ -1,0 +1,50 @@
+<div class="col-lg-2">
+    <label for="engagementRateFrom">{% if language_abbr == 'de' %}Engagement Rate von{% else %}Engagement rate
+        from {% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="engagementRateFrom"
+            id="engagementRateFrom">
+        <option value="UNDEFINED" {% if engagementRateFrom == 'UNDEFINED' %}selected{% endif %}>ab beliebig</option>
+        <option value="0" {% if engagementRateFrom == '0' %}selected{% endif %}>ab 0%</option>
+        <option value="1" {% if engagementRateFrom == '1' %}selected{% endif %}>ab 1%</option>
+        <option value="2" {% if engagementRateFrom == '2' %}selected{% endif %}>ab 2%</option>
+        <option value="3" {% if engagementRateFrom == '3' %}selected{% endif %}>ab 3%</option>
+        <option value="4" {% if engagementRateFrom == '4' %}selected{% endif %}>ab 4%</option>
+        <option value="5" {% if engagementRateFrom == '5' %}selected{% endif %}>ab 5%</option>
+        <option value="6" {% if engagementRateFrom == '6' %}selected{% endif %}>ab 6%</option>
+        <option value="7" {% if engagementRateFrom == '7' %}selected{% endif %}>ab 7%</option>
+        <option value="8" {% if engagementRateFrom == '8' %}selected{% endif %}>ab 8%</option>
+        <option value="9" {% if engagementRateFrom == '9' %}selected{% endif %}>ab 9%</option>
+        <option value="10" {% if engagementRateFrom == '10' %}selected{% endif %}>ab 10%</option>
+        <option value="15" {% if engagementRateFrom == '15' %}selected{% endif %}>ab 15%</option>
+        <option value="20" {% if engagementRateFrom == '20' %}selected{% endif %}>ab 20%</option>
+        <option value="30" {% if engagementRateFrom == '30' %}selected{% endif %}>ab 30%</option>
+        <option value="40" {% if engagementRateFrom == '40' %}selected{% endif %}>ab 40%</option>
+        <option value="50" {% if engagementRateFrom == '50' %}selected{% endif %}>ab 50</option>
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="engagementRateTo">{% if language_abbr == 'de' %}Engagement Rate bis{% else %}Engagement rate
+        to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="engagementRateTo" id="engagementRateTo">
+        <option value="0" {% if engagementRateTo == '0' %}selected{% endif %}>bis 0%</option>
+        <option value="1" {% if engagementRateTo == '1' %}selected{% endif %}>bis 1%</option>
+        <option value="2" {% if engagementRateTo == '2' %}selected{% endif %}>bis 2%</option>
+        <option value="3" {% if engagementRateTo == '3' %}selected{% endif %}>bis 3%</option>
+        <option value="4" {% if engagementRateTo == '4' %}selected{% endif %}>bis 4%</option>
+        <option value="5" {% if engagementRateTo == '5' %}selected{% endif %}>bis 5%</option>
+        <option value="6" {% if engagementRateTo == '6' %}selected{% endif %}>bis 6%</option>
+        <option value="7" {% if engagementRateTo == '7' %}selected{% endif %}>bis 7%</option>
+        <option value="8" {% if engagementRateTo == '8' %}selected{% endif %}>bis 8%</option>
+        <option value="9" {% if engagementRateTo == '9' %}selected{% endif %}>bis 9%</option>
+        <option value="10" {% if engagementRateTo == '10' %}selected{% endif %}>bis 10%</option>
+        <option value="15" {% if engagementRateTo == '15' %}selected{% endif %}>bis 15%</option>
+        <option value="20" {% if engagementRateTo == '20' %}selected{% endif %}>bis 20%</option>
+        <option value="30" {% if engagementRateTo == '30' %}selected{% endif %}>bis 30%</option>
+        <option value="40" {% if engagementRateTo == '40' %}selected{% endif %}>bis 40%</option>
+        <option value="50" {% if engagementRateTo == '50' %}selected{% endif %}>bis 50</option>
+        <option value="UNDEFINED"
+                {% if engagementRateTo == 'UNDEFINED' or engagementRateTo is undefined %}selected{% endif %}>bis
+            beliebig
+        </option>
+    </select>
+</div>

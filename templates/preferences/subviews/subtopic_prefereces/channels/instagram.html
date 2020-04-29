@@ -1,0 +1,351 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences/channels">
+                    {% if language_abbr == 'de' %}Kanäle{% else %}channels{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Instagram</li>
+            </ol>
+        </nav>
+        <h1 class="display-4"><i class="fab fa-instagram" style="color: #bcbcbc"></i> Instagram</h1>
+        <form method="POST">
+            {% if error is defined %}
+                <div class="alert alert-primary" role="alert">
+                    {% if error == 'USERNAME/URL_ALREDY_EXISTS' %}
+                        {% if language_abbr == 'de' %}
+                            Der Instagram-Username wird bereits verwendet. Bitte wende dich an unseren support
+                            (cheers@blogbar.eu) und reiche eine Beschwerde ein, sofern es sich um dein Profil handelt.
+                        {% else %}
+                            The Instagram username is already in use. Please contact our support (cheers@blogbar.eu) and
+                            file a complaint if it is your profile.
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" name="listing_on"
+                               id="switch_state_instagram_listing" {% if listing_on == True %}checked{% endif %}>
+                        <label class="custom-control-label" for="switch_state_instagram_listing">Kanal anzeigen</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Username</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-sm" required="true"
+                                           id="username" name="username" value="{{ instagram_username }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="follower" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Follower</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="follower" name="follower" min="100"
+                                           value="{{ instagram_follower_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="post_amount" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Postanzahl{% else %}number of
+                                posts{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="post_amount" name="post_amount" min="1"
+                                           value="{{ instagram_post_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="instagram_content" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Content</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select multiple="true" class="selectpicker form-control-sm form-control dropdown"
+                                            name="instagram_content" id="instagram_content">
+                                        <option value="1" {% if 1 in content_types %}selected{% endif %}>Post</option>
+                                        <option value="2" {% if 2 in content_types %}selected{% endif %}>Story</option>
+                                        <option value="3" {% if 3 in content_types %}selected{% endif %}>Video</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="instagram_rhythm_types" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Rhythmus{% else %}Rhythm{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown"
+                                            name="instagram_rhythm_types" id="instagram_rhythm_types">
+                                        <option value="1" {% if instagram_rhythm == 1 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}täglich{% else %}on a daily
+                                                basis{% endif %}</option>
+                                        <option value="2" {% if instagram_rhythm == 2 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}wöchentlich{% else %}on a weekly
+                                                basis{% endif %}</option>
+                                        <option value="3" {% if instagram_rhythm == 3 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 2 Wochen{% else %}every 2
+                                                weeks{% endif %}</option>
+                                        <option value="4" {% if instagram_rhythm == 4 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 2 - 3 Wochen{% else %}every 2 - 3
+                                                weeks{% endif %}</option>
+                                        <option value="5" {% if instagram_rhythm == 5 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 3 Wochen{% else %}every 3
+                                                weeks{% endif %}</option>
+                                        <option value="6" {% if instagram_rhythm == 6 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 3 - 4 Wochen{% else %}every 3 - 4
+                                                weeks{% endif %}</option>
+                                        <option value="7" {% if instagram_rhythm == 7 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}monatlich{% else %}monthly{% endif %}</option>
+                                        <option value="8" {% if instagram_rhythm == 8 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 4 - 5 Wochen{% else %}every 4 - 5
+                                                weeks{% endif %}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="instagram_countries" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Aktive Länder</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                            data-live-search="true" name="instagram_countries" id="instagram_countries">
+                                        {% include "selectpicker_options/coutries.html" %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="gender_distribution_female" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Geschlechterverteilung</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-1">weiblich:</div>
+                                <div class="col-md-2">
+                                    <input type="number" onchange="fill_male_automatically();" step="any" min="0"
+                                           max="100" class="form-control form-control-sm" required="true"
+                                           id="gender_distribution_female" name="gender_distribution_female" max="100"
+                                           value="{{ instagram_gender_distribution_female }}">
+                                </div>
+                                <div class="col-md-1">männlich:</div>
+                                <div class="col-md-2">
+                                    <input type="number" disabled step="any" class="form-control form-control-sm"
+                                           required="true" id="gender_distribution_male" name="gender_distribution_male"
+                                           max="100" value="{{ instagram_gender_distribution_male }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="age_distribution" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Altersverteilung</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="selectpicker form-control-sm form-control dropdown" required="true"
+                                    name="age_distribution" id="age_distribution">
+                                <option value="0" {% if instagram_age_distribution_max == 18 %}selected{% endif %}>bis
+                                    18 {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="1" {% if instagram_age_distribution_min == 19 %}selected{% endif %}>19
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 25
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="2" {% if instagram_age_distribution_min == 26 %}selected{% endif %}>26
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 35
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="3" {% if instagram_age_distribution_min == 36 %}selected{% endif %}>36
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 45
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="4" {% if instagram_age_distribution_min == 46 %}selected{% endif %}>46
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 55
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="5" {% if instagram_age_distribution_min == 56 %}selected{% endif %}>ü56
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="engagement_rate" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Engagement rate</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown"
+                                            name="engagement_rate" id="engagement_rate">
+                                        <option value="1"
+                                                {% if instagram_engagement_rate_max == 1 %}selected{% endif %}>bis 1%
+                                        </option>
+                                        <option value="2"
+                                                {% if instagram_engagement_rate_min == 1 %}selected{% endif %}>1% - 2%
+                                        </option>
+                                        <option value="3"
+                                                {% if instagram_engagement_rate_min == 2 %}selected{% endif %}>2% - 3%
+                                        </option>
+                                        <option value="4"
+                                                {% if instagram_engagement_rate_min == 3 %}selected{% endif %}>3% - 4%
+                                        </option>
+                                        <option value="5"
+                                                {% if instagram_engagement_rate_min == 4 %}selected{% endif %}>4% - 5%
+                                        </option>
+                                        <option value="6"
+                                                {% if instagram_engagement_rate_min == 5 %}selected{% endif %}>5% - 6%
+                                        </option>
+                                        <option value="7"
+                                                {% if instagram_engagement_rate_min == 6 %}selected{% endif %}>6% - 7%
+                                        </option>
+                                        <option value="8"
+                                                {% if instagram_engagement_rate_min == 7 %}selected{% endif %}>7% - 8%
+                                        </option>
+                                        <option value="9"
+                                                {% if instagram_engagement_rate_min == 8 %}selected{% endif %}>8% - 9%
+                                        </option>
+                                        <option value="10"
+                                                {% if instagram_engagement_rate_min == 9 %}selected{% endif %}>9% - 10%
+                                        </option>
+                                        <option value="11"
+                                                {% if instagram_engagement_rate_min == 10 %}selected{% endif %}>10% -
+                                            15%
+                                        </option>
+                                        <option value="12"
+                                                {% if instagram_engagement_rate_min == 15 %}selected{% endif %}>15% -
+                                            20%
+                                        </option>
+                                        <option value="13"
+                                                {% if instagram_engagement_rate_min == 20 %}selected{% endif %}>20% -
+                                            30%
+                                        </option>
+                                        <option value="14"
+                                                {% if instagram_engagement_rate_min == 30 %}selected{% endif %}>30% -
+                                            40%
+                                        </option>
+                                        <option value="15"
+                                                {% if instagram_engagement_rate_min == 40 %}selected{% endif %}>40% -
+                                            50%
+                                        </option>
+                                        <option value="16"
+                                                {% if instagram_engagement_rate_min == 50 %}selected{% endif %}>ü 50%
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="follower_ratio" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Follower Ratio</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown"
+                                            name="follower_ratio" id="follower_ratio">
+                                        <option value="1" {% if instagram_follower_ratio_max == 1 %}selected{% endif %}>
+                                            bis 1%
+                                        </option>
+                                        <option value="2" {% if instagram_follower_ratio_min == 1 %}selected{% endif %}>
+                                            1% - 2%
+                                        </option>
+                                        <option value="3" {% if instagram_follower_ratio_min == 2 %}selected{% endif %}>
+                                            2% - 3%
+                                        </option>
+                                        <option value="4" {% if instagram_follower_ratio_min == 3 %}selected{% endif %}>
+                                            3% - 4%
+                                        </option>
+                                        <option value="5" {% if instagram_follower_ratio_min == 4 %}selected{% endif %}>
+                                            4% - 5%
+                                        </option>
+                                        <option value="6" {% if instagram_follower_ratio_min == 5 %}selected{% endif %}>
+                                            5% - 6%
+                                        </option>
+                                        <option value="7" {% if instagram_follower_ratio_min == 6 %}selected{% endif %}>
+                                            6% - 7%
+                                        </option>
+                                        <option value="8" {% if instagram_follower_ratio_min == 7 %}selected{% endif %}>
+                                            7% - 8%
+                                        </option>
+                                        <option value="9" {% if instagram_follower_ratio_min == 8 %}selected{% endif %}>
+                                            8% - 9%
+                                        </option>
+                                        <option value="10"
+                                                {% if instagram_follower_ratio_min == 9 %}selected{% endif %}>9% - 10%
+                                        </option>
+                                        <option value="11"
+                                                {% if instagram_follower_ratio_min == 10 %}selected{% endif %}>10% - 15%
+                                        </option>
+                                        <option value="12"
+                                                {% if instagram_follower_ratio_min == 15 %}selected{% endif %}>15% - 20%
+                                        </option>
+                                        <option value="13"
+                                                {% if instagram_follower_ratio_min == 20 %}selected{% endif %}>20% - 30%
+                                        </option>
+                                        <option value="14"
+                                                {% if instagram_follower_ratio_min == 30 %}selected{% endif %}>30% - 40%
+                                        </option>
+                                        <option value="15"
+                                                {% if instagram_follower_ratio_min == 40 %}selected{% endif %}>40% - 50%
+                                        </option>
+                                        <option value="16"
+                                                {% if instagram_follower_ratio_min == 50 %}selected{% endif %}>ü 50%
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+            <input type="submit" class="btn btn-sm btn-outline-success pn-gl-mt-15 col-md-4"
+                   id="submitInstagramPreferences"
+                   value="{% if language_abbr == 'de' %}Änderungen speichern{% else %}Save changes{% endif %}">
+        </form>
+    </div>
+
+    <script src="/static/js/preferences.js"></script>
+
+{% endblock %}

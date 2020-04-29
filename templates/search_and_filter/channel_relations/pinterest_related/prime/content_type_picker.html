@@ -1,0 +1,12 @@
+<div class="col-lg-2">
+    <label for="pinterest_content">Content</label>
+    <select multiple="true" class="selectpicker form-control-sm form-control dropdown" name="pinterest_content"
+            id="pinterest_content">
+        <option value="1" {% if '1' in pinterest_content %}selected{% endif %}>Post
+        </option>
+        <option value="2" {% if '2' in pinterest_content %}selected{% endif %}>Story
+        </option>
+        <option value="3" {% if '3' in pinterest_content %}selected{% endif %}>Video
+        </option>
+    </select>
+</div>

@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-75">
+        <h1 class="card-title">Neues Passwort:</h1>
+        <div class="form pn-total-width">
+            <form method="POST"
+                  oninput='c_pwd.setCustomValidity(c_pwd.value != pwd.value ? "Passwörter stimmen nicht überein." : "")'>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" name="token" class="hidden" value="{{ token }}">
+                        <input type="password" class="form-control form-control-sm" name="pwd"
+                               placeholder="{% if language_abbr == 'de' %}Neues Passwort{% else %}New password{% endif %}">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="password" class="form-control form-control-sm" name="c_pwd"
+                               placeholder="{% if language_abbr == 'de' %}Neues Passwort wiederholen{% else %}Repeat new password{% endif %}">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="submit" class="btn btn-sm btn-outline-success pn-total-width"
+                               value="{% if language_abbr == 'de' %}Neues Passwort aktivieren{% else %}Activate new password{% endif %}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,5 @@
+*.swp
+*.swa
+env/
+node_modules
+*.scssc

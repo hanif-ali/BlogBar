@@ -1,0 +1,166 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences/channels">
+                    {% if language_abbr == 'de' %}Kanäle{% else %}channels{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Pinterest</li>
+            </ol>
+        </nav>
+        <h1 class="display-4"><i class="fab fa-pinterest" style="color: #bcbcbc"></i> Pinterest</h1>
+        <form method="POST">
+            {% if error is defined %}
+                <div class="alert alert-primary" role="alert">
+                    {% if error == 'USERNAME/URL_ALREDY_EXISTS' %}
+                        {% if language_abbr == 'de' %}
+                            Der Pinterest-Username wird bereits verwendet. Bitte wende dich an unseren support
+                            (cheers@blogbar.eu) und reiche eine Beschwerde ein, sofern es sich um dein Profil handelt.
+                        {% else %}
+                            The Pinterest username is already in use. Please contact our support (cheers@blogbar.eu) and
+                            file a complaint if it is your profile.
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" name="listing_on"
+                               id="switch_state_pinterest_listing" {% if listing_on == True %}checked{% endif %}>
+                        <label class="custom-control-label" for="switch_state_pinterest_listing">Kanal anzeigen</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Username</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-sm" required="true"
+                                           id="username" name="username" value="{{ pinterest_username }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="follower" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Abonnenten{% else %}Subscribers{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="follower" name="follower" min="100"
+                                           value="{{ pinterest_follower_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="post_amount" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Anzahl der Pins{% else %}Number of
+                                pins{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="post_amount" name="post_amount" min="1"
+                                           value="{{ pinterest_post_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="pinterest_content" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Content{% else %}Content{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select multiple="true" class="selectpicker form-control-sm form-control dropdown"
+                                            name="pinterest_content" id="pinterest_content">
+                                        <option value="1" {% if 1 in content_types %}selected{% endif %}>Post</option>
+                                        <option value="2" {% if 2 in content_types %}selected{% endif %}>Story</option>
+                                        <option value="3" {% if 3 in content_types %}selected{% endif %}>Video</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="pinterest_rhythm_types" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Rhythmus{% else %}Rhythm{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown"
+                                            name="pinterest_rhythm_types" id="pinterest_rhythm_types">
+                                        <option value="1" {% if pinterest_rhythm == 1 %}selected{% endif %}>täglich
+                                        </option>
+                                        <option value="2" {% if pinterest_rhythm == 2 %}selected{% endif %}>
+                                            wöchentlich
+                                        </option>
+                                        <option value="3" {% if pinterest_rhythm == 3 %}selected{% endif %}>alle 2
+                                            Wochen
+                                        </option>
+                                        <option value="4" {% if pinterest_rhythm == 4 %}selected{% endif %}>alle 2 - 3
+                                            Wochen
+                                        </option>
+                                        <option value="5" {% if pinterest_rhythm == 5 %}selected{% endif %}>alle 3
+                                            Wochen
+                                        </option>
+                                        <option value="6" {% if pinterest_rhythm == 6 %}selected{% endif %}>alle 3 - 4
+                                            Wochen
+                                        </option>
+                                        <option value="7" {% if pinterest_rhythm == 7 %}selected{% endif %}>monatlich
+                                        </option>
+                                        <option value="8" {% if pinterest_rhythm == 8 %}selected{% endif %}>alle 4 - 5
+                                            Wochen
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="list-group-item">
+
+                    <div class="form-group row">
+                        <label for="page_views" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Betrachter{% else %}Viewer{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="page_views" name="page_views" min="100"
+                                           value="{{ pinterest_viewer_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+            <input type="submit" class="btn btn-sm btn-outline-success pn-gl-mt-15 col-md-4"
+                   id="submitPinterestPreferences" value="Änderungen speichern">
+        </form>
+    </div>
+
+{% endblock %}

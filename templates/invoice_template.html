@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .Row {
+            display: table;
+            width: 100%; /*Optional*/
+            table-layout: fixed; /*Optional*/
+            border-spacing: 10px; /*Optional*/
+        }
+
+        .Column {
+            display: table-cell;
+            background-color: red; /*Optional*/
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <center><img src="/root/webapplication/static/img/logo/main.png" width="500px;"></center>
+</div>
+
+<div style="margin-left: 50px; margin-right: 50px;">
+    <div style="margin-top: 100px;">
+        <small>BLOGBAR Digital Network UG (haftungsbeschränkt)</small>
+        <p>{{ company_name }}<br>
+            {% if language_abbr == 'de' %}z.H.{% else %}at hand {% endif %} {{ contact_person }}<br>
+            {{ street_house_number }}<br>
+            {{ postcode }} {{ place }}</p>
+    </div>
+    <div style="margin-top: 100px;">
+        <div style="margin-left: 700px;">
+            {{ booked_date }}
+        </div>
+        <div>
+            <p><strong>{% if language_abbr == 'de' %}Rechnung{% else %}bill{% endif %}
+                Nr. {{ invoice_number_asc }}</strong></p>
+            <p><strong>USt. ID:</strong> 204/122/51203</p>
+        </div>
+        <div style="margin-top: 20px;">
+            <center>
+                <table border="0" style="border-color: #57BBBF;">
+                    <thead style="background-color: #57BBBF; border-color: #57BBBF; border-width: 2px;">
+                    <th style="width: 40px;">Pos</th>
+                    <th style="width: 340px;">{% if language_abbr == 'de' %}Beschreibung{% else %}
+                        Description{% endif %}</th>
+                    <th style="width: 100px;">{% if language_abbr == 'de' %}Monate{% else %}Months{% endif %}</th>
+                    <th style="width: 140px;">€ / {% if language_abbr == 'de' %}Mo{% else %}mo{% endif %}.</th>
+                    <th style="width: 80px;">{% if language_abbr == 'de' %}Betrag{% else %}Amount{% endif %}</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>BLOGBAR Premium-{% if language_abbr == 'de' %}Paket{% else %}package{% endif %}
+                            ({{ booked_package_description | string | upper }})
+                            --- {{ booked_package_duration_in_month | int }} Mo. ---
+                        </td>
+                        <td>{{ booked_package_duration_in_month | int }} {% if language_abbr == 'de' %}Monate{% else %}
+                            Months{% endif %}</td>
+                        <td>{{ ((((booked_package_total_amount | float / booked_package_duration_in_month | float ) / 119) * 100))|round(2, 'common') }}€</td>
+                        <td style="text-align: right;">{{ ((booked_package_total_amount | float | round(2, 'common') )  / 119 * 100) |round(2, 'common') }} €</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th>Netto:</th>
+                        <th>{{ (booked_package_total_amount | float / 119 * 100)|round(2, 'common') }} €</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th>+ {% if language_abbr == 'de' %}MwSt.{% else %}VAT{% endif %}. (19%):</th>
+                        <th>{{ (booked_package_total_amount | float / 119 * 19)|round(2, 'common') }} €</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th>Gesamt:</th>
+                        <th>{{ booked_package_total_amount|round(2, 'common') }} €</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </center>
+        </div>
+        <div style="margin-top: 350px;">
+            <center style="color: #5a6268;">
+                <p>BLOGBAR Digital Network UG<br>
+                    ({% if language_abbr == 'de' %}haftungsbeschränkt{% else %}limited{% endif %})<br>
+                    Krausstraße 1<br>
+                    63897 Miltenberg</p>
+
+                <p>DE22 1101 0100 2366 2350 24<br>
+                    SOBKDEBBXXX<br>
+                    solarisBank AG</p>
+                <p>cheers@blogbar.eu<br>
+                    www.blogbar.eu</p>
+            </center>
+            <hr size="2px;" color="#57BBBF">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

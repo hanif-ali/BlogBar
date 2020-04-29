@@ -1,0 +1,23 @@
+<div class="row">
+
+    {% include "search_and_filter/channel_relations/youtube-related/basic/follower_range.html" %}
+
+    {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+
+        {% include "search_and_filter/channel_relations/youtube-related/pro/age_distribution.html" %}
+        {% include "search_and_filter/channel_relations/youtube-related/pro/regions.html" %}
+        {% include "search_and_filter/channel_relations/youtube-related/pro/gender_distribution.html" %}
+
+    {% endif %}
+
+    {% if subscription_packet == "prime" %}
+
+        {% include "search_and_filter/channel_relations/youtube-related/prime/click_rate_range.html" %}
+        {% include "search_and_filter/channel_relations/youtube-related/prime/reach_range.html" %}
+        {% include "search_and_filter/channel_relations/youtube-related/prime/videos_amount_range.html" %}
+        {% include "search_and_filter/channel_relations/youtube-related/prime/views_range.html" %}
+        {% include "search_and_filter/channel_relations/youtube-related/prime/rhythm_types.html" %}
+
+    {% endif %}
+
+</div>

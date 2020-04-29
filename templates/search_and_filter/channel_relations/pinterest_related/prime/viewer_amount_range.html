@@ -1,0 +1,30 @@
+<div class="col-lg-2">
+    <label for="pinterest_page_calls_From">{% if language_abbr == 'de' %}Rechweite von{% else %}Range
+        from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="pinterest_page_calls_From"
+            id="pinterest_page_calls_From">
+        <option value="UNDEFINED"
+                {% if pinterest_page_calls_From == 'UNDEFINED' or pinterest_page_calls_From is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000, 500000, 1000000] %}
+            <option value="{{ amount }}"
+                    {% if pinterest_page_calls_From == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="pinterest_page_calls_To">{% if language_abbr == 'de' %}Rechweite bis{% else %}Range
+        to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="pinterest_page_calls_To"
+            id="pinterest_page_calls_To">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000, 500000, 1000000] %}
+            <option value="{{ amount }}"
+                    {% if pinterest_page_calls_To == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if pinterest_page_calls_To == 'UNDEFINED' or pinterest_page_calls_To is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

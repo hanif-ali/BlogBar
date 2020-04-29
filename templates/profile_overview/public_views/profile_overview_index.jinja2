@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+    <div class="pn-gl-mt-25" style="padding-left: 20px; padding-right: 20px;">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bd-example">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            {% for image in influencer_data["profile_pictures"]["images"] %}
+                                {% if image != None and (subscription_packet != "basic" or loop.index0 == 0) %}
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="{{ loop.index0 }}"
+                                        {% if loop.index0 == 0 %}class="active"{% endif %}></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                        <div class="carousel-inner">
+                            {% for image in influencer_data["profile_pictures"]["images"] %}
+                                {% if image != None and (subscription_packet != "basic" or loop.index0 == 0) %}
+                                    <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+                                        <img src="{{ image }}" class="d-block w-100">
+                                        <div class="carousel-caption d-none d-md-block"></div>
+                                    </div>
+
+                                {% endif %}
+                            {% endfor %}
+                            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button"
+                               data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button"
+                               data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="row">
+                    {% include "profile_overview/public_views/supporting/general_overview.html" %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% include "profile_overview/public_views/supporting/instagram.html" %}
+                    </div>
+                    <div class="col-lg-12">
+                        {% include "profile_overview/public_views/supporting/facebook.html" %}
+                    </div>
+                    <div class="col-lg-12">
+                        {% include "profile_overview/public_views/supporting/youtube.html" %}
+                    </div>
+                    <div class="col-lg-12">
+                        {% include "profile_overview/public_views/supporting/pinterest.html" %}
+                    </div>
+                    <div class="col-lg-12">
+                        {% include "profile_overview/public_views/supporting/personal_blog.html" %}
+                    </div>
+                    <div class="col-lg-12">
+                        {% include "profile_overview/public_views/supporting/previous_cooperations.html" %}
+                    </div>
+                </div>
+                <div class="row pn-gl-mt-35">
+                    <div class="col-md-4">
+                        <a href="/{{ language_abbr }}/report_influencer_profile/{{ influencer_data["influencer_identifier"] }}"
+                           class="btn btn-sm btn-outline-info pn-total-width">Profil melden</a>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

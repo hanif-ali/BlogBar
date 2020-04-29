@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}
+                    Einstellungen{% else %}Settings{% endif %}</li>
+            </ol>
+        </nav>
+        <h1 class="display-4">{% if language_abbr == 'de' %}Einstellungen{% else %}Settings{% endif %}</h1>
+        <div class="card pn-gl-mt-25">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p class="heading">{% if language_abbr == 'de' %}Profil{% else %}Profile{% endif %}</p>
+                        <div class="row" id="profile_management">
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/company/base"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-user-tag"></i> <i class="fas fa-mail-bulk"></i><br>
+                                    {% if language_abbr == 'de' %}Angaben{% else %}Profile{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/company/pwd"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-key"></i><br>
+                                    {% if language_abbr == 'de' %}Zugangsdaten{% else %}Access Data{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/company/logo"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fab fa-adobe"></i><br>
+                                    {% if language_abbr == 'de' %}Logo hochladen{% else %}Logo upload{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="/{{ language_abbr }}/preferences/company/book"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-search-dollar"></i><br>
+                                    {% if language_abbr == 'de' %}Erweitere Suchmasken<br> freischalten (Pro &
+                                        Prime){% else %}Advanced Search (PRO & PRIME){% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/company/delete"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fab fa-adobe"></i><br>
+                                    {% if language_abbr == 'de' %}Profil löschen{% else %}Delete profile{% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

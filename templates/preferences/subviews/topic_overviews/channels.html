@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container">
+        <div class="pn-gl-mt-25">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">
+                        {% if language_abbr == 'de' %}Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}
+                        Kanäle{% else %}Channels{% endif %}</li>
+                </ol>
+            </nav>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/channels/instagram"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fab fa-instagram"></i>
+                        Instagram
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/channels/facebook"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fab fa-facebook"></i>
+                        Facebook
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/channels/youtube"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fab fa-youtube"></i>
+                        YouTube
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/channels/pinterest"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fab fa-pinterest"></i>
+                        Pinterest
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/{{ language_abbr }}/preferences/channels/blog"
+                       class="btn btn pn-total-width btn-outline-dark">
+                        <i class="fab fa-blogger"></i>
+                        {% if language_abbr == 'de' %}eigener Blog{% else %}personal Blog{% endif %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<div class="col-lg-2">
+    <label for="deals">Deal</label>
+    <select multiple="true" class="selectpicker form-control-sm form-control dropdown" name="deals" id="deals">
+        <option value="1" {% if '1' in deals %}selected{% endif %}>{% if language_abbr == 'de' %}Bartausch{% else %}
+            Exchange of goods{% endif %}</option>
+        <option value="2" {% if '2' in deals %}selected{% endif %}>{% if language_abbr == 'de' %}
+            Werbekostenzuschlag{% else %}adverstising surcharge{% endif %}</option>
+        <option value="3" {% if '3' in deals %}selected{% endif %}>{% if language_abbr == 'de' %}nach
+            Absprache{% else %}individual arrangement{% endif %}</option>
+    </select>
+</div>

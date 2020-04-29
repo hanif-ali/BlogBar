@@ -1,0 +1,20 @@
+<div class="row">
+
+    {# basic-included-filters  #}
+    {% include "search_and_filter/influencer_related/basic/birthyear_range.html" %}
+    {% include "search_and_filter/influencer_related/basic/gender.html" %}
+    {% include "search_and_filter/influencer_related/basic/covered_topics.html" %}
+    {% include "search_and_filter/influencer_related/basic/homebase.html" %}
+
+
+    {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+        {# pro-included-filters  #}
+    {% endif %}
+
+
+    {% if subscription_packet == "prime" %}
+        {# pro-included-filters  #}
+        {% include "search_and_filter/influencer_related/prime/deal_kind.html" %}
+        {% include "search_and_filter/influencer_related/prime/used_languages.html" %}
+    {% endif %}
+</div>

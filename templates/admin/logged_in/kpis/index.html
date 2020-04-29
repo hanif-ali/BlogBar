@@ -1,0 +1,965 @@
+{% extends "admin/base_admin.html" %}
+
+{% block container %}
+
+    <div class="" style="margin-right: 20px; margin-left: 20px;">
+        <div class="container">
+            <div class="col-xl-12">
+                <h3>Neue Registrierungen</h3>
+                <div class="row">
+                    <canvas id="signUpsLastSevenDays" class="dynamic"></canvas>
+                </div>
+                <div class="row">
+                    <h4>Exakte Werte:</h4>
+                    <table class="table table-sm table-striped position-static">
+                        <thead>
+                        <tr>
+                            <th scope="col" style="width: 40%;">Datum</th>
+                            <th scope="col">Registrierungen Influencer</th>
+                            <th scope="col">Registrierungen Unternehmen</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for value in signUpsLastSevenDays['dates'] %}
+                            <tr>
+                                <th scope="row">{{ value }}</th>
+                                <td>{{ signUpsLastSevenDays['influencer'][loop.index0] }}</td>
+                                <td>{{ signUpsLastSevenDays['companies'][loop.index0] }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <h4>Heute:</h4>
+                    <canvas id="signUpsToday" height="100px;"></canvas>
+                </div>
+                <div class="pn-gl-mt-25">
+                    <h3>Premiumuser</h3>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Anzahl</th>
+                                    <th scope="col">Anteil</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="text-muted">
+                                    <th scope="row">Basic</th>
+                                    <td>{{ total_basic_user_amount | int }}</td>
+                                    <td>{{ total_basic_user_amount | int /  (total_basic_user_amount | int + total_pro_user_amount | int + total_prime_user_amount | int) }} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Pro</th>
+                                    <td>{{ total_pro_user_amount | int }}</td>
+                                    <td>{{ total_pro_user_amount | int /  (total_basic_user_amount | int + total_pro_user_amount | int + total_prime_user_amount | int) }} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Prime</th>
+                                    <td>{{ total_prime_user_amount | int }}</td>
+                                    <td>{{ total_prime_user_amount | int /  (total_basic_user_amount | int + total_pro_user_amount | int + total_prime_user_amount | int) }} </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <canvas id="premiumUserDistribution"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="pn-gl-mt-75">
+                    <h3>KPIs</h3>
+                    <table class="table table-sm table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col" width="50%">Bezeichnung</th>
+                            <th scope="col" width="50%">Wert</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Influencer Total</th>
+                            <td>{{ influencer_total | int }} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Unternehmen Total</th>
+                            <td>{{ companies_total | int }} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Instagram-Profile (Listing: On)</th>
+                            <td>{{ lisiting_on_instagram | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Instagram-Profile (Listing: Off)</th>
+                            <td>{{ lisiting_off_instagram | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Instagram-Profile (Summe)</th>
+                            <td>{{ SUM_instagram | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete FaceBook-Profile (Lisiting: On)</th>
+                            <td>{{ lisiting_on_facebook | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete FaceBook-Profile (Lisiting: Off)</th>
+                            <td>{{ lisiting_off_facebook | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete FaceBook-Profile (Summe)</th>
+                            <td>{{ SUM_facebook | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete YouTube-Profile (Lisiting: On)</th>
+                            <td>{{ lisiting_on_youtube | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete YouTube-Profile (Lisiting: Off)</th>
+                            <td>{{ lisiting_off_youtube | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete YouTube-Profile (Summe)</th>
+                            <td>{{ SUM_youtube | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Pinterest-Profile (Lisiting: On)</th>
+                            <td>{{ lisiting_on_pinterest | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Pinterest-Profile (Lisiting: Off)</th>
+                            <td>{{ lisiting_off_pinterest | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Pinterest-Profile (Summe)</th>
+                            <td>{{ SUM_pinterest | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Blog-Profile (Lisiting: On)</th>
+                            <td>{{ lisiting_on_blog | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Blog-Profile (Lisiting: Off)</th>
+                            <td>{{ lisiting_off_blog | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gelistete Blog-Profile (Summe)</th>
+                            <td>{{ SUM_blog | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Öffentliche Kampagnen Total</th>
+                            <td>{{ public_camapigns_total | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Öffentliche Kampagnen øAnzahl pro Unternehmen</th>
+                            <td>{{ average_public_campaign_amount | float }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Marktplatzuser (Unternehmen) / Anzahl PRIME-User (mögliche
+                                Marktplatznutzer)
+                            </th>
+                            <td>{{ marketplace_usage_quotient | float }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Private Kampagnen Total (Merklisten)</th>
+                            <td>{{ campaigns_total | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">ø Anzahl an gemerketen Influencer (Merkliste)</th>
+                            <td>{{ average_amount_pinned_influencers | float }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gespeicherte Suchen Total (Unternehmen)</th>
+                            <td>{{ total_amount_stored_searches | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Anzahl der Profillöschungen Influencer (Heute)</th>
+                            <td>{{ profile_deletions_today_influencer | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Anzahl der Profillöschungen Unternehmen (Heute)</th>
+                            <td>{{ profile_deletions_today_companies | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Anzahl der Profillöschungen Influencer (Gesamt)</th>
+                            <td>{{ profile_deletions_ever_influencer | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Anzahl der Profillöschungen Unternehmen (Gesamt)</th>
+                            <td>{{ profile_deletions_ever_companies | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Anzahl der Profilmeldungen (Gesamt)</th>
+                            <td>{{ profiles_reported_ever | int }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Anzahl der Profilmeldungen (Heute)</th>
+                            <td>{{ profiles_reported_today | int }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="">
+                    <h3>Suchanfragen</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <center>Heute</center>
+                            <canvas id="serchesTodayChannelDistribution"></canvas>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <center>Insgesamt</center>
+                            <canvas id="serchesEverChannelDistribution"></canvas>
+                        </div>
+                    </div>
+                    <div class="row pn-gl-mt-25">
+                        <div class="col-md-4">
+                            <center>Instagram Suchanfragenverteilung</center>
+                            <canvas id="instagramSeachAmountEverBasic"></canvas>
+                        </div>
+                        <div class="col-md-4">
+                            <center>FaceBook Suchanfragenverteilung</center>
+                            <canvas id="facebookSeachAmountEverBasic"></canvas>
+                        </div>
+                        <div class="col-md-4">
+                            <center>YouTube Suchanfragenverteilung</center>
+                            <canvas id="youtubeSeachAmountEverBasic"></canvas>
+                        </div>
+                    </div>
+                    <div class="row pn-gl-mt-25">
+                        <div class="col-md-4">
+                            <center>Pinterest Suchanfragenverteilung</center>
+                            <canvas id="pinterestSeachAmountEverBasic"></canvas>
+                        </div>
+                        <div class="col-md-4">
+                            <center>Blog Suchanfragenverteilung</center>
+                            <canvas id="blogSeachAmountEverBasic"></canvas>
+                        </div>
+                        <div class="col-md-4">
+                            <center>Influencerbezogene Suchanfragenverteilung</center>
+                            <canvas id="globalSeachAmountEverBasic"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="row pn-gl-mt-25">
+                        <div class="col-md-4">
+                            <center>Buchungslevel Suchanfragenverteilung (Heute)</center>
+                            <canvas id="searchDistributionByPackageToday"></canvas>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <center>Buchungslevel Suchanfragenverteilung (Total)</center>
+                            <canvas id="searchDistributionByPackageEver"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="pn-gl-mt-25">
+                        <center>Gelistete Kanäle (Listing on/off)</center>
+                        <canvas id="channelListingDistribution"></canvas>
+                    </div>
+
+                    <div class="pn-gl-mt-25">
+                        <center>Verteilung der gelisteten Kanäle</center>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <center>Listing on</center>
+                                <canvas id="channelListingDistributionAsPiOn"></canvas>
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <center>Listing off</center>
+                                <canvas id="channelListingDistributionAsPiOff"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="container pn-gl-mt-25">
+            <center>Profillöschungen</center>
+            <div class="row">
+                <div class="col-md-6">
+                    <center>Heute</center>
+                    <canvas id="profileDeletionsToday"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <center>Gesamt</center>
+                    <canvas id="profileDeletionsEver"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pn-gl-mt-25 row">
+                <div class="col-md-6">
+                    <center>Gründe für Profillöschungen (Heute)</center>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <center>Influencer</center>
+                            <canvas id="profileDeletionsReasonsInfluencerToday"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <center>Unternehmen</center>
+                            <canvas id="profileDeletionsReasonsCompanyToday"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <center>Gründe für Profillöschungen (Gesamt)</center>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <center>Influencer</center>
+                            <canvas id="profileDeletionsReasonsInfluencerEver"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <center>Unternehmen</center>
+                            <canvas id="profileDeletionsReasonsCompanyEver"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script>
+        const datesSevenDays = [{% for date in signUpsLastSevenDays['dates'] %}'{{ date }}',{% endfor %}];
+        const hours = [{% for date in signUpToday['hours'] %}'{{ date }}',{% endfor %}];
+
+        const influencerSevenDays = [{% for value in signUpsLastSevenDays['influencer'] %}{{ value }}, {% endfor %}];
+        const companySevenDays = [{% for value in signUpsLastSevenDays['companies'] %}{{ value }}, {% endfor %}];
+        const influencerSignUpsToday = [{% for value in signUpToday['influencer'] %}{{ value }}, {% endfor %}];
+        const companySignUpsToday = [{% for value in signUpToday['companies'] %}{{ value }}, {% endfor %}];
+
+        const signUpsSevenDays = document.getElementById("signUpsLastSevenDays");
+        const signUpsToday = document.getElementById("signUpsToday");
+        const premiumUserDistribution = document.getElementById("premiumUserDistribution");
+        const serchesTodayChannelDistribution = document.getElementById("serchesTodayChannelDistribution");
+        const serchesEverChannelDistribution = document.getElementById("serchesEverChannelDistribution");
+
+        const instagramSeachAmountEverBasic = document.getElementById("instagramSeachAmountEverBasic");
+        const facebookSeachAmountEverBasic = document.getElementById("facebookSeachAmountEverBasic");
+        const youtubeSeachAmountEverBasic = document.getElementById("youtubeSeachAmountEverBasic");
+        const pinterestSeachAmountEverBasic = document.getElementById("pinterestSeachAmountEverBasic");
+        const blogSeachAmountEverBasic = document.getElementById("blogSeachAmountEverBasic");
+        const globalSeachAmountEverBasic = document.getElementById("globalSeachAmountEverBasic");
+
+        const channelListingDistribution = document.getElementById("channelListingDistribution");
+        const channelListingDistributionAsPiOn = document.getElementById("channelListingDistributionAsPiOn");
+        const channelListingDistributionAsPiOff = document.getElementById("channelListingDistributionAsPiOff");
+
+        const searchDistributionByPackageToday = document.getElementById("searchDistributionByPackageToday");
+        const searchDistributionByPackageEver = document.getElementById("searchDistributionByPackageEver");
+
+        const profileDeletionsToday = document.getElementById("profileDeletionsToday");
+        const profileDeletionsEver = document.getElementById("profileDeletionsEver");
+        const profileDeletionsReasonsInfluencerToday = document.getElementById("profileDeletionsReasonsInfluencerToday");
+        const profileDeletionsReasonsCompanyToday = document.getElementById("profileDeletionsReasonsCompanyToday");
+        const profileDeletionsReasonsInfluencerEver = document.getElementById("profileDeletionsReasonsInfluencerEver");
+        const profileDeletionsReasonsCompanyEver = document.getElementById("profileDeletionsReasonsCompanyEver");
+
+
+        const channelCIs = [
+            "#8a3ab9",
+            "#3b5998",
+            "#ff0000",
+            "#FFA500",
+            "#57BBBF",
+        ];
+
+        const channelCIsAlpha = [
+            'rgba(138, 58, 185, 0.5)',
+            'rgba(59, 89, 152, 0.5)',
+            'rgba(255, 0, 0, 0.5)',
+            'rgba(255,165,0, 0.5)',
+            'rgba(87, 187, 191, 0.5)'
+        ];
+
+        const packageColors = [
+            "#57BBBF",
+            "#572BBC",
+            "#A7dbBF"
+        ];
+
+        const channelDistibutionColoring = [
+            "#57BBBF",
+            "#572BBC",
+            "#A7dbBF",
+            "#A7AfFF"
+        ]
+
+        new Chart(signUpsSevenDays, {
+            type: 'line',
+            data: {
+                labels: datesSevenDays,
+                datasets: [
+                    {
+                        label: "Influencer",
+                        fill: false,
+                        lineTension: 0,
+                        borderColor: "#57BBBF",
+                        backgroundColor: "#57BBBF",
+                        data: influencerSevenDays
+                    },
+                    {
+                        label: "Unternehmen",
+                        fill: false,
+                        lineTension: 0,
+                        borderColor: "#8e8e8d",
+                        backgroundColor: "#8e8e8d",
+                        data: companySevenDays
+                    }
+                ]
+            }
+        });
+
+        new Chart(signUpsToday, {
+            type: 'line',
+            data: {
+                labels: hours,
+                datasets: [
+                    {
+                        label: "Influencer",
+                        fill: false,
+                        lineTension: 0,
+                        borderColor: "#57BBBF",
+                        backgroundColor: "#57BBBF",
+                        data: influencerSignUpsToday
+                    },
+                    {
+                        label: "Unternehmen",
+                        fill: false,
+                        lineTension: 0,
+                        borderColor: "#8e8e8d",
+                        backgroundColor: "#8e8e8d",
+                        data: companySignUpsToday
+                    }
+                ]
+            }
+        });
+
+        new Chart(premiumUserDistribution, {
+            type: 'doughnut',
+            title: 'Verteilung Premumpakete',
+            data: {
+                labels: ["Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ total_basic_user_amount | int }},
+                            {{ total_pro_user_amount | int }},
+                            {{ total_prime_user_amount | int }},
+                        ],
+                        backgroundColor: packageColors,
+                        borderColor: packageColors,
+                        borderWidth: [1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(serchesTodayChannelDistribution, {
+            type: 'doughnut',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Instagram", "FaceBook", "YouTube", "Pinterest", "Blog", 'Influencerbezogen (ohne Kanalauswahl)'],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_instagram_today | int }},
+                            {{ search_amount_facebook_today | int }},
+                            {{ search_amount_youtube_today | int }},
+                            {{ search_amount_pinterest_today | int }},
+                            {{ search_amount_blog_today | int }},
+                            {{ search_amount_global_today | int }}
+                        ],
+                        backgroundColor: channelCIs,
+                        borderColor: channelCIs,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(serchesEverChannelDistribution, {
+            type: 'doughnut',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Instagram", "FaceBook", "YouTube", "Pinterest", "Blog", 'Influencerbezogen (ohne Kanalauswahl)'],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_instagram_ever | int }},
+                            {{ search_amount_facebook_ever | int }},
+                            {{ search_amount_youtube_ever | int }},
+                            {{ search_amount_pinterest_ever | int }},
+                            {{ search_amount_blog_ever | int }},
+                            {{ search_amount_global_today | int }}
+                        ],
+                        backgroundColor: channelCIs,
+                        borderColor: channelCIs,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(instagramSeachAmountEverBasic, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_instagram_ever_basic_nli | int }},
+                            {{ search_amount_instagram_ever_basic | int }},
+                            {{ search_amount_instagram_ever_pro | int }},
+                            {{ search_amount_instagram_ever_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(facebookSeachAmountEverBasic, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_facebook_ever_basic_nli | int }},
+                            {{ search_amount_facebook_ever_basic | int }},
+                            {{ search_amount_facebook_ever_pro | int }},
+                            {{ search_amount_facebook_ever_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(youtubeSeachAmountEverBasic, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_youtube_ever_basic_nli | int }},
+                            {{ search_amount_youtube_ever_basic | int }},
+                            {{ search_amount_youtube_ever_pro | int }},
+                            {{ search_amount_youtube_ever_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(pinterestSeachAmountEverBasic, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_pinterest_ever_basic_nli | int }},
+                            {{ search_amount_pinterest_ever_basic | int }},
+                            {{ search_amount_pinterest_ever_pro | int }},
+                            {{ search_amount_pinterest_ever_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(blogSeachAmountEverBasic, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_blog_ever_basic_nli | int }},
+                            {{ search_amount_blog_ever_basic | int }},
+                            {{ search_amount_blog_ever_pro | int }},
+                            {{ search_amount_blog_ever_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(globalSeachAmountEverBasic, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_global_ever_basic_nli | int }},
+                            {{ search_amount_global_ever_basic | int }},
+                            {{ search_amount_global_ever_pro | int }},
+                            {{ search_amount_global_ever_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(searchDistributionByPackageToday, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_today_basic_nli | int }},
+                            {{ search_amount_today_basic | int }},
+                            {{ search_amount_today_pro | int }},
+                            {{ search_amount_today_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(searchDistributionByPackageEver, {
+            type: 'pie',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Basic (nicht eingeloggt)", "Basic", "Pro", "Prime"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ search_amount_ever_basic_nli | int }},
+                            {{ search_amount_ever_basic | int }},
+                            {{ search_amount_ever_pro | int }},
+                            {{ search_amount_ever_prime | int }},
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(channelListingDistribution, {
+            type: 'bar',
+            data: {
+                labels: ['Instagram', 'FaceBook', 'YouTube', 'Pinterest', 'Blog'],
+                datasets: [{
+                    label: 'Listing On',
+                    data: [
+                        {{ lisiting_on_instagram | int }},
+                        {{ lisiting_on_facebook | int }},
+                        {{ lisiting_on_youtube | int }},
+                        {{ lisiting_on_pinterest | int }},
+                        {{ lisiting_on_blog | int }},
+                    ],
+                    backgroundColor: channelCIs,
+                    borderColor: channelCIs,
+                    borderWidth: 1,
+                    stack: 1
+                },
+                    {
+                        label: 'Listing off',
+                        data: [
+                            {{ lisiting_off_instagram | int }},
+                            {{ lisiting_off_facebook | int }},
+                            {{ lisiting_off_youtube | int }},
+                            {{ lisiting_off_pinterest | int }},
+                            {{ lisiting_off_blog | int }},
+                        ],
+                        backgroundColor: channelCIsAlpha,
+                        borderColor: channelCIsAlpha,
+                        borderWidth: 1,
+                        stack: 1
+                    }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        new Chart(channelListingDistributionAsPiOn, {
+            type: 'doughnut',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Instagram", "FaceBook", "YouTube", "Pinterest", "Blog"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ lisiting_on_instagram | int }},
+                            {{ lisiting_on_facebook | int }},
+                            {{ lisiting_on_youtube | int }},
+                            {{ lisiting_on_pinterest | int }},
+                            {{ lisiting_on_blog | int }},
+                        ],
+                        backgroundColor: channelCIs,
+                        borderColor: channelCIs,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(channelListingDistributionAsPiOff, {
+            type: 'doughnut',
+            title: 'Heutige Suchanfragen',
+            data: {
+                labels: ["Instagram", "FaceBook", "YouTube", "Pinterest", "Blog"],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ lisiting_off_instagram | int }},
+                            {{ lisiting_off_facebook | int }},
+                            {{ lisiting_off_youtube | int }},
+                            {{ lisiting_off_pinterest | int }},
+                            {{ lisiting_off_blog | int }},
+                        ],
+                        backgroundColor: channelCIsAlpha,
+                        borderColor: channelCIsAlpha,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(profileDeletionsToday, {
+            type: 'bar',
+            data: {
+                labels: ['Influencer', 'Unternehmen '],
+                datasets: [{
+                    label: 'Profillöschungen',
+                    data: [
+                        {{ profile_deletions_today_influencer | int }},
+                        {{ profile_deletions_today_companies | int }},
+                    ],
+                    backgroundColor: channelCIs,
+                    borderColor: channelCIs,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        new Chart(profileDeletionsEver, {
+            type: 'bar',
+            data: {
+                labels: ['Influencer', 'Unternehmen '],
+                datasets: [{
+                    data: [
+                        {{ profile_deletions_ever_influencer | int }},
+                        {{ profile_deletions_ever_companies | int }},
+                    ],
+                    backgroundColor: channelCIs,
+                    borderColor: channelCIs,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        new Chart(profileDeletionsReasonsInfluencerToday, {
+            type: 'doughnut',
+            title: 'Heutige Profillöschungen',
+            data: {
+                labels: [
+                    'Social Media Präsenz wurde aufgelöst',
+                    'zu wenig Anfragen erhalten',
+                    'kein Interesse mehr',
+                    'Sonstiges'
+                ],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ profile_deletions_today_reason_1 | int }},
+                            {{ profile_deletions_today_reason_2 | int }},
+                            {{ profile_deletions_today_reason_3 | int }},
+                            {{ profile_deletions_today_reason_4 | int }}
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(profileDeletionsReasonsCompanyToday, {
+            type: 'doughnut',
+            title: 'Heutige Profillöschungen',
+            data: {
+                labels: [
+                    'Social Media Aktivität wurde eingestellt',
+                    'keine passenden Influencer gefunden',
+                    'Preis-Leistungsverhältnis gefällt mir nicht',
+                    'kein Interesse mehr',
+                    'Sonstiges'
+                ],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ profile_deletions_today_reason_5 | int }},
+                            {{ profile_deletions_today_reason_6 | int }},
+                            {{ profile_deletions_today_reason_7 | int }},
+                            {{ profile_deletions_today_reason_8 | int }},
+                            {{ profile_deletions_today_reason_9 | int }}
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(profileDeletionsReasonsInfluencerEver, {
+            type: 'doughnut',
+            title: 'Heutige Profillöschungen',
+            data: {
+                labels: [
+                    'Social Media Präsenz wurde aufgelöst',
+                    'zu wenig Anfragen erhalten',
+                    'kein Interesse mehr',
+                    'Sonstiges'
+                ],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ profile_deletions_ever_reason_1 | int }},
+                            {{ profile_deletions_ever_reason_2 | int }},
+                            {{ profile_deletions_ever_reason_3 | int }},
+                            {{ profile_deletions_ever_reason_4 | int }}
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+        new Chart(profileDeletionsReasonsCompanyEver, {
+            type: 'doughnut',
+            title: 'Heutige Profillöschungen',
+            data: {
+                labels: [
+                    'Social Media Aktivität wurde eingestellt',
+                    'keine passenden Influencer gefunden',
+                    'Preis-Leistungsverhältnis gefällt mir nicht',
+                    'kein Interesse mehr',
+                    'Sonstiges'
+                ],
+                datasets: [
+                    {
+                        label: "TeamB Score",
+                        data: [
+                            {{ profile_deletions_ever_reason_5 | int }},
+                            {{ profile_deletions_ever_reason_6 | int }},
+                            {{ profile_deletions_ever_reason_7 | int }},
+                            {{ profile_deletions_ever_reason_8 | int }},
+                            {{ profile_deletions_ever_reason_9 | int }}
+                        ],
+                        backgroundColor: channelDistibutionColoring,
+                        borderColor: channelDistibutionColoring,
+                        borderWidth: [1, 1, 1, 1, 1]
+                    }
+                ]
+            },
+            options: null
+        });
+
+    </script>
+
+{% endblock %}

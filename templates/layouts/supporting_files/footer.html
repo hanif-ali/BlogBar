@@ -1,0 +1,73 @@
+<div class="bg-info pn-gl-mt-75" style="padding-top: 17px;">&nbsp;</div>
+<div class="footer bg-light pn-footer" style="margin-top: 0;">
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-4" style="margin-top: 0;">
+            <h6>Feedback + Support</h6>
+            <p class="text-muted small">
+                {% if language_abbr == 'de' %} Du möchtest uns etwas mitteilen? Dann schreibe uns deine Nachricht
+                    an {% else %} You want to tell us something? Then send us your message to {% endif %}  <a
+                    href="mailto: cheers@blogbar.eu">cheers@blogbar.eu</a>
+                <br>{% if language_abbr == 'de' %} Bei technischen Problemen gerne eine Mail an {% else %} In case of
+                technical problems please send an email to {% endif %} <a href="mailto: technical-support@blogbar.eu">technical-support@blogbar.eu</a><br>
+            </p>
+        </div>
+        <div class="col-md-4 text-center" style="margin-bottom: 10px; margin-top: 0px;">
+            <h6>{% if language_abbr == 'de' %}Folge uns {% else %} Follow us {% endif %}</h6>
+            <span style="font-size: larger;">
+                    &nbsp;<a href="https://www.instagram.com/blogbar.eu/" class="text-muted" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+                    &nbsp; <a href="https://www.facebook.com/blogbar.eu/?modal=admin_todo_tour" class="text-muted"
+                              target="_blank"><i class="fab fa-facebook"></i></a>
+                </span>
+            <br>
+            <br>
+            <small>
+                <a href="/{{ language_abbr }}/imprint" class="text-primary">{% if language_abbr == 'de' %}
+                    Impressum {% else %} Imprint {% endif %}</a>
+                <span class="text-muted"> / </span>
+                <a href="/{{ language_abbr }}/download/privacy_policy" class="text-primary">
+                    {% if language_abbr == 'de' %} Datenschutz {% else %} Privacy Policy {% endif %}</a><br>
+                <span class="text-muted">{% if language_abbr == 'de' %} Guidelines für {% else %} Guidelines
+                    for {% endif %}</span>
+                <a href="/{{ language_abbr }}/download/guidelines_influencer" class="text-primary">
+                    {% if language_abbr == 'de' %} Influencer {% else %} Influencers {% endif %}</a>
+                <span class="text-muted">und</span>
+                <a href="/{{ language_abbr }}/download/guidelines_companies" class="text-primary">
+                    {% if language_abbr == 'de' %} Unternehmen {% else %} Companies {% endif %}</a>
+                <br>
+                <span class="text-muted">{% if language_abbr == 'de' %} AGBs für {% else %} GTCs for {% endif %}</span>
+                <a href="/{{ language_abbr }}/download/gtc_influencers" class="text-primary">
+                    {% if language_abbr == 'de' %} Influencer {% else %} Influencers {% endif %}</a>
+                <span class="text-muted">und</span>
+                <a href="/{{ language_abbr }}/download/gtc_companies" class="text-primary">
+                    {% if language_abbr == 'de' %} Unternehmen {% else %} Companies {% endif %}</a>
+            </small>
+        </div>
+        <div class="col-md-4 text-right">
+            <h6>{% if language_abbr == 'de' %} Impressum {% else %} Imprint (Impressum) {% endif %}</h6>
+            <p class="text-muted small">
+                BLOGBAR Digital Network UG ({% if language_abbr == 'de' %} haftungsbeschränkt {% else %}
+                limited {% endif %})<br>
+                {#                <u>Geschäftsführer</u>: Carolin Wolz, Axel Sommer<br>#}
+                Krausstr. 01 - 63897 Miltenberg
+            </p>
+            <h6>{% if language_abbr == 'de' %} Kontakt {% else %} Contact {% endif %}</h6>
+            <p class="text-muted small">
+                Mail: <a href="mailto:cheers@blogbar.eu">cheers@blogbar.eu</a><br>
+                Tel: <a href="tel:017687479127">+49 176 8747 9127</a>
+            </p>
+        </div>
+    </div>
+    <div class="text-muted">
+        <div class="text-center">
+            <hr>
+            <p class="text-center">2019 BlogBar © - Switch to
+                {% if language_abbr == "de" %}
+                    <a class="text-primary" onclick="set_langauge_to('en')">English</a>
+                {% else %}
+                    <a class="text-primary" onclick="set_langauge_to('de')">Deutsch</a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>

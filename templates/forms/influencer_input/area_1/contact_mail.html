@@ -1,0 +1,17 @@
+<div class="form-group row">
+    <label for="mail" class="col-sm-2 col-form-label col-form-label-sm">
+        <strong>{% if language_abbr == 'de' %}eMail, Telephone{% else %}eMail, Telephone{% endif %}</strong>
+    </label>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="email" class="form-control form-control-sm" required="true" id="mail" name="mail"
+                       placeholder="max@mustermann.de">
+            </div>
+            <div class="col-md-6">
+                <input type="tel" class="form-control form-control-sm" id="phoneNumber" name="telephoneNumber"
+                       placeholder="0 157 93923921">
+            </div>
+        </div>
+    </div>
+</div>

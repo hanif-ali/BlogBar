@@ -1,0 +1,27 @@
+<div class="col-lg-2">
+    <label for="facebook_reach_from">{% if language_abbr == 'de' %}Reichweite von{% else %}Range
+        from {% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="facebook_reach_from"
+            id="facebook_reach_from">
+        <option value="UNDEFINED"
+                {% if facebook_reach_from == 'UNDEFINED' or facebook_reach_from is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000, 500000, 1000000] %}
+            <option value="{{ amount }}"
+                    {% if facebook_reach_from == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="facebook_reach_From">{% if language_abbr == 'de' %}Reichweite bis{% else %}Range to {% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="facebook_reach_to" id="facebook_reach_to">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000, 500000, 1000000] %}
+            <option value="{{ amount }}"
+                    {% if facebook_reach_to == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if facebook_reach_to == 'UNDEFINED' or facebook_reach_to is undefined %}selected{% endif %}>beliebig
+        </option>
+    </select>
+</div>

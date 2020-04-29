@@ -1,0 +1,253 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences/channels">
+                    {% if language_abbr == 'de' %}Kanäle{% else %}channels{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">YouTube</li>
+            </ol>
+        </nav>
+        <h1 class="display-4"><i class="fab fa-youtube" style="color: #bcbcbc"></i> YouTube</h1>
+        <form method="POST">
+            {% if error is defined %}
+                <div class="alert alert-primary" role="alert">
+                    {% if error == 'USERNAME/URL_ALREDY_EXISTS' %}
+                        {% if language_abbr == 'de' %}
+                            Der YouTube-Username wird bereits verwendet. Bitte wende dich an unseren support
+                            (cheers@blogbar.eu) und reiche eine Beschwerde ein, sofern es sich um dein Profil handelt.
+                        {% else %}
+                            The YouTube username is already in use. Please contact our support (cheers@blogbar.eu) and
+                            file a complaint if it is your profile.
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" name="state_listing"
+                               id="switch_state_instagram_listing" {% if listing_on == True %}checked{% endif %}>
+                        <label class="custom-control-label" for="switch_state_instagram_listing">Kanal anzeigen</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Username</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-sm" required="true"
+                                           id="username" name="username" value="{{ youtube_username }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="follower" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Abonnenten{% else %}Subscribers{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="follower" name="follower" min="100"
+                                           value="{{ youtube_follower_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="post_amount" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Anzahl an Videos{% else %}Number of
+                                videos{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="post_amount" name="post_amount" min="1"
+                                           value="{{ youtube_post_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="youtube_rhythm_types" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Rhythmus{% else %}Rhythm{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown"
+                                            name="youtube_rhythm_types" id="youtube_rhythm_types">
+                                        <option value="1" {% if youtube_rhythm == 1 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}täglich{% else %}on a daily
+                                                basis{% endif %}</option>
+                                        <option value="2" {% if youtube_rhythm == 2 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}wöchentlich{% else %}on a weekly
+                                                basis{% endif %}</option>
+                                        <option value="3" {% if youtube_rhythm == 3 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 2 Wochen{% else %}every 2
+                                                weeks{% endif %}</option>
+                                        <option value="4" {% if youtube_rhythm == 4 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 2 - 3 Wochen{% else %}every 2 - 3
+                                                weeks{% endif %}</option>
+                                        <option value="5" {% if youtube_rhythm == 5 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 3 Wochen{% else %}every 3
+                                                weeks{% endif %}</option>
+                                        <option value="6" {% if youtube_rhythm == 6 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 3 - 4 Wochen{% else %}every 3 - 4
+                                                weeks{% endif %}</option>
+                                        <option value="7" {% if youtube_rhythm == 7 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}monatlich{% else %}monthly{% endif %}</option>
+                                        <option value="8" {% if youtube_rhythm == 8 %}selected{% endif %}>
+                                            {% if language_abbr == 'de' %}alle 4 - 5 Wochen{% else %}every 4 - 5
+                                                weeks{% endif %}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="youtube_countries" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Region</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                            data-live-search="true" name="youtube_countries" id="youtube_countries">
+                                        {% include "selectpicker_options/coutries.html" %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="gender_distribution_female" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Geschlechterverteilung{% else %}Gender
+                                distribution{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-1">{% if language_abbr == 'de' %}weiblich{% else %}female{% endif %}
+                                    :
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" onchange="fill_male_automatically();" step="any" min="0"
+                                           max="100" class="form-control form-control-sm" required="true"
+                                           id="gender_distribution_female" name="gender_distribution_female" max="100"
+                                           value="{{ youtube_gender_distribution_female }}">
+                                </div>
+                                <div class="col-md-1">{% if language_abbr == 'de' %}männlich{% else %}male{% endif %}:
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number" disabled step="any" class="form-control form-control-sm"
+                                           required="true" id="gender_distribution_male" name="gender_distribution_male"
+                                           max="100" value="{{ youtube_gender_distribution_male }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="age_distribution" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Altersverteilung</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="selectpicker form-control-sm form-control dropdown" required="true"
+                                    name="age_distribution" id="age_distribution">
+                                <option value="0" {% if youtube_age_distribution_max == 18 %}selected{% endif %}>bis 18
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="1" {% if youtube_age_distribution_min == 19 %}selected{% endif %}>19
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 25
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="2" {% if youtube_age_distribution_min == 26 %}selected{% endif %}>26
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 35
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="3" {% if youtube_age_distribution_min == 36 %}selected{% endif %}>36
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 45
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="4" {% if youtube_age_distribution_min == 46 %}selected{% endif %}>46
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %} - 55
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                                <option value="5" {% if youtube_age_distribution_min == 56 %}selected{% endif %}>ü56
+                                    {% if language_abbr == 'de' %}Jahre{% else %}years{% endif %}</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+
+                    <div class="form-group row">
+                        <label for="page_views" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Aufrufe{% else %}Invocations{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="page_views" name="page_views" min="100" value="{{ youtube_page_views }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="impressions" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Impressions</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="impressions" name="impressions" min="100"
+                                           value="{{ youtube_impressions_amount }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="post_interaction" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Klickrate{% else %}Click rate{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-sm" required="true"
+                                           id="post_interaction" name="post_interaction" min="100"
+                                           value="{{ youtube_click_rate }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+            <input type="submit" class="btn btn-sm btn-outline-success pn-gl-mt-15 col-md-4"
+                   id="submitYoutubePreferences"
+                   value="{% if language_abbr == 'de' %}Änderungen speichern{% else %}Save changes{% endif %}">
+        </form>
+    </div>
+
+
+    <script src="/static/js/preferences.js"></script>
+
+{% endblock %}

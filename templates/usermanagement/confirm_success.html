@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-75">
+        {% if status %}
+            <div class="alert alert-success" style="background: #f4f4f4" role="alert">
+                <h4 class="alert-heading">{% if language_abbr == 'de' %}Erfolgreich bestätigt!{% else %}Successfully
+                    confirmed!{% endif %}</h4>
+                <p>{% if language_abbr == 'de' %}Du kannst dich nun im Sign-In-Bereich anmelden{% else %}You can now
+                    register in the sign-in area{% endif %}</p>
+                <hr>
+                <p class="mb-0">{% if language_abbr == 'de' %}Zur Anmeldemaske{% else %}To the Sign-In form{% endif %}:
+                    <a href="/{{ language_abbr }}/login">Sign-In</a></p>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

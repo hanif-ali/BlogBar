@@ -1,0 +1,225 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-15">
+        <h3>{{ influencer_name }}</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">About</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-5 text-dark font-weight-bold">Name, Vorname</div>
+                            <div class="col-sm-7">Wegener, Ben</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5 text-dark font-weight-bold">Name, Vorname</div>
+                            <div class="col-sm-7">Wegener, Ben</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Galerie</div>
+                    <div class="card-body">
+                        PICTURE
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% for identifier in channelIdentifier %}
+
+            <div class="card pn-gl-mt-25">
+                <div class="card-header ">
+                    {{ index }}
+                    {% if channelIdentifier[loop.index0] == 1 %}
+                        <i class="fab fa-instagram" style="color:#bcbcbc;"></i> <strong>Instagram</strong>
+                    {% elif channelIdentifier[loop.index0] == 2 %}
+                        <i class="fab fa-facebook"></i> <strong>FaceBook</strong>
+                    {% elif channelIdentifier[loop.index0] == 3 %}
+                        <i class="fab fa-youtube"></i> <strong>YouTube</strong>
+                    {% elif channelIdentifier[loop.index0] == 4 %}
+                        <i class="fab fa-pinterest"></i> <strong>Pinterest</strong>
+                    {% elif channelIdentifier[loop.index0] == 5 %}
+                        <i class="fab fa-blogger"></i> <strong>eigener Blog</strong>
+                    {% endif %}
+                    (@{{ channelUsername[loop.index0] }})
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <div class="card-text">
+                        <table class="table table-sm table-striped">
+                            <thead>
+
+                            </thead>
+                            <tbody class="pn-dark-table">
+                            {# Instagram-specific-stuff #}
+                            {% if channelIdentifier[loop.index0] == 1 %}
+                                <tr>
+                                    <th width="30%">Username</th>
+                                    <td>{{ channelUsername[loop.index0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Follower</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Anzahl Posts</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Content</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Rhythmus</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Aktive Länder</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Geschlechteranteil m/w</th>
+                                    <td> /</td>
+                                </tr>
+                                <tr>
+                                    <th>Altersverteilung</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Engagement Rate</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Follower Ratio</th>
+                                    <td></td>
+                                </tr>
+                            {% elif channelIdentifier[loop.index0] == 2 %}
+                                <tr>
+                                    <th width="30%">Username</th>
+                                    <td>{{ channelUsername[loop.index0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Follower</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Anzahl Posts</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Content</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Rhythmus</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Seitenaktivität</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Seitenaufrufe</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Likes</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Reichweite</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Beitragsinteraktion</th>
+                                    <td></td>
+                                </tr>
+                            {% elif channelIdentifier[loop.index0] == 3 %}
+                                {# YouTube-specific-stuff #}
+                                <tr>
+                                    <th width="30%">Username</th>
+                                    <td>{{ channelUsername[loop.index0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Abonnenten</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Anzahl Videos</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Rhythmus</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Region</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Geschlechteranteil m/w</th>
+                                    <td> /</td>
+                                </tr>
+                                <tr>
+                                    <th>Altersverteilung</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Aufrufe</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Impressions</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Klickrate</th>
+                                    <td></td>
+                                </tr>
+                            {% elif channelIdentifier[loop.index0] == 4 %}
+                                <tr>
+                                    <th width="30%">Username</th>
+                                    <td>{{ channelUsername[loop.index0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Follower</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Anzahl Pins</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Content</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Rhythmus</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Betrachter</th>
+                                    <td></td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn btn-sm pn-total-width btn-outline-dark">visit profile</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% block owner %}
+
+    {% endblock %}
+
+{% endblock %}

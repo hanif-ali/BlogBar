@@ -1,0 +1,335 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences/profile">
+                    {% if language_abbr == 'de' %}Profil{% else %}Profile{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}Userdaten{% else %}
+                    User data{% endif %}</li>
+            </ol>
+        </nav>
+        <h1 class="display-4">{% if language_abbr == 'de' %}Userdaten{% else %}User data{% endif %}</h1>
+        <form method="POST">
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="firstName" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Vor-, Nachname{% else %}First name, Last
+                                name{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control form-control-sm" required="true"
+                                           id="firstName" name="firstName" placeholder="Max" value="{{ first_name }}">
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control form-control-sm" required="true"
+                                           id="lastName" name="lastName"
+                                           placeholder="{% if language_abbr == 'de' %}Mustermann{% else %}Musterman{% endif %}"
+                                           value="{{ last_name }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="mailAddress" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Mail-Adresse{% else %}emailaddress{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="email" class="form-control form-control-sm" required="true"
+                                           id="firstName" name="mailAddress" placeholder="max@mustermann.com"
+                                           value="{{ email }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="phoneNumber" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Telefonnummer{% else %}telephone
+                                number{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="tel" class="form-control form-control-sm" required="true"
+                                           id="phoneNumber" name="phoneNumber" placeholder="0 157 687514"
+                                           value="{{ phone_number }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+
+                    <div class="form-group row">
+                        <label for="gender" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Geschlecht{% else %}Gender{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown" name="gender"
+                                            id="gender">
+                                        <option value="0" {% if gender == 'female' %} selected {% endif %}>
+                                            {% if language_abbr == 'de' %}weiblich{% else %}female{% endif %}</option>
+                                        <option value="1" {% if gender == 'male' %} selected {% endif %}>
+                                            {% if language_abbr == 'de' %}männlich{% else %}male{% endif %}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="birthyearPicker" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Geburtsjahr{% else %}Year of birth{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="selectpicker form-control-sm form-control dropdown" name="birthyear"
+                                    id="birthyearPicker">
+                                <option value="1960" {% if birthyear == 1960 %} selected {% endif %}>1960</option>
+                                <option value="1961" {% if birthyear == 1961 %} selected {% endif %}>1961</option>
+                                <option value="1962" {% if birthyear == 1962 %} selected {% endif %}>1962</option>
+                                <option value="1963" {% if birthyear == 1963 %} selected {% endif %}>1963</option>
+                                <option value="1964" {% if birthyear == 1964 %} selected {% endif %}>1964</option>
+                                <option value="1965" {% if birthyear == 1965 %} selected {% endif %}>1965</option>
+                                <option value="1966" {% if birthyear == 1966 %} selected {% endif %}>1966</option>
+                                <option value="1967" {% if birthyear == 1967 %} selected {% endif %}>1967</option>
+                                <option value="1968" {% if birthyear == 1968 %} selected {% endif %}>1968</option>
+                                <option value="1969" {% if birthyear == 1969 %} selected {% endif %}>1969</option>
+                                <option value="1970" {% if birthyear == 1970 %} selected {% endif %}>1970</option>
+                                <option value="1971" {% if birthyear == 1971 %} selected {% endif %}>1971</option>
+                                <option value="1972" {% if birthyear == 1972 %} selected {% endif %}>1972</option>
+                                <option value="1973" {% if birthyear == 1973 %} selected {% endif %}>1973</option>
+                                <option value="1974" {% if birthyear == 1974 %} selected {% endif %}>1974</option>
+                                <option value="1975" {% if birthyear == 1975 %} selected {% endif %}>1975</option>
+                                <option value="1976" {% if birthyear == 1976 %} selected {% endif %}>1976</option>
+                                <option value="1977" {% if birthyear == 1977 %} selected {% endif %}>1977</option>
+                                <option value="1978" {% if birthyear == 1978 %} selected {% endif %}>1978</option>
+                                <option value="1979" {% if birthyear == 1979 %} selected {% endif %}>1979</option>
+                                <option value="1980" {% if birthyear == 1980 %} selected {% endif %}>1980</option>
+                                <option value="1981" {% if birthyear == 1981 %} selected {% endif %}>1981</option>
+                                <option value="1982" {% if birthyear == 1982 %} selected {% endif %}>1982</option>
+                                <option value="1983" {% if birthyear == 1983 %} selected {% endif %}>1983</option>
+                                <option value="1984" {% if birthyear == 1984 %} selected {% endif %}>1984</option>
+                                <option value="1985" {% if birthyear == 1985 %} selected {% endif %}>1985</option>
+                                <option value="1986" {% if birthyear == 1986 %} selected {% endif %}>1986</option>
+                                <option value="1987" {% if birthyear == 1987 %} selected {% endif %}>1987</option>
+                                <option value="1988" {% if birthyear == 1988 %} selected {% endif %}>1988</option>
+                                <option value="1989" {% if birthyear == 1989 %} selected {% endif %}>1989</option>
+                                <option value="1990" {% if birthyear == 1990 %} selected {% endif %}>1990</option>
+                                <option value="1991" {% if birthyear == 1991 %} selected {% endif %}>1991</option>
+                                <option value="1992" {% if birthyear == 1992 %} selected {% endif %}>1992</option>
+                                <option value="1993" {% if birthyear == 1993 %} selected {% endif %}>1993</option>
+                                <option value="1994" {% if birthyear == 1994 %} selected {% endif %}>1994</option>
+                                <option value="1995" {% if birthyear == 1995 %} selected {% endif %}>1995</option>
+                                <option value="1996" {% if birthyear == 1996 %} selected {% endif %}>1996</option>
+                                <option value="1997" {% if birthyear == 1997 %} selected {% endif %}>1997</option>
+                                <option value="1998" {% if birthyear == 1998 %} selected {% endif %}>1998</option>
+                                <option value="1999" {% if birthyear == 1999 %} selected {% endif %}>1999</option>
+                                <option value="2000" {% if birthyear == 2000 %} selected {% endif %}>2000</option>
+                                <option value="2001" {% if birthyear == 2001 %} selected {% endif %}>2001</option>
+                                <option value="2002" {% if birthyear == 2002 %} selected {% endif %}>2002</option>
+                                <option value="2003" {% if birthyear == 2003 %} selected {% endif %}>2003</option>
+                                <option value="2004" {% if birthyear == 2004 %} selected {% endif %}>2004</option>
+                                <option value="2005" {% if birthyear == 2005 %} selected {% endif %}>2005</option>
+                                <option value="2006" {% if birthyear == 2006 %} selected {% endif %}>2006</option>
+                                <option value="2007" {% if birthyear == 2007 %} selected {% endif %}>2007</option>
+                                <option value="2008" {% if birthyear == 2008 %} selected {% endif %}>2008</option>
+                                <option value="2009" {% if birthyear == 2009 %} selected {% endif %}>2009</option>
+                                <option value="2010" {% if birthyear == 2010 %} selected {% endif %}>2010</option>
+                                <option value="2011" {% if birthyear == 2011 %} selected {% endif %}>2011</option>
+                                <option value="2012" {% if birthyear == 2012 %} selected {% endif %}>2012</option>
+                                <option value="2013" {% if birthyear == 2013 %} selected {% endif %}>2013</option>
+                                <option value="2014" {% if birthyear == 2014 %} selected {% endif %}>2014</option>
+                                <option value="2015" {% if birthyear == 2015 %} selected {% endif %}>2015</option>
+                                <option value="2016" {% if birthyear == 2016 %} selected {% endif %}>2016</option>
+                                <option value="2017" {% if birthyear == 2017 %} selected {% endif %}>2017</option>
+                                <option value="2018" {% if birthyear == 2018 %} selected {% endif %}>2018</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="homebase" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Homebase</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-sm" id="homebase"
+                                           name="homebase" placeholder="Berlin" value="{{ homebase }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="price" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Preis{% else %}price{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-sm" id="price" name="price"
+                                           placeholder="300,00€" value="{{ price }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="deal" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Dealtypen{% else %}Deal types{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select multiple="true" class="selectpicker form-control-sm form-control dropdown"
+                                            name="deal" id="deal">
+                                        <option value="1" {% if 1 in dealidentifiers %} selected {% endif %}>
+                                            {% if language_abbr == 'de' %}Bartausch{% else %}cash
+                                                exchange{% endif %}</option>
+                                        <option value="2" {% if 2 in dealidentifiers %} selected {% endif %}>
+                                            {% if language_abbr == 'de' %}Werbekostenzuschlag{% else %}advertising
+                                                surcharge{% endif %}</option>
+                                        <option value="3" {% if 3 in dealidentifiers %} selected {% endif %}>
+                                            {% if language_abbr == 'de' %}nach Absprache{% else %}by
+                                                arrangement{% endif %}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="price" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Themen{% else %}Themes{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                            data-live-search="true" required="true" name="topics" id="topics">
+                                        <option value="1" {% if 1 in topicidentifiers %} selected {% endif %}>Auto und
+                                            Motorrad
+                                        </option>
+                                        <option value="2" {% if 2 in topicidentifiers %} selected {% endif %}>Beauty /
+                                            Kosmetik
+                                        </option>
+                                        <option value="3" {% if 3 in topicidentifiers %} selected {% endif %}>Bildung
+                                        </option>
+                                        <option value="4" {% if 4 in topicidentifiers %} selected {% endif %}>Computer
+                                            und Elektronik
+                                        </option>
+                                        <option value="5" {% if 5 in topicidentifiers %} selected {% endif %}>DIY
+                                        </option>
+                                        <option value="6" {% if 6 in topicidentifiers %} selected {% endif %}>Design
+                                        </option>
+                                        <option value="7" {% if 7 in topicidentifiers %} selected {% endif %}>Erfolg und
+                                            Karriere
+                                        </option>
+                                        <option value="8" {% if 8 in topicidentifiers %} selected {% endif %}>Essen und
+                                            Trinken / Food
+                                        </option>
+                                        <option value="9" {% if 9 in topicidentifiers %} selected {% endif %}>Fashion /
+                                            Mode
+                                        </option>
+                                        <option value="10" {% if 10 in topicidentifiers %} selected {% endif %}>
+                                            Finanzen
+                                        </option>
+                                        <option value="11" {% if 11 in topicidentifiers %} selected {% endif %}>
+                                            Fotografie
+                                        </option>
+                                        <option value="12" {% if 12 in topicidentifiers %} selected {% endif %}>Frauen /
+                                            Männer
+                                        </option>
+                                        <option value="13" {% if 13 in topicidentifiers %} selected {% endif %}>Garten
+                                            und Natur
+                                        </option>
+                                        <option value="14" {% if 14 in topicidentifiers %} selected {% endif %}>
+                                            Gesellschaft und Politik
+                                        </option>
+                                        <option value="15" {% if 15 in topicidentifiers %} selected {% endif %}>
+                                            Gesundheit
+                                        </option>
+                                        <option value="16" {% if 16 in topicidentifiers %} selected {% endif %}>Home und
+                                            Living
+                                        </option>
+                                        <option value="17" {% if 17 in topicidentifiers %} selected {% endif %}>Humor
+                                            und Spaß
+                                        </option>
+                                        <option value="18" {% if 18 in topicidentifiers %} selected {% endif %}>Kinder
+                                            und Familie
+                                        </option>
+                                        <option value="19" {% if 19 in topicidentifiers %} selected {% endif %}>Kino,
+                                            Film, TV
+                                        </option>
+                                        <option value="20" {% if 20 in topicidentifiers %} selected {% endif %}>Kunst
+                                            und Kultur
+                                        </option>
+                                        <option value="21" {% if 21 in topicidentifiers %} selected {% endif %}>Liebe
+                                            und Sexualität
+                                        </option>
+                                        <option value="22" {% if 22 in topicidentifiers %} selected {% endif %}>
+                                            Lifestyle
+                                        </option>
+                                        <option value="23" {% if 23 in topicidentifiers %} selected {% endif %}>Luxus
+                                        </option>
+                                        <option value="24" {% if 24 in topicidentifiers %} selected {% endif %}>
+                                            Marketing
+                                        </option>
+                                        <option value="25" {% if 25 in topicidentifiers %} selected {% endif %}>Musik
+                                        </option>
+                                        <option value="26" {% if 26 in topicidentifiers %} selected {% endif %}>Recht
+                                            und Gesetz
+                                        </option>
+                                        <option value="27" {% if 27 in topicidentifiers %} selected {% endif %}>Reise /
+                                            Travel
+                                        </option>
+                                        <option value="28" {% if 28 in topicidentifiers %} selected {% endif %}>Social
+                                            Media
+                                        </option>
+                                        <option value="29" {% if 29 in topicidentifiers %} selected {% endif %}>Spiele
+                                            und Gaming
+                                        </option>
+                                        <option value="30" {% if 30 in topicidentifiers %} selected {% endif %}>Sport
+                                            und Fitness
+                                        </option>
+                                        <option value="31" {% if 31 in topicidentifiers %} selected {% endif %}>Tattos
+                                        </option>
+                                        <option value="32" {% if 32 in topicidentifiers %} selected {% endif %}>
+                                            Technik
+                                        </option>
+                                        <option value="33" {% if 33 in topicidentifiers %} selected {% endif %}>Tiere
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <input type="submit" style="width: 33%;"
+                   value="{% if language_abbr == 'de' %}Änderungen speichern{% else %}Save changes{% endif %}"
+                   class="btn btn-sm btn-outline-success pn-gl-mt-15">
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+<div class="row">
+
+    {% include "search_and_filter/channel_relations/pinterest_related/basic/follower_range.html" %}
+
+
+    {% if subscription_packet == "prime" or subscription_packet == "pro" %}
+
+    {% endif %}
+
+
+    {% if subscription_packet == "prime" %}
+
+        {% include "search_and_filter/channel_relations/pinterest_related/prime/pins_amount_range.html" %}
+        {% include "search_and_filter/channel_relations/pinterest_related/prime/viewer_amount_range.html" %}
+        {% include "search_and_filter/channel_relations/pinterest_related/prime/content_type_picker.html" %}
+        {% include "search_and_filter/channel_relations/pinterest_related/prime/rhythm_types.html" %}
+
+    {% endif %}
+
+</div>

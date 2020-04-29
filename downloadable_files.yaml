@@ -1,0 +1,24 @@
+guidelines_influencer:
+  de: "static/download/Guidelines_Influencer_DE.pdf"
+  default: "static/download/Guidelines_Influencer_EN.pdf"
+  attachment: True
+guidelines_companies:
+  de: "static/download/Guidelines_Unternehmen_DE.pdf"
+  default: "static/download/Guidelines_Unternehmen_EN.pdf"
+  attachment: True
+kpis:
+  de: "static/download/Social_KPIs.pdf"
+  default: "static/download/Social_KPIs_EN.pdf"
+  attachment: True
+privacy_policy:
+  de: "static/download/Datenschutzerklärung_BlogBar.pdf"
+  default: "static/download/PrivacyPolicy_BlogBar.pdf"
+  attachment: False
+gtc_influencers:
+  de: "static/download/AGB_Influencer_BlogBar.pdf"
+  default: "static/download/GTC_BlogBar_for_Influencer.pdf"
+  attachment: False
+gtc_companies:
+  de: "static/download/AGB_Unternehmen_BlogBar.pdf"
+  default: "GTC_BlogBar_for_entrepreneurs.pdf"
+  attachment: False

@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="pn-gl-mt-75">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h1 class="display-4">Sign-In</h1>
+                        <p class="text-muted">{% if language_abbr == 'de' %}als Influencer oder Unternehmen {% else %}as
+                            influencer or company{% endif %}</p>
+                        <p class="card-text">
+                        <form method="POST">
+                            {% if error %}
+                                <div class="alert alert-danger" id="errorAlertBanner" role="alert">{{ error }}</div>
+                            {% endif %}
+                            <input type="email" required {% if mail %}value="{{ mail }}"{% endif %} name="mail"
+                                   id="mail" class="form-control form-control-sm pn-gl-mt-15"
+                                   placeholder="eMail-{% if language_abbr == 'de' %}Adresse{% else %}Address{% endif %}">
+                            <input type="password" required name="pwd" class="form-control form-control-sm pn-gl-mt-15"
+                                   placeholder="{% if language_abbr == 'de' %}Passwort{% else %}Passwort{% endif %}">
+                            <input type="submit" class="pn-total-width btn btn-sm btn-outline-dark pn-gl-mt-15"
+                                   id="submitLogin"
+                                   value="{% if language_abbr == 'de' %}Einloggen{% else %}Log in{% endif %}">
+                        </form>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-dark">
+                                <a data-toggle="modal" data-target="#pwd_reset" href="" class="text-dark">
+                                    {% if language_abbr == 'de' %}Passwort vergessen{% else %}Forgot
+                                        password{% endif %}</a>
+                            </small>
+                            <br>
+                            <small class="text-muted">
+                                {% if language_abbr == 'de' %}Neu hier? Account erstellen als{% else %}New here? Create
+                                    account as{% endif %}
+                                <a href="/{{ language_abbr }}/signupcomp" class="text-dark">
+                                    {% if language_abbr == 'de' %}Unternehmen{% else %}Company{% endif %}</a>
+                                {% if language_abbr == 'de' %}oder{% else %}or{% endif %}
+                                <a href="/{{ language_abbr }}/signupinfl" class="text-dark">
+                                    {% if language_abbr == 'de' %}Influencer{% else %}Influencer{% endif %}</a>
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    {% include "usermanagement/modals/pwd_reset.html" %}
+
+{% endblock %}

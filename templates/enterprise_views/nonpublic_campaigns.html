@@ -1,0 +1,117 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <h1 class="display-4">{% if language_abbr == 'de' %}Meine Kampagnen{% else %}My campaigns{% endif %}</h1>
+        <p class="text-left">
+            <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal"
+                    data-target="#addCampaignModal">
+                {% if language_abbr == 'de' %}Neue Kampagne{% else %}New campaign{% endif %}
+            </button>
+        </p>
+        {% for camapign in campaigns %}
+            <div class="card pn-gl-mt-25" id="campaign_listing_{{ campaigns[loop.index0]["campaign_identifier"] }}">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        {{ campaigns[loop.index0]["name"] }}
+                    </h3>
+                    <ul class="list-group-flush list-group">
+                        <li class="list-group-item">
+                            <h4 class="row"> {% if language_abbr == 'de' %}Überblick{% else %}Overview{% endif %}</h4>
+                            {#                        <div class="row">#}
+                            {#                            <strong>{% if language_abbr == 'de' %}Erstellungsdatum{% else %}Creation Date{% endif %}: </strong>&nbsp;21.03.201#}
+                            {#                        </div>#}
+                            <div class="row">
+                                <strong>{% if language_abbr == 'de' %}Zugeordnete Influencer{% else %}Assigned
+                                    influencers (amount){% endif %}
+                                    : </strong>&nbsp;{% if campaigns[loop.index0]["Count_Result"] != None %}
+                                {{ campaigns[loop.index0]["Count_Result"] }}{% else %}0{% endif %}
+                            </div>
+                            <div class="row pn-gl-mt-15 text-justify">
+                                <strong>{% if language_abbr == 'de' %}Kurzbeschreibung{% else %}Short
+                                    description{% endif %}: </strong>&nbsp;{{ campaigns[loop.index0]["description"] }}
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <button onclick="delete_campaign({{ campaigns[loop.index0]["campaign_identifier"] }})"
+                                    class="btn btn-outline-danger btn-sm pn-total-width">{% if language_abbr == 'de' %}
+                                Löschen{% else %}Delete{% endif %}</button>
+                            <button type="button" class="btn btn-sm btn-outline-warning pn-gl-mt-15 pn-total-width"
+                                    data-toggle="modal" data-target="#editCampaign"
+                                    data-name="{{ campaigns[loop.index0]["name"] }}"
+                                    data-description="{{ campaigns[loop.index0]["description"] }}"
+                                    data-identifier="{{ campaigns[loop.index0]["campaign_identifier"] }}">
+                                {% if language_abbr == 'de' %}Bearbeiten{% else %}Edit{% endif %}</button>
+                            <a href="/{{ language_abbr }}/campaigns/{{ campaigns[loop.index0]["campaign_identifier"] }}"
+                               class="btn btn-outline-dark btn-sm pn-total-width pn-gl-mt-15">Details</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="modal fade" id="addCampaignModal" tabindex="-1" role="dialog" aria-labelledby="addCampaignModal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">{% if language_abbr == 'de' %}Kampagne
+                        hinzufügen{% else %}Add campaign{% endif %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST">
+                    <div class="modal-body">
+                        <input type="text" name="campaign_name"
+                               placeholder="{% if language_abbr == 'de' %}Kampagnenname{% else %}Campaign Name{% endif %}"
+                               class="form-control form-control-sm pn-total-width">
+                        <textarea
+                                placeholder="{% if language_abbr == 'de' %}Beschreibung{% else %}Description{% endif %}"
+                                name="description"
+                                class="form-control form-control-sm pn-total-width pn-gl-mt-15"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-sm btn-outline-success pn-total-width" name="add_campaign"
+                               value="{% if language_abbr == 'de' %}Hinzufügen{% else %}Add{% endif %}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editCampaign" tabindex="-1" role="dialog" aria-labelledby="editCampaign"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">{% if language_abbr == 'de' %}Kampagne
+                        bearbeiten{% else %}Edit campaign{% endif %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST">
+                    <div class="modal-body">
+                        <input type="text" name="campaign_name"
+                               placeholder="{% if language_abbr == 'de' %}Kampagnenname{% else %}Campaign Name{% endif %}"
+                               class="form-control form-control-sm pn-total-width">
+                        <textarea
+                                placeholder="{% if language_abbr == 'de' %}Beschreibung{% else %}Description{% endif %}"
+                                name="description"
+                                class="form-control form-control-sm pn-total-width pn-gl-mt-15"></textarea>
+                        <input type="text" name="identifier" class="hidden" id="identifier">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-sm btn-outline-success pn-total-width" name="edit_campaign"
+                               value="{% if language_abbr == 'de' %}Übernehmen{% else %}Apply{% endif %}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

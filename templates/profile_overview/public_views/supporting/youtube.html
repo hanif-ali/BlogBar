@@ -1,0 +1,64 @@
+{% if influencer_data["is_listed_on_youtube"] is defined %}
+    <div class="card pn-total-width pn-gl-mt-15">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-9">
+                    <h5 class="card-title"><i class="fab fa-youtube" style="color:#bcbcbc;"></i> YouTube</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        @{{ influencer_data["is_listed_on_youtube"]["youtube_username"] }}</h6>
+                </div>
+                <div class="col-md-3">
+                    <div class="display-3 text-right inline-group" style="padding-right: 20px;">
+                        <i class="fab fa-youtube" style="color:#bcbcbc;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ influencer_data["is_listed_on_youtube"]["youtube_follower_amount"] }}
+                        Follower
+                    </li>
+                    <li class="list-group-item">{% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_youtube"]["youtube_post_amount"] }} Videos
+                        {% else %}{% if language_abbr == 'de' %}Videoanzahl{% else %}Number of videos{% endif %}:
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Rhythmus{% else %}Rhythm{% endif %}:
+                        {% if subscription_packet == "prime" %}
+                            {{ influencer_data["is_listed_on_youtube"]["youtube_rhythm"] }}{% else %}
+                            <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible
+                                from PRIME{% endif %}</span> {% endif %}</li>
+                    {#              <li class="list-group-item">Region: {% for deal in influencer_data["is_listed_on_youtube"]["languages"] %}{{ deal }}, {% endfor %}</li> TODO: Implement this!#}
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Geschlechtsverteilung{% else %}Gender
+                        distribution{% endif %}: {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_youtube"]["youtube_gender_distribution_male"] }}% männlich,
+                        {{ influencer_data["is_listed_on_youtube"]["youtube_gender_distribution_female"] }}%
+                        weiblich{% else %}
+                        <span class="text-primary"> {% if language_abbr == 'de' %}ab PRO sichtbar{% else %}visible from
+                            PRO{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Altersverteilung{% else %}age
+                        distribution{% endif %}: {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_youtube"]["youtube_age_distribution_min"] }} Jahre -
+                        {{ influencer_data["is_listed_on_youtube"]["youtube_age_distribution_max"] }} Jahre{% else %}
+                        <span class="text-primary"> {% if language_abbr == 'de' %}ab PRO sichtbar{% else %}visible from
+                            PRO{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Seitenaufrufe{% else %}Page
+                        views{% endif %}: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_youtube"]["youtube_page_views"] }}{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Impressions{% else %}
+                        Impressions{% endif %}: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_youtube"]["youtube_impressions_amount"] }}{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Klickrate{% else %}Click rate{% endif %}:
+                        {% if subscription_packet == "prime" %}
+                            {{ influencer_data["is_listed_on_youtube"]["youtube_click_rate"] }}{% else %}
+                            <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible
+                                from PRIME{% endif %}</span> {% endif %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endif %}

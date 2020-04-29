@@ -1,0 +1,26 @@
+<div class="col-lg-2">
+    <label for="topics">{% if language_abbr == 'de' %} Themenbereiche (Standart: alle) {% else %}
+        Theme {% endif %} </label>
+    <select class="selectpicker form-control-sm form-control dropdown" multiple data-live-search="true" name="topics"
+            id="topics">
+        {% if language_abbr == 'de' %}
+            {% set categories = ['Auto und Motorrad','Beauty / Kosmetik','Bildung','Computer und Elektronik','DIY','Design',
+            'Erfolg und Karriere','Essen und Trinken / Food','Fashion / Mode','Finanzen','Fotografie','Frauen / Männer',
+            'Garten und Natur','Gesellschaft und Politik','Gesundheit','Home und Living','Humor und Spaß','Kinder und Familie',
+            'Kino, Film, TV','Kunst und Kultur','Liebe und Sexualität','Lifestyle','Luxus','Marketing','Musik','Recht und Gesetz',
+            'Reise / Travel','Social Media','Spiele und Gaming','Sport und Fitness','Tattos','Technik','Tiere'] %}
+        {% else %}
+            {% set categories = ['Car and Motorcycle','Beauty / Cosmetics','Education','Computers and Electronics','DIY','Design',
+            'success and career','food and drink / food','fashion / fashion','finances','photography','women / men',
+            'Garden and nature', 'Society and politics', 'Health', 'Home and living', 'Humour and fun', 'Children and family',
+            'cinema, film, TV','art and culture','love and sexuality','lifestyle','luxury','marketing','music','law and order',
+            'Travel','Social Media','Games and Gaming','Sports and Fitness','Tattos','Technology','Animals'] %}
+        {% endif %}
+
+        {% for category in categories %}
+            <option value="{{ loop.index }}"
+                    {% if loop.index|string in topics %}selected{% endif %}>{{ category }}</option>
+        {% endfor %}
+
+    </select>
+</div>

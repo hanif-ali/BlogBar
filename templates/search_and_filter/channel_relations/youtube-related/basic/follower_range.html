@@ -1,0 +1,26 @@
+<div class="col-lg-2">
+    <label for="youtubeFollowerFrom">Follower {% if language_abbr == 'de' %}von{% else %}from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="youtubeFollowerFrom"
+            id="youtubeFollowerFrom">
+        <option value="UNDEFINED"
+                {% if youtubeFollowerFrom == 'UNDEFINED' or youtubeFollowerFrom is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000, 500000, 1000000] %}
+            <option value="{{ amount }}"
+                    {% if youtubeFollowerFrom == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="youtubeFollowerTo">Folower {% if language_abbr == 'de' %}bis{% else %}to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="youtubeFollowerTo" id="youtubeFollowerTo">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000, 500000, 1000000] %}
+            <option value="{{ amount }}"
+                    {% if youtubeFollowerTo == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if youtubeFollowerTo == 'UNDEFINED' or youtubeFollowerTo is undefined %}selected{% endif %}>beliebig
+        </option>
+    </select>
+</div>

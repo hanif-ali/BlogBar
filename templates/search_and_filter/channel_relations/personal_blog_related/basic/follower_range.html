@@ -1,0 +1,30 @@
+<div class="col-lg-2">
+    <label for="personal_blogFollowerFrom">{% if language_abbr == 'de' %}Follower von{% else %}Follower
+        from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="personal_blogFollowerFrom"
+            id="personal_blogFollowerFrom">
+        <option value="UNDEFINED"
+                {% if personal_blogFollowerFrom == 'UNDEFINED' or personal_blogFollowerFrom is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if personal_blogFollowerFrom == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="personal_blogFollowerTo">{% if language_abbr == 'de' %}Follower bis{% else %}Follower
+        to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="personal_blogFollowerTo"
+            id="personal_blogFollowerTo">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if personal_blogFollowerTo == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if personal_blogFollowerTo == 'UNDEFINED' or personal_blogFollowerTo is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

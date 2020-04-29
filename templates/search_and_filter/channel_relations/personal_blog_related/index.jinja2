@@ -1,0 +1,16 @@
+<div class="row">
+
+    {% include "search_and_filter/channel_relations/personal_blog_related/basic/follower_range.html" %}
+
+
+    {% if subscription_packet == "prime" %}
+
+        {% include "search_and_filter/channel_relations/personal_blog_related/prime/page_views_range.html" %}
+        {% include "search_and_filter/channel_relations/personal_blog_related/prime/posts_amount_range.html" %}
+        {% include "search_and_filter/channel_relations/personal_blog_related/prime/content_type_picker.html" %}
+        {% include "search_and_filter/channel_relations/personal_blog_related/prime/rhythm_types.html" %}
+
+    {% endif %}
+
+
+</div>

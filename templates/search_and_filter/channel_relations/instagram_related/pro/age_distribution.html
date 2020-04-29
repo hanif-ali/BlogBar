@@ -1,0 +1,32 @@
+<div class="col-lg-2">
+    <label for="instagram_age_distribution_from">{% if language_abbr == 'de' %}Altersverteilung von{% else %}Age
+        from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="instagram_age_distribution_from"
+            id="instagram_age_distribution_from">
+        <option value="UNDEFINED"
+                {% if instagram_age_distribution_from == 'UNDEFINED' or instagram_age_distribution_from is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        <option value="19" {% if instagram_age_distribution_from == '19' %}selected{% endif %}>19</option>
+        <option value="26" {% if instagram_age_distribution_from == '26' %}selected{% endif %}>26</option>
+        <option value="36" {% if instagram_age_distribution_from == '36' %}selected{% endif %}>36</option>
+        <option value="46" {% if instagram_age_distribution_from == '46' %}selected{% endif %}>46</option>
+        <option value="56" {% if instagram_age_distribution_from == '56' %}selected{% endif %}>56</option>
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="instagram_age_distribution_to">{% if language_abbr == 'de' %}Altersverteilung bis{% else %}Age
+        to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="instagram_age_distribution_to"
+            id="instagram_age_distribution_to">
+        <option value="18" {% if instagram_age_distribution_to == '18' %}selected{% endif %}>18</option>
+        <option value="25" {% if instagram_age_distribution_to == '25' %}selected{% endif %}>25</option>
+        <option value="35" {% if instagram_age_distribution_to == '35' %}selected{% endif %}>35</option>
+        <option value="45" {% if instagram_age_distribution_to == '45' %}selected{% endif %}>45</option>
+        <option value="55" {% if instagram_age_distribution_to == '55' %}selected{% endif %}>55</option>
+        <option value="UNDEFINED"
+                {% if instagram_age_distribution_to == 'UNDEFINED' or instagram_age_distribution_to is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

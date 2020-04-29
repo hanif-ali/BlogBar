@@ -1,0 +1,176 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.pn-gl-mt-25 {
+    margin-top: 100px;
+}
+
+.pn-gl-small-spacing-cards {
+    margin-top: 30px;
+}
+
+.pn-total-width {
+    width: 100% !important;
+}
+
+.pn-channel-buttons {
+    width: 90%;
+    margin-top: 20px;
+}
+
+.pn-gl-mt-75 {
+    margin-top: 75px;
+}
+
+.hidden {
+    display: none;
+}
+
+.fieldGroup {
+    display: flex;
+}
+
+.pn-gl-mt-5 {
+    margin-top: 5px;
+}
+
+.pn-gl-mt-35 {
+    margin-top: 30px;
+}
+
+.pn-gl-mb-20 {
+    margin-bottom: 20px;
+}
+
+.heading {
+    font-size: x-large;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.pn-one-third-width {
+    width: 33%;
+}
+
+.pn-footer {
+    padding: 30px;
+    margin-bottom: 0px;
+}
+
+.flex-fixed-width-item {
+    flex: 0 0 100px;
+}
+
+.bordered_ugly {
+    border: 12px solid #57BBBF;
+}
+
+.pn-solution-elev-pitch {
+    font-size: large;
+}
+
+tbody > th {
+    color: #17a2b8;
+}
+
+.pn-gl-mt-15 {
+    margin-top: 15px;
+}
+
+.pn-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pn-form-divider {
+    height: 0;
+    overflow: hidden;
+    border-top: 1px solid #535863;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.tiny-card {
+    width: 500px;
+    margin: auto;
+}
+
+label.cabinet {
+    display: block;
+    cursor: pointer;
+}
+
+label.cabinet input.file {
+    position: relative;
+    height: 100%;
+    width: auto;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    margin-top: -30px;
+}
+
+#upload-demo {
+    width: 250px;
+    height: 250px;
+    padding-bottom: 25px;
+}
+
+figure figcaption {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    width: 100%;
+    padding-left: 9px;
+    padding-bottom: 5px;
+    text-shadow: 0 0 10px #000;
+}
+
+.elev-pitch-header {
+    font-size: 5.5rem;
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+.search-element .col-lg-2 {
+    margin-top: 30px;
+}
+
+.search-element .col-lg-3 {
+    margin-top: 30px;
+}
+
+.search-element .col-lg-4 {
+    margin-top: 30px;
+}
+
+.search-element .col-lg-6 {
+    margin-top: 30px;
+}
+
+.modal-backdrop {
+    opacity:0.7 !important;
+}
+
+/* mobile devices */
+
+@media all and (max-width: 720px){
+    .display-4,
+    .elev-pitch-header {
+        font-size: 2.5rem;
+    }
+    #influencer_solution_overview {
+        display: none;
+    }
+}
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+@media all and (max-width: 1199px ){
+    .navbar-collapse .dropleft .dropdown-menu {
+        top: 50px;
+        right: -130px;
+    }
+}

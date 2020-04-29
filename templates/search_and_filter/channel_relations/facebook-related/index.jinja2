@@ -1,0 +1,26 @@
+<div class="row">
+
+    {% include "search_and_filter/channel_relations/facebook-related/basic/follower_range.html" %}
+
+
+    {% if subscription_packet == "prime" %}
+
+        {% include "search_and_filter/channel_relations/facebook-related/prime/reach_range.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/prime/post_interaction.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/prime/posts_amount_range.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/prime/page_calls_range.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/prime/page_activity_range.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/prime/likes_range.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/prime/content_type_picker.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/prime/rhythm_types.html" %}
+
+    {% endif %}
+
+    {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+
+        {% include "search_and_filter/channel_relations/facebook-related/pro/active_coutries.html" %}
+        {% include "search_and_filter/channel_relations/facebook-related/pro/gender_distribution.html" %}
+
+    {% endif %}
+
+</div>

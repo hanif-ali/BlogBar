@@ -1,0 +1,15 @@
+<form method="post"
+      oninput='pwd2.setCustomValidity(pwd2.value != pwd.value ? "Passwörter stimmen nicht überein." : "")'>
+
+    {% include "de/../../forms/influencer_input/area_1/name.html" %}
+    <!-- Link here -->
+    {% include "de/../../forms/influencer_input/area_1/contact_mail.html" %}
+    {% include "de/../../forms/influencer_input/area_1/gender.html" %}
+    {% include "de/../../forms/influencer_input/area_1/birthyear.html" %}
+    <!-- Eingabe here -->
+    {% include "de/../../forms/influencer_input/area_1/passwords.html" %}
+
+
+    <input type="submit" class="btn btn-outline-info pn-total-width pn-gl-small-spacing-cards"
+           value="Registrierung abschließen">
+</form>

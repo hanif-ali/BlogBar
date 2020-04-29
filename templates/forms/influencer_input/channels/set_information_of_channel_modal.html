@@ -1,0 +1,407 @@
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" id="channelInformation" aria-labelledby=""
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Kanal hinzufügen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>USERNAME</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-sm mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control" name="" required="true" id="channelIdentifier"
+                                   placeholder="username">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Geschlechteranteil</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">männlich | weiblich</span>
+                            </div>
+                            <input type="text" aria-label="männlich" placeholder="10%" class="form-control">
+                            <input type="text" aria-label="weiblich" placeholder="90%" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>aktive Länder</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                data-live-search="true" required="true" name="" id="country_select_picker_channel">
+                            <option value="afghanistan">Afghanistan</option>
+                            <option value="albanien">Albanien</option>
+                            <option value="algerien">Algerien</option>
+                            <option value="andorra">Andorra</option>
+                            <option value="angola">Angola</option>
+                            <option value="antigua & barbuda">Antigua & Barbuda</option>
+                            <option value="argentinien">Argentinien</option>
+                            <option value="australien">Australien</option>
+                            <option value="br deutschland">BR Deutschland</option>
+                            <option value="bahamas">Bahamas</option>
+                            <option value="bahrain">Bahrain</option>
+                            <option value="bangladesch">Bangladesch</option>
+                            <option value="barbados">Barbados</option>
+                            <option value="belgien">Belgien</option>
+                            <option value="belize">Belize</option>
+                            <option value="benin">Benin</option>
+                            <option value="bhutan">Bhutan</option>
+                            <option value="birma">Birma</option>
+                            <option value="bolivien">Bolivien</option>
+                            <option value="botswana">Botswana</option>
+                            <option value="brasilien">Brasilien</option>
+                            <option value="brunei">Brunei</option>
+                            <option value="bulgarien">Bulgarien</option>
+                            <option value="burkina faso">Burkina Faso</option>
+                            <option value="burundi">Burundi</option>
+                            <option value="canada">Canada</option>
+                            <option value="chile">Chile</option>
+                            <option value="china">China</option>
+                            <option value="costa rica">Costa Rica</option>
+                            <option value="djibouti">Djibouti</option>
+                            <option value="dominica">Dominica</option>
+                            <option value="dominikanische republik">Dominikanische Republik</option>
+                            <option value="dänemark">Dänemark</option>
+                            <option value="ecuador">Ecuador</option>
+                            <option value="el salvador">El Salvador</option>
+                            <option value="elfenbeinküste">Elfenbeinküste</option>
+                            <option value="fidschi">Fidschi</option>
+                            <option value="finnland">Finnland</option>
+                            <option value="frankreich">Frankreich</option>
+                            <option value="gabun">Gabun</option>
+                            <option value="gambia">Gambia</option>
+                            <option value="ghana">Ghana</option>
+                            <option value="grenada">Grenada</option>
+                            <option value="griechenland">Griechenland</option>
+                            <option value="großbritannien & nordirl.">Großbritannien & Nordirl.</option>
+                            <option value="guatemala">Guatemala</option>
+                            <option value="guayana">Guayana</option>
+                            <option value="guinea">Guinea</option>
+                            <option value="guinea-bissau">Guinea-Bissau</option>
+                            <option value="haiti">Haiti</option>
+                            <option value="honduras">Honduras</option>
+                            <option value="indien">Indien</option>
+                            <option value="indonesien">Indonesien</option>
+                            <option value="irak">Irak</option>
+                            <option value="iran">Iran</option>
+                            <option value="irland">Irland</option>
+                            <option value="island">Island</option>
+                            <option value="israel">Israel</option>
+                            <option value="italien">Italien</option>
+                            <option value="jamaica">Jamaica</option>
+                            <option value="japan">Japan</option>
+                            <option value="jemen(arab.republik)">Jemen(Arab.Republik)</option>
+                            <option value="jemen(dem.volksrep.)">Jemen(Dem.Volksrep.)</option>
+                            <option value="jordanien">Jordanien</option>
+                            <option value="jugoslawien">Jugoslawien</option>
+                            <option value="kambodscha">Kambodscha</option>
+                            <option value="kamerun">Kamerun</option>
+                            <option value="kap verde">Kap Verde</option>
+                            <option value="kenia">Kenia</option>
+                            <option value="kiribati">Kiribati</option>
+                            <option value="kolumbien">Kolumbien</option>
+                            <option value="komoren">Komoren</option>
+                            <option value="kongo">Kongo</option>
+                            <option value="korea nord">Korea Nord</option>
+                            <option value="korea süd">Korea Süd</option>
+                            <option value="kuba">Kuba</option>
+                            <option value="kuwait">Kuwait</option>
+                            <option value="laos">Laos</option>
+                            <option value="lesotho">Lesotho</option>
+                            <option value="libanon">Libanon</option>
+                            <option value="liberia">Liberia</option>
+                            <option value="libyen">Libyen</option>
+                            <option value="liechtenstein">Liechtenstein</option>
+                            <option value="luxemburg">Luxemburg</option>
+                            <option value="madagaskar">Madagaskar</option>
+                            <option value="malawi">Malawi</option>
+                            <option value="malaysia">Malaysia</option>
+                            <option value="malediven">Malediven</option>
+                            <option value="mali">Mali</option>
+                            <option value="malta">Malta</option>
+                            <option value="marokko">Marokko</option>
+                            <option value="mauretanien">Mauretanien</option>
+                            <option value="mauritius">Mauritius</option>
+                            <option value="mexico">Mexico</option>
+                            <option value="mocambique">Mocambique</option>
+                            <option value="monaco">Monaco</option>
+                            <option value="mongolei">Mongolei</option>
+                            <option value="nauru">Nauru</option>
+                            <option value="nepal">Nepal</option>
+                            <option value="neuseeland">Neuseeland</option>
+                            <option value="nicaragua">Nicaragua</option>
+                            <option value="niederlande">Niederlande</option>
+                            <option value="niger">Niger</option>
+                            <option value="nigeria">Nigeria</option>
+                            <option value="norwegen">Norwegen</option>
+                            <option value="oman">Oman</option>
+                            <option value="pakistan">Pakistan</option>
+                            <option value="panama">Panama</option>
+                            <option value="papua neuguinea">Papua Neuguinea</option>
+                            <option value="paraguay">Paraguay</option>
+                            <option value="peru">Peru</option>
+                            <option value="philippinen">Philippinen</option>
+                            <option value="polen">Polen</option>
+                            <option value="portugal">Portugal</option>
+                            <option value="quatarrh">Quatarrh</option>
+                            <option value="ruanda">Ruanda</option>
+                            <option value="rumänien">Rumänien</option>
+                            <option value="saint christopher & nevis">Saint Christopher & Nevis</option>
+                            <option value="saint lucia">Saint Lucia</option>
+                            <option value="saint vincent">Saint Vincent</option>
+                            <option value="salomon inseln">Salomon Inseln</option>
+                            <option value="sambia">Sambia</option>
+                            <option value="san marino">San Marino</option>
+                            <option value="sao tome & principe">Sao Tome & Principe</option>
+                            <option value="saudi arabien">Saudi Arabien</option>
+                            <option value="schweden">Schweden</option>
+                            <option value="schweiz">Schweiz</option>
+                            <option value="senegal">Senegal</option>
+                            <option value="seychellen">Seychellen</option>
+                            <option value="sierra leone">Sierra Leone</option>
+                            <option value="singapur">Singapur</option>
+                            <option value="somalia">Somalia</option>
+                            <option value="spanien">Spanien</option>
+                            <option value="sri lanka">Sri Lanka</option>
+                            <option value="sudan">Sudan</option>
+                            <option value="surinam">Surinam</option>
+                            <option value="swasiland">Swasiland</option>
+                            <option value="syrien">Syrien</option>
+                            <option value="südafrika">Südafrika</option>
+                            <option value="taiwan">Taiwan</option>
+                            <option value="tansania">Tansania</option>
+                            <option value="thailand">Thailand</option>
+                            <option value="togo">Togo</option>
+                            <option value="tonga">Tonga</option>
+                            <option value="trinidad & tobago">Trinidad & Tobago</option>
+                            <option value="tschad">Tschad</option>
+                            <option value="tschechoslowakei">Tschechoslowakei</option>
+                            <option value="tunesien">Tunesien</option>
+                            <option value="tuvalu">Tuvalu</option>
+                            <option value="türkei">Türkei</option>
+                            <option value="usa">USA</option>
+                            <option value="udssr">UdSSR</option>
+                            <option value="uganda">Uganda</option>
+                            <option value="ungarn">Ungarn</option>
+                            <option value="uruguay">Uruguay</option>
+                            <option value="vanuatu">Vanuatu</option>
+                            <option value="vatikanstaat">Vatikanstaat</option>
+                            <option value="venezuela">Venezuela</option>
+                            <option value="verein. arabische emirate">Verein. Arabische Emirate</option>
+                            <option value="vietnam">Vietnam</option>
+                            <option value="west samoa">West Samoa</option>
+                            <option value="zaire">Zaire</option>
+                            <option value="zentralafrika">Zentralafrika</option>
+                            <option value="zimbabwe">Zimbabwe</option>
+                            <option value="zypern">Zypern</option>
+                            <option value="ägypten">Ägypten</option>
+                            <option value="äquatorialguinea">Äquatorialguinea</option>
+                            <option value="äthiopien">Äthiopien</option>
+                            <option value="österreich">Österreich</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Altersverteilung</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" equired="true" name="" id="">
+                            <option value="0">bis 18</option>
+                            <option value="1">19 - 25</option>
+                            <option value="2">26 - 35</option>
+                            <option value="3">36 - 45</option>
+                            <option value="4">46 - 55</option>
+                            <option value="5">ü56</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Themenbereiche</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                data-live-search="true" required="true" name="" id="">
+                            <option value="auto und motorrad">Auto und Motorrad</option>
+                            <option value="beauty / kosmetik">Beauty / Kosmetik</option>
+                            <option value="bildung">Bildung</option>
+                            <option value="computer und elektronik">Computer und Elektronik</option>
+                            <option value="diy">DIY</option>
+                            <option value="design">Design</option>
+                            <option value="erfolg und karriere">Erfolg und Karriere</option>
+                            <option value="essen und trinken / food">Essen und Trinken / Food</option>
+                            <option value="fashion / mode">Fashion / Mode</option>
+                            <option value="finanzen">Finanzen</option>
+                            <option value="fotografie">Fotografie</option>
+                            <option value="frauen / männer">Frauen / Männer</option>
+                            <option value="garten und natur">Garten und Natur</option>
+                            <option value="gesellschaft und politik">Gesellschaft und Politik</option>
+                            <option value="gesundheit">Gesundheit</option>
+                            <option value="home und living">Home und Living</option>
+                            <option value="humor und spaß">Humor und Spaß</option>
+                            <option value="kinder und familie">Kinder und Familie</option>
+                            <option value="kino, film, tv">Kino, Film, TV</option>
+                            <option value="kunst und kultur">Kunst und Kultur</option>
+                            <option value="liebe und sexualität">Liebe und Sexualität</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="luxus">Luxus</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="musik">Musik</option>
+                            <option value="recht und gesetz">Recht und Gesetz</option>
+                            <option value="reise / travel">Reise / Travel</option>
+                            <option value="social media">Social Media</option>
+                            <option value="spiele und gaming">Spiele und Gaming</option>
+                            <option value="sport und fitness">Sport und Fitness</option>
+                            <option value="tattos">Tattos</option>
+                            <option value="technik">Technik</option>
+                            <option value="tiere">Tiere</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Follower</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" min="100" max="2500000" name="" id="">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>verwendete Sprachen</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                data-live-search="true" required="true" name="" id="">
+                            <option value="english">Englisch</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Performance IT-Mediadaten</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" data-live-search="false"
+                                required="true" name="" id="">
+                            <option value="0">bis 1%</option>
+                            <option value="1">1% - 2%</option>
+                            <option value="2">2% - 3%</option>
+                            <option value="3">3% - 4%</option>
+                            <option value="4">4% - 5%</option>
+                            <option value="5">5% - 6%</option>
+                            <option value="6">6% - 7%</option>
+                            <option value="7">7% - 8%</option>
+                            <option value="8">7% - 8%</option>
+                            <option value="9">8% - 9%</option>
+                            <option value="10">9% - 10%</option>
+                            <option value="11">10% - 15%</option>
+                            <option value="12">15% - 20%</option>
+                            <option value="13">20% - 30%</option>
+                            <option value="14">30% - 40%</option>
+                            <option value="15">40% - 50%</option>
+                            <option value="16">ü 50%</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Posts</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" min="1" max="999999" name="" id="">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Follower ratio</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-sm mb-3">
+                            <input type="number" class="form-control" min="0.1" max="100.0" step="0.1"
+                                   aria-describedby="percent">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="percent">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Content</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                data-live-search="false" required="true" name="" id="">
+                            <option value="0">Posts</option>
+                            <option value="1">Storys</option>
+                            <option value="2">Videos</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Rhythmus</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" data-live-search="false"
+                                required="true" name="" id="">
+                            <option value="0">täglich</option>
+                            <option value="1">wöchentlich</option>
+                            <option value="2">alle 2 Wochen</option>
+                            <option value="3">alle 2 - 3 Wochen</option>
+                            <option value="4">alle 3 Wochen</option>
+                            <option value="5">alle 3 - 4 Wochen</option>
+                            <option value="6">monatlich</option>
+                            <option value="6">alle 4 - 5 Wochen</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-outline-danger pn-total-width" data-dismiss="modal">
+                            abbrechen
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-info pn-total-width" onclick="passData();">Kanal Hinzufügen
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

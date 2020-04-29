@@ -1,0 +1,78 @@
+{% extends "admin/base_admin.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-75">
+        <div>
+            <h1 class="display-4">Influencer:</h1>
+            <form method="post" action="/admin/post/influencer_action">
+                <h3>Mail-Adresse angegeben und Aktion ausführen:</h3>
+                <div class="form-group row">
+                    <label for="influencerMail" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Adresse:</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control-sm form-control dropdown" required name="mail" id="influencerMail"
+                               type="email">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="influencerAction" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Aktion:</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown required" required
+                                name="influencerAction" id="influencerAction">
+                            <option value="1">Benutzerkonto löschen</option>
+                            <option value="2" disabled>Benutzerkonto sperren (Funktion nicht gewünscht)</option>
+                            <option value="3">Instagram-listing löschen</option>
+                            <option value="4">FaceBook-listing löschen</option>
+                            <option value="5">YouTube-listing löschen</option>
+                            <option value="6">Pinterest-listing löschen</option>
+                            <option value="7">Personal-Blog-listing löschen</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" class="pn-total-width btn btn-sm btn-outline-info" value="Aktion ausführen">
+            </form>
+        </div>
+        <div class="pn-gl-mt-75">
+            <form method="POST" action="/admin/post/company_action">
+                <h1 class="display-4">Unternehmen:</h1>
+                <h3>Mail-Adresse angegeben und Aktion ausführen:</h3>
+                <div class="form-group row">
+                    <label for="companyMail" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Adresse:</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control-sm form-control dropdown" name="mail" id="companyMail" type="email">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="companyAction" class="col-sm-2 col-form-label col-form-label-sm">
+                        <strong>Aktion:</strong>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="selectpicker form-control-sm form-control dropdown" name="companyAction"
+                                id="companyAction">
+                            <option value="1">Unternehmenskonto löschen</option>
+                            <option value="2" disabled>Unternehmenskonto sperren (Funktion nicht gewünscht)</option>
+                            <option value="3">Premiumpaket: Basic (zurückstufen)</option>
+                            <option value="4">Premiumpaket: Pro (zurückstufen oder hochstufen) [Laufzeit: 6 Monate]
+                            </option>
+                            <option value="5">Premiumpaket: Pro (zurückstufen oder hochstufen) [Laufzeit: 12 Monate]
+                            </option>
+                            <option value="6">Premiumpaket: Prime (hochstufen) [Laufzeit: 6 Monate]</option>
+                            <option value="7">Premiumpaket: Prime (hochstufen) [Laufzeit: 12 Monate]</option>
+                            <option value="8" disabled>Öffentliche Kampagnen löschen (nicht gewünscht)</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" class="pn-total-width btn btn-sm btn-outline-info" value="Aktion ausführen">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

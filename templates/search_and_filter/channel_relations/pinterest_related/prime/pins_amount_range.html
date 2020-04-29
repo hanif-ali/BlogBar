@@ -1,0 +1,29 @@
+<div class="col-lg-2">
+    <label for="pinterest_pins_amount_from">{% if language_abbr == 'de' %}Posts von{% else %}Posts
+        from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="pinterest_pins_amount_from"
+            id="pinterest_pins_amount_from">
+        <option value="UNDEFINED" selected
+                {% if pinterest_pins_amount_from == 'UNDEFINED' or pinterest_pins_amount_from is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [1, 2, 5, 7, 12, 15, 20, 25, 35, 50, 75, 100, 150, 200, 250, 350, 500] %}
+            <option value="{{ amount }}"
+                    {% if pinterest_pins_amount_from == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="pinterest_pins_amount_to">{% if language_abbr == 'de' %}Posts bis{% else %}Posts to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="pinterest_pins_amount_to"
+            id="pinterest_pins_amount_to">
+        {% for amount in [1, 2, 5, 7, 12, 15, 20, 25, 35, 50, 75, 100, 150, 200, 250, 350, 500] %}
+            <option value="{{ amount }}"
+                    {% if pinterest_pins_amount_to == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if pinterest_pins_amount_to == 'UNDEFINED' or pinterest_pins_amount_to is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

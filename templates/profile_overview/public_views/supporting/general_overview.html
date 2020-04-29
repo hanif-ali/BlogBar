@@ -1,0 +1,23 @@
+<ul class="list-group list-group-flush pn-total-width">
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Name{% else %}Name{% endif %}
+        :</strong> {{ influencer_data["first_name"] }} {{ influencer_data["last_name"] }}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Geschlecht{% else %}Gender{% endif %}
+        :</strong> {{ influencer_data["gender"] }}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Mail-Adresse für geschäftliche Anfragen{% else %}
+        Mail address for business inquiries{% endif %}:</strong>
+        {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+            <a href="mailto:{{ influencer_data["email"] }}">{{ influencer_data["email"] }}</a>{% else %}
+            <span class="text-info">ab PRO sichtbar</span>{% endif %}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Geburtsjahr{% else %}Year of birth{% endif %}
+        :</strong> {{ influencer_data["birthyear"] }}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Homebase{% else %}Homebase{% endif %}:</strong>
+        {% if influencer_data["homebase"] != None %}{{ influencer_data["homebase"] }}{% endif %}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Themen{% else %}Themes{% endif %}:</strong>
+        {% for topic in influencer_data["topics"] %}{{ topic }}, {% endfor %}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}verwendete Sprachen{% else %}used
+        languages{% endif %}:</strong> {% for lang in influencer_data["languages"] %}{{ lang }}, {% endfor %}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Dealtypen{% else %}Deals{% endif %}:</strong>
+        {% for deal in influencer_data["deal_types"] %}{{ deal }}, {% endfor %}</li>
+    <li class="list-group-item"><strong>{% if language_abbr == 'de' %}Preisvorstellung{% else %}Price idea{% endif %}
+        :</strong> {% if influencer_data["price"] != None %}{{ influencer_data["price"] }}{% endif %}</li>
+</ul>

@@ -1,0 +1,75 @@
+{% for index in search_results %}
+    <div class="pn-gl-mt-25">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-1" id="img-area">
+                        <img src="
+
+                                {% if imgs[loop.index0] != None %}{{ imgs[loop.index0] }}{% else %}{% if search_results[loop.index0]['gender'] == "male" %}/static/img/placeholder/unknown_male.jpg{% else %}/static/img/placeholder/unknown_female.jpg{% endif %}{% endif %}"
+                             width="100%">
+                    </div>
+                    <div class="col-xl-10">
+
+                        <h3 class="card-title">{{ search_results[loop.index0]["first_name"] }} {{ search_results[loop.index0]["last_name"] }}
+                            <span class="text-muted">({{ search_results[loop.index0]['blog_domain'] }})</span></h3>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>{% if language_abbr == 'de' %}Geburtsjahr{% else %}Year of birth{% endif %}
+                                    : </strong>&nbsp;{{ search_results[loop.index0]['birthyear'] }}
+                            </div>
+                            <div class="col-md-2">
+                                <strong>{% if language_abbr == 'de' %}Geschlecht{% else %}Gender{% endif %}: </strong>&nbsp;
+                                {% if search_results[loop.index0]['gender'] == 'male' and language_abbr == 'de' %}
+                                    männlich{% elif language_abbr == 'de' %}weiblich{% else %}
+                                    {{ search_results[loop.index0]['gender'] }}{% endif %}
+                            </div>
+                            <div class="col-md-2">
+                                <strong>{% if language_abbr == 'de' %}Homebase{% else %}Homebase{% endif %}: </strong>&nbsp; {{ search_results[loop.index0]['homebase'] }}
+                            </div>
+                            <div class="col-md-2">
+                                <strong>{% if language_abbr == 'de' %}Rhythmus{% else %}Rhythm{% endif %}: </strong>&nbsp;
+                                {% if subscription_packet == "prime" %}
+                                    {{ search_results[loop.index0]['blog_rhythm'] }} {% else %}
+                                    <span class="text-danger">ab PRIME sichtbar</span> {% endif %}
+                            </div>
+                            <div class="col-md-2">
+                                <strong>{% if language_abbr == 'de' %}Pinanzahl{% else %}Number of pins{% endif %}
+                                    : </strong>&nbsp;{% if subscription_packet == "prime" %}
+                                {{ search_results[loop.index0]['blog_post_amount'] }} {% else %}
+                                <span class="text-danger">ab PRIME sichtbar</span> {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>Follower: </strong>&nbsp; {{ search_results[loop.index0]['blog_follower_amount'] }}
+                            </div>
+                            <div class="col-md-2">
+                                <strong>{% if language_abbr == 'de' %}Seitenaufrufe{% else %}Page views{% endif %}
+                                    : </strong>&nbsp;{% if subscription_packet == "prime" %}
+                                {{ search_results[loop.index0]['blog_page_views_amount'] }} {% else %}
+                                <span class="text-danger">ab PRIME sichtbar</span> {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-1">
+                        {% if subscribtion_package == "prime" or subscribtion_package == "pro" %}
+                            <a href="mailto:{{ search_results[loop.index0]['email'] }}"
+                               class="btn btn-sm btn-outline-info pn-total-width">{% if language_abbr == 'de' %}
+                                Kontakt{% else %}Contact{% endif %}</a>
+                        {% endif %}
+                        <a href="/{{ language_abbr }}/{{ search_results[loop.index0]['influencer_identifier'] }}/overview"
+                           class="btn btn-sm btn-outline-info pn-total-width pn-gl-mt-15">Details</a>
+                        {% if campaigns %}
+                            <button data-toggle="modal" data-target="#pinInfluencer"
+                                    class="btn btn-sm btn-outline-info pn-total-width pn-gl-mt-15"
+                                    data-identifier="{{ search_results[loop.index0]['influencer_identifier'] }}"><i
+                                    class="fas fa-bookmark"></i> {% if language_abbr == 'de' %}Anpinnen{% else %}
+                                Pin/Mark{% endif %}</button>{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

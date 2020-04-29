@@ -1,0 +1,15 @@
+<div class="col-lg-2">
+    <label for="personal_blog_content">Content</label>
+    <select multiple="true" class="selectpicker form-control-sm form-control dropdown" name="personal_blog_content"
+            id="personal_blog_content">
+        <option value="1"
+                {% if '1' in personal_blog_content %}selected{% endif %}>Post
+        </option>
+        <option value="2"
+                {% if '2' in personal_blog_content %}selected{% endif %}>Story
+        </option>
+        <option value="3"
+                {% if '3' in personal_blog_content %}selected{% endif %}>Video
+        </option>
+    </select>
+</div>

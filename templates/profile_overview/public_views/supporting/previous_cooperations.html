@@ -1,0 +1,29 @@
+{% if influencer_data["cooperations"]|length > 0 %}
+    <div class="card pn-total-width pn-gl-mt-15">
+        <div class="card-body">
+            <div class="card-text">
+                <ul class="list-group list-group-flush">
+                    <h4 class="card-title">{% if language_abbr == 'de' %}Bisherige Kooperationen{% else %}Previous
+                        cooperations{% endif %}</h4>
+                    {% for cooperation in influencer_data["cooperations"] %}
+                        <li class="list-group-item" id="COOPERATION_{{ cooperation['ID'] }}">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h4>{{ cooperation['title_of_cooperation'] }}</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h2 class="text-muted text-right"
+                                        style="font-size: 1.2rem; font-weight: 300;">{{ cooperation['date_of_cooperation'] }}</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {{ cooperation['description'] }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

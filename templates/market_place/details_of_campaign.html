@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="display-4">{{ campaign_title }}</h1>
+                <p class="text-muted" style="font-size: 1.5rem"><strong>{% if language_abbr == 'de' %}
+                    Auftraggeber{% else %}Principal{% endif %}:</strong> {{ company_name }}</p>
+
+                {% if language_abbr == 'de' %}
+                    {% set categories = ['Auto und Motorrad','Beauty / Kosmetik','Bildung','Computer und Elektronik','DIY','Design',
+                    'Erfolg und Karriere','Essen und Trinken / Food','Fashion / Mode','Finanzen','Fotografie','Frauen / Männer',
+                    'Garten und Natur','Gesellschaft und Politik','Gesundheit','Home und Living','Humor und Spaß','Kinder und Familie',
+                    'Kino, Film, TV','Kunst und Kultur','Liebe und Sexualität','Lifestyle','Luxus','Marketing','Musik','Recht und Gesetz',
+                    'Reise / Travel','Social Media','Spiele und Gaming','Sport und Fitness','Tattos','Technik','Tiere'] %}
+                {% else %}
+                    {% set categories = ['Car and Motorcycle','Beauty / Cosmetics','Education','Computers and Electronics','DIY','Design',
+                    'success and career','food and drink / food','fashion / fashion','finances','photography','women / men',
+                    'Garden and nature', 'Society and politics', 'Health', 'Home and living', 'Humour and fun', 'Children and family',
+                    'cinema, film, TV','art and culture','love and sexuality','lifestyle','luxury','marketing','music','law and order',
+                    'Travel','Social Media','Games and Gaming','Sports and Fitness','Tattos','Technology','Animals'] %}
+                {% endif %}
+                <p><strong>{% if language_abbr == 'de' %}Themenbereich{% else %}Theme{% endif %}
+                    : </strong>{{ categories[topic_identifier|int - 1] }}</p>
+                <p class="text-justify"><strong>{% if language_abbr == 'de' %}Beschreibung{% else %}
+                    Description{% endif %}: </strong><br>{{ campaign_description }}</p>
+                <p><strong>{% if language_abbr == 'de' %}Ansprechpartner{% else %}Contact for{% endif %}
+                    : </strong>{{ contact_person }}</p>
+                <p><strong>eMail: </strong>{{ contact_email }}</p>
+                <p><strong>{% if language_abbr == 'de' %}Kanäle{% else %}Channels{% endif %}: </strong>
+                    {% for channel in channel_data %} {{ channel["official_name"] }},{% endfor %}</p>
+                <p><strong>{% if language_abbr == 'de' %}Vergütung{% else %}Remuneration{% endif %}
+                    : </strong>{{ remuneration }}</p>
+                {% if document == True %}
+                    <p><strong>{% if language_abbr == 'de' %}Weitere Informationen in dieser PDF{% else %}Further
+                        information in this PDF{% endif %}: </strong><a
+                            href="/download/campaigndetails/{{ campaign_identifier }}"
+                            class="card-link">campaign.pdf</a></p>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <img src="{% if logo == None %}/static/img/placeholder/placeholder-company.png{% else %}/static/company_logos/{{ logo }}{% endif %}"
+                     width="100%">
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

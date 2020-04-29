@@ -1,0 +1,141 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">Einstellungen</a></li>
+                    <li class="breadcrumb-item"><a
+                            href="/{{ language_abbr }}/preferences/company/book">Premiumpakete</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ package }}</li>
+                </ol>
+            </nav>
+        </nav>
+        <div class="jumbotron">
+            <h1 style="font-size: 2.3rem; font-weight: 200; line-height: 1.2;">
+                <strong><span>{{ package }}</span></strong>: {% if language_abbr == "de" %}Es fehlt nur noch ein Schritt{% else %}Just one step missing{% endif %}...</h1>
+            <br>
+            <p>{% if package == 'PRIME' %}{% if language_abbr == 'de' %}
+                Nutzen Sie alle Filtereinstellungen und unseren Marktplatz, um Ihre Suche maximal auszuweiten und
+                zeitnah den richtigen Influencer für Ihre nächste Kampagne zu finden. Sie können flexibel zwischen
+                einem 6-Monatspaket und einem 12-Monatspaket wählen. Es folgen keine weiteren monatlichen Kosten. Nach
+                Ablauf der Zeit erfolgt keine automatische Verlängerung.
+            {% else %}
+                Use all filter settings and our marketplace to expand your search to the maximum and find the right
+                influencer for your next campaign promptly. You can flexibly choose between a 6-month package and a
+                12-month package. No further monthly costs will follow. Once the time has expired, there is no automatic
+                renewal.
+            {% endif %}
+            {% else %}
+                {% if language_abbr == 'de' %}
+                    Nutzen Sie erweitere Sucheinstellungen und Features um den passenden Influencer zu finden.
+                    Sie können flexibel zwischen einem 6-Monatspaket und einem 12-Monatspaket wählen. Es folgen keine
+                    weiteren monatlichen Kosten. Nach Ablauf der Zeit erfolgt keine automatische Verlängerung.
+                {% else %}
+                    Use advanced search settings and features to find the right influencer.
+                    You can flexibly choose between a 6-month package and a 12-month package. No further monthly costs
+                    will follow. Once the time has expired, there is no automatic renewal.
+
+                {% endif %}
+            {% endif %}</p>
+            <p class="lead"></p>
+            <hr class="my-4">
+            {#  <p>Dein Premiumpaket wird nach 6 bzw. 12 Monaten automatisch auslaufen: Keine Abo-Falle ;)</p>#}
+            <p class="lead">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h2 class="">{{ amount[0] }} €
+                            <small class="text-muted">(netto)/<br></small>
+                            <span class="text-muted" style="font-size: 0.5rem;">{% if language_abbr == 'de' %}einmalig
+                                für 6 Monate{% else %}once for 6 months{% endif %}</span></h2>
+                        {% if language_abbr == 'de' %}Folgende Zahlungsarten stehen zur Verfügung:{% else %}The
+                            following payment types are available:{% endif %}
+                        {% if package == "PRO" %}
+                            <div id="checkout_div_6_pro" class="container pn-gl-mt-35"></div>
+                        {% else %}
+                            <div id="checkout_div_6_prime" class="container pn-gl-mt-35"></div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <h4 class="text-center">{% if language_abbr == "de" %}Komme schon bald in den Genuss folgender Vorteile{% else %}Join the benefits of BlogBar{% endif %}:</h4>
+                        {% if package == "PRIME" %}
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Filtermöglichkeiten {% else %}
+                                    Additional Search parameters {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} Anzahl der Post/Veröffentlichungen {% else %} Number
+                                    of post/publications {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Deal- und Preisvorstellung {% else %} Deal and price
+                                    idea {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} verwendete Sprachen {% else %} Languages
+                                    used {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Rhythmus {% else %} Rhythm {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Content {% else %} Content {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Beitragsinteraktion / Klickrate * {% else %}
+                                    Contribution interaction / click rate * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Reichweite / Impressions * {% else %} Range /
+                                    Impressions * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Engagement Rate * {% else %} Engagement Rate
+                                    * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Follower Ratio * {% else %} Follower Ratio
+                                    * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Seitenaktivität * {% else %} Page activity
+                                    * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Likes * {% else %} Likes * {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Informationen {% else %}
+                                    Additional Information {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} bisherige Kooperationen {% else %} Previous
+                                    cooperation's {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Features {% else %} Additional
+                                    Features {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} Marktplatz {% else %} Market-place {% endif %}</li>
+                            </ul>
+
+                        {% elif package == "PRO" %}
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Filtermöglichkeiten {% else %}
+                                    Additional Search parameters {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} Verteilung Geschlecht der
+                                    Follower {% else %}  {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Altersstruktur der
+                                    Follower {% else %}  {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} aktive Länder {% else %}  {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Informationen {% else %}
+                                    Additional Information {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} bis zu 5 Bilder {% else %} Up to 5
+                                    images {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Features {% else %} Additional
+                                    Features {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} direkter Link zum Profil {% else %} direct link to
+                                    Instagram profile {% endif %}</li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3">
+                        <h2 class="">{{ amount[1] }} €
+                            <small class="text-muted">(netto)/<br></small>
+                            <span class="text-muted" style="font-size: 0.5rem;">{% if language_abbr == 'de' %}einmalig
+                                für 12 Monate{% else %}once for 12 months{% endif %}</span></h2>
+            <p>{% if language_abbr == 'de' %}Folgende Zahlungsarten stehen zur Verfügung:{% else %}The following payment
+                types are available:{% endif %}</p>
+            {% if package == "PRO" %}
+                <div id="checkout_div_12_pro" class="container pn-gl-mt-35"></div>
+            {% else %}
+                <div id="checkout_div_12_prime" class="container pn-gl-mt-35"></div>
+            {% endif %}
+        </div>
+        <script src="https://www.paypal.com/sdk/js?client-id=AcxDboGzmwwwXscWv4UI6moKOk7BRGEi7ptK2Dj6TBKwbz-FLKnCucbKZXlgor12uUkDkxAcxzhf2OG8&currency=EUR&debug=false"></script>
+        <script src="/static/js/checkout.js"></script>
+    </div>
+    </p>
+    </div>
+    </div>
+
+{% endblock %}

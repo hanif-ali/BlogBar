@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <form method="post"
+              oninput='pwd2.setCustomValidity(pwd2.value != pwd.value ? "Passwörter stimmen nicht überein." : "")'>
+            <h1 class="display-4 text-left">{% if language_abbr == 'de' %} Registrieren als Influencer {% else %}
+                Influencer Sign Up {% endif %}</h1>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <br>
+            <p>
+                {% if language_abbr == 'de' %}
+                    Werde Teil unserer BlogBar Community und lasse DICH finden! Registriere dich kostenfrei und erhöhe
+                    deine Chancen auf attraktive Kooperationen. Zudem kannst Du Dich auf dem Kampagnenmarktplatz direkt
+                    über ausgeschrieben Kooperationsangebote von Unternehmen informieren und Dich bewerben.
+                {% else %}
+                    Become part of our BlogBar community and let them find YOU! Register for free and increase your
+                    chances of attractive cooperations.  In addition, you can inform yourself directly on the campaign
+                    marketplace about advertised cooperation offers from companies and apply.
+                {% endif %}
+            </p>
+            <br>
+            {% include "forms/influencer_input/area_1/name.html" %}
+
+
+            <!-- Link here -->
+            {% include "forms/influencer_input/area_1/contact_mail.html" %}
+            {% include "forms/influencer_input/area_1/gender.html" %}
+            {% include "forms/influencer_input/area_1/birthyear.html" %}
+            <!-- Eingabe here -->
+            {% include "forms/influencer_input/area_1/passwords.html" %}
+            <input type="submit" class="btn btn-sm btn-outline-dark pn-gl-small-spacing-cards" style="width: 33%;"
+                   value="{% if language_abbr == 'de' %}Registrierung abschließen{% else %}Complete registration{% endif %}"
+                   id="signUpInflSubmit">
+        </form>
+    </div>
+    <script src="/static/js/influencer_input.js"></script>
+{% endblock %}

@@ -1,0 +1,365 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div data-spy="scroll" data-offset="0" class="scrollspy-example">
+        <div class="container text-center d1" style="padding-bottom: 100px !important;">
+            <div style="margin-top: 50px;">
+                <img src="/static/img/logo/main.png" width="40%">
+            </div>
+            <div class="display-4 text-center" style="margin-top: 50px;color:white;font-size:34px">{% if language_abbr == 'de' %} Wir sind "DIE"
+                Blogger Suchmaschine {% else %} We are "THE" Blogger search engine! {% endif %}</div>
+            <br>
+            <p class="" style="color:white">
+                {% if language_abbr == 'de' %}
+                    <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span>, die kostenlose Suchmaschine
+                    für Influencer und Blogger.
+                {% else %}
+                    <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span>, the free search engine for
+                    influencers and bloggers
+                {% endif %}
+            </p>
+            <p class="" style="color:white">
+                {% if language_abbr == 'de' %}
+                    Wir bringen Influencer mit Unternehmen und Agenturen auf die denkbar einfachste und schnellste Art
+                    zusammen.
+                {% else %}
+                    We bring influencers together with companies and agencies in the easiest and fastest way possible.
+                {% endif %}
+            </p>
+            <a href="/{{ language_abbr }}/search" class="ws-button" style="margin-top:40px;">
+                {% if language_abbr == 'de' %} Influencer finden {% else %} Find your Influencer {% endif %}</a>
+        </div>
+        <div class="row d2">
+            <div class="col-sm-12 pn-solution-elev-pitch">
+                <div class="left">
+                    <h1 class="text-left container elev-pitch-header">
+                        <span class="text-info"">{% if language_abbr == 'de' %} ÜBER <br>
+                            <span>BLOGBAR</span> {% else %} About
+                            <span>BLOGBAR</span> {% endif %}</span>
+                    </h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="font-weight-light text-justify container pn-gl-mt-35" style="display: inline">
+                                    {% if language_abbr == 'de' %}
+                                       Bei BLOGBAR können sich Influencer und Blogger kostenlos in einer Datenbank registrieren. In diesem Netzwerk können Unternehmen und Agenturen über verschiedene Filtermöglichkeiten den für sie passenden Influencer finden.
+                                       Unternehmen können Influencer kostenlos z. B. nach Geschlecht, Alter, Themen, Städte oder Follower filtern. Für weitere Informationen kann man ein Upgrade  erwerben.  
+                                    {% else %}
+                                          At BLOGBAR, influencers and bloggers can register for free in a database. In this network, companies and agencies can find the right influencer for them using various filter options.
+                                        Companies can influence influencers for free e.g. B. filter by gender, age, topics, cities or followers. You can purchase an upgrade for more information. 
+                                    {% endif %}
+                                </p><br>
+                                <a href="#" class="ws-button" style="margin-top: 30px;">Learn More</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+                <div class="right">
+                    <img src="/static/img/Wasserzeichen.png"/>
+                </div>
+                </div>
+        </div>
+        <div class="row d3">
+            <div class="col-sm-12 pn-solution-elev-pitch">
+                <h1 class="container elev-pitch-header">
+                    <span class="text-info">{% if language_abbr == 'de' %} VORTEILE FÜR {% else %} ADVANTAGES
+                        FOR {% endif %}<br>{% if language_abbr == 'de' %} UNTERNEHMEN {% else %}
+                        COMPANIES {% endif %}
+                    </span>
+                </h1>
+                <p class="font-weight-light text-justify container  pn-gl-mt-35">
+                    {% if language_abbr == 'de' %}
+                        Nutzen Sie jetzt das BLOGBAR Netzwerk
+                        und sparen Sie Zeit, Geld und Manpower bei der Suche nach den passenden Influencern.
+                        Sie können jederzeit und unbegrenzt die kostenlose Suche starten (Basic), oder Sie upgraden auf
+                        das PRO - bzw. PRIME Paket,
+                        um durch noch mehr Filtermöglichkeiten Ihre Suche detaillierter zu gestalten.
+                    {% else %}
+                        Use the BLOGBAR network now and save
+                        time, money and manpower when searching for the right
+                        Influencer. You can start the free search anytime and unlimited (Basic), or you can upgrade to
+                        the PRO
+                        - or PRIME Package to make your search more detailed with even more filter options.
+                    {% endif %}
+                </p>
+                <p class="font-weight-light text-justify container">
+                    {% if language_abbr == 'de' %}
+                        Außer den Kosten für die PRO- bzw. PRIME-Pakete erheben wir keine weiteren Gebühren. Sie können
+                        sich selbständig den für Sie passenden Influencer aussuchen, den Kontakt herstellen und
+                        Kampagnen vereinbaren. Wir werden uns da nicht einmischen und Sie können die Honorare
+                        individuell verhandeln.
+                    {% else %}
+                        Apart from the costs for the PRO or PRIME packages, we do not charge any other fees. You can
+                        Independently select the influencer that is right for you, establish contact and arrange
+                        campaigns.
+                        We will not interfere and you can negotiate the fees individually.
+                    {% endif %}
+                </p>
+                <ul class="font-weight-light text-justify container" style="padding-left: 60px;">
+                    <li>{% if language_abbr == 'de' %} BLOGBAR
+                        erhebt keine Vermittlungskosten, Provisionen und es entstehen keine Abo-Kosten {% else %}
+                        BLOGBAR does not charge any commissions
+                        and there are no subscription costs. {% endif %}</li>
+                    <li>{% if language_abbr == 'de' %} BLOGBAR
+                        erspart zeitaufwändige und teure Recherchen {% else %}
+                        BLOGBAR saves time-consuming and
+                        expensive searches {% endif %}</li>
+                    <li>{% if language_abbr == 'de' %} BLOGBAR
+                        hilft bei der einfachen und schnellen Identifizierung der passenden Influencer {% else %}
+                        BLOGBAR helps to easily and quickly
+                        identify the appropriate influencer {% endif %}</li>
+                    <li>{% if language_abbr == 'de' %} 100% Kontrolle: selbständiger Kontakt und Verhandlung mit den
+                        Influencern Ihrer Wahl {% else %} 100% control: independent contact and negotiation with the
+                        influencers of your choice {% endif %}</li>
+                </ul>
+                <p class="font-weight-light text-justify container">
+                    {% if language_abbr == 'de' %}
+                        Neben der Suche nach Influencer bieten wir einen Kampagnenmarktplatz an. Dort können Sie eine
+                        Ausschreibung erstellen, auf die sich Influencer bewerben können. Alle registrierten Influencer
+                        haben die Möglichkeit nach Ihrer Kampagne zu suchen und Sie bei Interesse zu kontaktieren.
+                        Diese Option steht Ihnen nur in unserem PRIME Paket zur Verfügung. Vergrößern Sie damit Ihre
+                        Chance die passenden Influencer zu finden.
+                    {% else %}
+                        In addition to the search for influencers, we offer a campaign marketplace. There you can create
+                        an advertisement for influencers to apply for. All registered influencers can search for your
+                        campaign and contact you if they are interested. This option is only available in our PRIME
+                        package. Increase your chance to find the right influencer.
+                    {% endif %}
+                </p>
+                <a class="ws-button" style="margin-top: 40px;">Go</a>
+            </div>
+            <div class="icons">
+                <img src="/static/img/icons/dollar.png"/>
+                <img src="/static/img/icons/dollar_time.png"/>
+                <img src="/static/img/icons/magnifier.png"/>
+                <img src="/static/img/icons/lock.png"/>
+            </div>
+        </div>
+        <div class="d4">
+            <div class="container pn-gl-mt-50" style="margin-top: 0 !important; padding-bottom: 20px !important;">
+                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center text-light">
+                    <h1 class="display-4">{% if language_abbr == 'de' %} Premiumpakete {% else %} Premium
+                        packages {% endif %}</h1>
+                    <p class="lead">{% if language_abbr == 'de' %} Das PRO-/PRIME-Premiumpaket kann wahlweise für 6
+                        bzw. 12 Monate gebucht werden. Keine Abofalle. {% else %} The PRO or PRIME premium package
+                        can be booked either for 6 or 12 months. No subscription trap. {% endif %}</p>
+                </div>
+                <div class="card-deck mb-3 text-center ">
+                    <div class="card mb-4 shadow-sm {% if package == "basic" %}bg-primary{% endif %}">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Basic</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">0€
+                                <small class="text-muted"></small>
+                            </h1>
+                            <h1>&nbsp;</h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong>{% if language_abbr == 'de' %} Filtermöglichkeiten {% else %} Search
+                                    parameters {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} Alter, Geschlecht, Profilname {% else %} Age,
+                                    gender, profile name {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Homebase der Influencer {% else %} Homebase of
+                                    influencers {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Themenbereiche {% else %}
+                                    Themes  {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Anzahl der Follower/Abonnenten {% else %} Number
+                                    of followers/subscribers {% endif %}</li>
+                                <li><strong>{% if language_abbr == 'de' %} Informationen {% else %}
+                                    Information {% endif %}</strong></li>
+                                <li>1 {% if language_abbr == 'de' %} Bild {% else %} Image {% endif %}</li>
+                            </ul>
+                        </div>
+                        <a href="/{{ language_abbr }}/search" class="btn btn-sm btn-outline-info"
+                            style="margin: 20px">
+                            {% if language_abbr == 'de' %} Kostenlose Suche starten {% else %} Find you
+                                influencer {% endif %}
+                        </a>
+                    </div>
+                    <div class="card mb-4 shadow-sm {% if package == "pro" %}bg-primary{% endif %}">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">PRO</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">119€
+                                <small class="text-muted"><span class="text-muted" style="font-size: 0.5rem;">(netto)/
+                                    {% if language_abbr == 'de' %}einmalig für 6 Monate{% else %}once for 6
+                                        months{% endif %}</span></small>
+                            </h1>
+                            <h1 class="card-title pricing-card-title">199€
+                                <small class="text-muted"><span class="text-muted" style="font-size: 0.5rem;">(netto)/
+                                    {% if language_abbr == 'de' %} einmalig für 12 Monate{% else %}once for 12
+                                        months{% endif %}</span></small>
+                            </h1>
+                            {#                        <h1 class="card-title pricing-card-title">199€ <small class="text-muted">/ {% if language_abbr == 'de' %}Monate{% else %}Months{% endif %}</small></h1>#}
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche
+                                    Filtermöglichkeiten {% else %} Additional Search parameters {% endif %}</strong>
+                                </li>
+                                <li>{% if language_abbr == 'de' %} Verteilung Geschlecht der
+                                    Follower {% else %}  {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Altersstruktur der
+                                    Follower {% else %}  {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} aktive Länder {% else %}  {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Informationen {% else %}
+                                    Additional Information {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} bis zu 5 Bilder {% else %} Up to 5
+                                    images {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Features {% else %}
+                                    Additional Features {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} direkter Link zum Profil {% else %} direct link
+                                    to Instagram profile {% endif %}</li>
+                            </ul>
+                        </div>
+                        <a href="/{{ language_abbr }}/signupcomp" class="btn btn-sm btn-outline-info"
+                            style="margin: 20px">{% if language_abbr == 'de' %} Registrieren und Buchen {% else %}
+                            Register and book now {% endif %}</a>
+                    </div>
+                    <div class="card mb-4 shadow-sm {% if package == "prime" %}bg-primary{% endif %}">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">PRIME</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">239€<span class="text-muted"
+                                                                                    style="font-size: 0.5rem;">(netto)/
+                                {% if language_abbr == 'de' %}einmalig für 6 Monate{% else %}once for 6
+                                    months{% endif %}</span></h1>
+                            <h1 class="card-title pricing-card-title">399€ <span class="text-muted"
+                                                                                    style="font-size: 0.5rem;">(netto)/
+                                {% if language_abbr == 'de' %}einmalig für 12 Monate{% else %}once for 12
+                                    months{% endif %}</span></h1>
+                            {#                        <h1 class="card-title pricing-card-title">399€ <small class="text-muted">/ 12 {% if language_abbr == 'de' %}Monate{% else %}Months{% endif %}</small></h1>#}
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche
+                                    Filtermöglichkeiten {% else %} Additional Search parameters {% endif %}</strong>
+                                </li>
+                                <li>{% if language_abbr == 'de' %} Anzahl der Post/Veröffentlichungen {% else %}
+                                    Number of post/publications {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Deal- und Preisvorstellung {% else %} Deal and
+                                    price idea {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} verwendete Sprachen {% else %} Languages
+                                    used {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Rhythmus {% else %} Rhythm {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Content {% else %} Content {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Beitragsinteraktion / Klickrate * {% else %}
+                                    Contribution interaction / click rate * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Reichweite / Impressions * {% else %} Range /
+                                    Impressions * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Engagement Rate * {% else %} Engagement Rate
+                                    * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Follower Ratio * {% else %} Follower Ratio
+                                    * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Seitenaktivität * {% else %} Page activity
+                                    * {% endif %}</li>
+                                <li>{% if language_abbr == 'de' %} Likes * {% else %} Likes * {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Informationen {% else %}
+                                    Additional Information {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} bisherige Kooperationen {% else %} Previous
+                                    cooperation's {% endif %}</li>
+
+                                <li><strong>{% if language_abbr == 'de' %} Zusätzliche Features {% else %}
+                                    Additional Features {% endif %}</strong></li>
+                                <li>{% if language_abbr == 'de' %} Marktplatz {% else %}
+                                    Market-place {% endif %}</li>
+                            </ul>
+                        </div>
+                        <a href="/{{ language_abbr }}/signupcomp" class="btn btn-sm btn-outline-info"
+                            style="margin: 20px">{% if language_abbr == 'de' %} Registrieren und Buchen {% else %}
+                            Register and book now {% endif %}</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body small" style="background-color: rgba(255, 255, 255, 0.4) !important;">
+                        {% if language_abbr == 'de' %}  *= Nicht alle Angaben sind für jeden Social Media Kanal
+                            abrufbar, aber Sie erhalten alle relevanten und verfügbaren Daten für Ihren
+                            favorisierten Social Media Channel.{% else %} *= Not all details are available for every
+                            social media channel, but you will receive all relevant and available data for your
+                            favorite social media channel. {% endif %}
+                        <a href="/{{ language_abbr }}/download/kpis">{% if language_abbr == 'de' %}Hier finden Sie
+                            eine detaillierte Auflistung{% else %}Here you will find a detailed
+                            listing{% endif %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pn-gl-mt-75">
+            <div class="col-sm-12 pn-solution-elev-pitch">
+                <h1 class="text-left container elev-pitch-header">
+                    <span class="text-info">{% if language_abbr == 'de' %} Vorteile für {% else %} Advantages
+                        for {% endif %}<br> {% if language_abbr == 'de' %} Influencer {% else %} Influencers {% endif %}</span>
+                </h1>
+                <div class="font-weight-light text-justify container pn-gl-mt-35">
+                    <p class="font-weight-light">{% if language_abbr == 'de' %} Suchst du noch selber nach Werbepartnern
+                        und Kooperationen??? Lass dich finden!!! {% else %} Are you still looking for advertising
+                        partners and cooperations??? Let them find you!!{% endif %}</p>
+                    <p class="font-weight-light">{% if language_abbr == 'de' %} Registriere dich bei
+                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> und lass dich einfach von
+                        Unternehmen und Agenturen finden, damit du Zeit hast für das was dir am meisten Spaß macht:
+                        tolle Kampagnen kreieren, die deine Community interessiert. {% else %} Register at
+                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> and let companies and agencies
+                        find you, so that you have time for what you enjoy the most: creating great campaigns that
+                        interest your community. {% endif %}</p>
+                    <p class="font-weight-light">{% if language_abbr == 'de' %} Egal ob Insta, Facebook, YouTube,
+                        Pinterest oder dein eigener Blog,
+                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> ist für alle Micro- und Macro
+                        Influencer geeignet {% else %} No matter if Insta, Facebook, YouTube or your own blog,
+                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> is suitable for all micro and
+                        macro influencers. {% endif %}</p>
+
+                    <p>{% if language_abbr == 'de' %} Werde ganz easy Teil des
+                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> Netzwerks: {% else %} Become an
+                        easy part of the <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span>
+                        network: {% endif %}</p>
+                    <ul class="font-weight-light">
+                        <li>{% if language_abbr == 'de' %} registriere dich kostenlos {% else %} register for
+                            free {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} erstelle dein Profil {% else %} create your
+                            profile {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} lass dich von Unternehmen und Agenturen finden {% else %} let
+                            companies and agencies find you {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} verdiene Geld mit deiner Kreativität {% else %} earn money
+                            with your creativity {% endif %}</li>
+                        <br>
+                        <li>{% if language_abbr == 'de' %} Die Anmeldung und Profilerstellung ist für dich völlig
+                            kostenlos und verpflichtet dich zu nichts {% else %} The registration and profiling is
+                            completely free for you and does not oblige you to anything. {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Du behältst die völlige Kontrolle, denn du wirst direkt von
+                            den Unternehmen und Agenturen kontaktiert  und kannst selbst entscheiden, mit welchem
+                            Werbepartner du arbeiten möchtest {% else %} You retain complete control because you are
+                            contacted directly by the companies and agencies and can decide for yourself which
+                            advertising partner you want to work with. {% endif %}</li>
+                        <li>{% if language_abbr == 'de' %} Du verhandelst dein Honorar direkt mit den Unternehmen und
+                            Agenturen. Das Geld wird auch nur an dich ausgezahlt und wir verlangen keine
+                            Vermittlungsgebühren, Provision oder Abo-Kosten {% else %} You negotiate your fee directly
+                            with the companies and agencies. The money will only be paid out to you and we do not charge
+                            any commission or subscription fees. {% endif %}</li>
+                    </ul>
+                    <p style="margin-top: 25px;">
+                        {% if language_abbr == 'de' %}
+                            Wir haben nur eine Bitte: Sei aufrichtig bei der Profilerstellung und teile so viele deiner
+                            Insights Informationen wie möglich. Denn nur wenn alle Daten bereitgestellt werden, können
+                            dich viele Unternehmen finden und für Kampagnen engagieren.
+                        {% else %}
+                            We have only one request: Be sincere in your profiling and share as much of your insights
+                            information as possible. Only if all data is provided can many companies find you and engage
+                            you in campaigns.
+                        {% endif %}
+                    </p>
+                    <a href="/{{ language_abbr }}/signupinfl" class="btn btn-sm btn-outline-info">
+                        {% if language_abbr == 'de' %} Jetzt Profil anlegen {% else %} Sign Up now {% endif %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

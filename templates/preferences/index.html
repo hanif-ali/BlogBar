@@ -1,0 +1,108 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Profilmanagement</li>
+            </ol>
+        </nav>
+        <h1 class="display-4">Profilmanagement</h1>
+        <div class="card pn-gl-mt-25">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="heading" href="/{{ language_abbr }}/preferences/profile">Profil</a>
+                        <div class="row" id="profile_management">
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/profile/user"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-user-tag"></i> <i class="fas fa-mail-bulk"></i><br>
+                                    {% if language_abbr == 'de' %}Userdaten{% else %}user data{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/profile/pwd"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-key"></i><br>
+                                    {% if language_abbr == 'de' %}Zugangsdaten{% else %}access data{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/profile/galery"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-picture-o"></i><br>
+                                    {% if language_abbr == 'de' %}Profilbilder{% else %}profile pictures{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/profile/support"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-question"></i><br>
+                                    Support
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/profile/cooperations"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    {% if language_abbr == 'de' %}bisherige Kooperationen{% else %}previous
+                                        cooperations{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/profile/delete"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fas fa-trash-alt"></i><br>
+                                    {% if language_abbr == 'de' %}Profil löschen{% else %}Delete profile{% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="heading" href="/{{ language_abbr }}/preferences/channels">Kanäle</a>
+                        <div class="row" id="channel_management">
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/channels/instagram"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fab fa-instagram"></i><br>
+                                    Instagram
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/channels/facebook"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fab fa-facebook"></i><br>
+                                    FaceBook
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/channels/youtube"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fab fa-youtube"></i><br>
+                                    YouTube
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/channels/pinterest"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fab fa-pinterest"></i><br>
+                                    Pinterest
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/{{ language_abbr }}/preferences/channels/blog"
+                                   class="btn btn pn-total-width btn-outline-dark">
+                                    <i class="fab fa-blogger"></i><br>
+                                    {% if language_abbr == 'de' %}eigener Blog{% else %}personal blog{% endif %}
+                                </a>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

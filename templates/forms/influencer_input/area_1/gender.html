@@ -1,0 +1,11 @@
+<div class="form-group row">
+    <label for="genderSelect" class="col-sm-2 col-form-label col-form-label-sm">
+        <strong>{% if language_abbr == 'de' %}Geschlecht{% else %}Gender{% endif %}</strong>
+    </label>
+    <div class="col-sm-10">
+        <select class="selectpicker form-control-sm form-control dropdown" name="gender" id="genderSelect">
+            <option value="2">{% if language_abbr == 'de' %}weiblich{% else %}feminine{% endif %}</option>
+            <option value="1">{% if language_abbr == 'de' %}männlich{% else %}masculine{% endif %}</option>
+        </select>
+    </div>
+</div>

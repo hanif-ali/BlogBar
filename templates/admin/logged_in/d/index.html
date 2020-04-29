@@ -1,0 +1,75 @@
+{% extends "admin/base_admin.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-75">
+        <h1 class="display-4">Gemeldete Profile</h1>
+        <div>
+            {% for report in reported_influencers %}
+                <div class="card shadow-sm pn-gl-mt-25" id="reported_influencer_{{ loop.index0 }}">
+                    <div class="card-body">
+                        <p class="card-title">{{ report['timestamp'] }} >> {{ report['report_reason_title'] }}</p>
+                        <div class="row">
+                            <table class="table-striped pn-total-width table-sm">
+                                <tbody>
+                                <tr>
+                                    <th width="35%">Influencer-ID</th>
+                                    <td>{{ report['influencer_identifier'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Influencer-E-Mail</th>
+                                    <td>{{ report['email'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Influencer Name, Vorname</th>
+                                    <td>{{ report['last_name'] }}, {{ report['first_name'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Melder: E-Mail-Adresse</th>
+                                    <td>{{ report['contact_mail'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Meldungsgrund</th>
+                                    <td>{{ report['report_reason_title'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Meldungstimestamp</th>
+                                    <td>{{ report['timestamp'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Bemerkung</th>
+                                    <td>{{ report['remark'] }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row pn-gl-mt-15">
+                            <div class="col-md-3">
+                                <button class="btn btn-sm btn-outline-info pn-total-width"
+                                        onclick="delete_influencer_profile({{ report['influencer_identifier'] }}, 'reported_influencer_{{ loop.index0 }}')">
+                                    Profil löschen
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-sm btn-outline-info pn-total-width"
+                                        onclick="ignore_reported_influencer({{ report['report_identifier'] }}, 'reported_influencer_{{ loop.index0 }}')">
+                                    Meldung ignorieren
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="mailto:{{ report['email'] }}"
+                                   class="btn btn-sm btn-outline-info pn-total-width">Influencer kontaktieren</a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="mailto:{{ report['contact_mail'] }}"
+                                   class="btn btn-sm btn-outline-info pn-total-width">Melder kontaktieren</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="/static/js/handle_reported_influencers.js"></script>
+
+{% endblock %}

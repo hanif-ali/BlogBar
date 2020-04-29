@@ -1,0 +1,71 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="display-4">
+                    {{ specific_campaign_data["name"] }}
+                </h1>
+                <ul class="list-group-flush list-group">
+                    <li class="list-group-item">
+                        <h4 class="row"> {% if language_abbr == 'de' %}Überblick{% else %}Overview{% endif %}</h4>
+                        {#                        <div class="row">#}
+                        {#                            <strong>{% if language_abbr == 'de' %}Erstellungsdatum{% else %}Creation Date{% endif %}: </strong>&nbsp;21.03.201#}
+                        {#                        </div>#}
+                        <div class="row pn-gl-mt-15 text-justify">
+                            <strong>{% if language_abbr == 'de' %}Kurzbeschreibung{% else %}Short description{% endif %}
+                                : </strong>&nbsp;{{ specific_campaign_data["description"] }}
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <h4 class="row"> {% if language_abbr == 'de' %}Zugeordnete Influencer{% else %}Assigned
+                            influencers{% endif %}</h4>
+
+                        {% if specific_campaign_data["influencer"][0][0]["Count_Result"] %}
+
+                            {% for i in specific_campaign_data["influencer"] %}
+
+                                <div class="row pn-gl-mt-25">
+
+                                    {% for k in i %}
+
+                                        <div class="col-md-3">
+                                            <div class="card shadow-lg"
+                                                 id="infl_listing_{{ k["influencer_identifier"] }}">
+                                                <img src="
+
+                                                        {% if k["profile_image"] != None %}{{ k["profile_image"] }}{% else %}{% if k['gender'] == "male" %}/static/img/placeholder/unknown_male.jpg{% else %}/static/img/placeholder/unknown_female.jpg{% endif %}{% endif %}"
+                                                     class="card-img-top">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ k["first_name"] }} {{ k["last_name"] }}</h5>
+                                                    <p class="card-text">{{ k["remark"] }}</p>
+                                                    <button onclick="delete_from_campaign({{ k["influencer_identifier"] }}, {{ specific_campaign_data["campaign_identifier"] }})"
+                                                            class="btn btn-outline-danger btn-sm pn-total-width">Löschen
+                                                    </button>
+                                                    <a href="/{{ language_abbr }}/{{ k['influencer_identifier'] }}/overview"
+                                                       class="btn btn-outline-dark btn-sm pn-total-width pn-gl-mt-15">Details</a>
+                                                    <a href="mailto:{{ k["email"] }}"
+                                                       class="btn btn-outline-success btn-sm pn-total-width pn-gl-mt-15">Mail
+                                                        senden</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

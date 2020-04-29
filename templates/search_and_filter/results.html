@@ -1,0 +1,109 @@
+{% extends "layouts/base.html" %}
+{% block head_extension %}
+{% endblock %}
+{% block container %}
+    <div class="pn-gl-mt-25">
+        <div class="center" style="width: 90%; margin-left: auto; margin-right: auto;">
+
+            {% include "search_and_filter/filter_element.html" %}
+
+            <div class="pn-gl-mt-75">
+                {% if search_results|length < 1 and channelSelect %}
+                    <p>Leider bringen Ihre Einstellungen kein Ergebnis. Bitte ändern Sie ihre Sucheinstellungen</p>
+                {% endif %}
+
+                {% if channelSelect == '0' %}
+
+                    {% include "search_and_filter/result_influencer_preview_cards/influencer_related_search.html" %}
+
+                {% elif channelSelect == '1' %}
+
+                    {% include "search_and_filter/result_influencer_preview_cards/instagram_related.html" %}
+
+                {% elif channelSelect == '2' %}
+
+                    {% include "search_and_filter/result_influencer_preview_cards/facebook_related_search.html" %}
+
+                {% elif channelSelect == '3' %}
+
+                    {% include "search_and_filter/result_influencer_preview_cards/youtube_related_search.html" %}
+
+                {% elif channelSelect == '4' %}
+
+                    {% include "search_and_filter/result_influencer_preview_cards/pinterest_related_search.html" %}
+
+                {% elif channelSelect == '5' %}
+
+                    {% include "search_and_filter/result_influencer_preview_cards/blog_related_search.html" %}
+
+                {% endif %}
+
+
+                {% if search_results %}
+                    <nav aria-label="Pagination">
+                        <ul class="pagination justify-content-center pn-gl-mt-75">
+                            {% if offset %}
+                                {% if offset|int >= 20 %}
+                                    <li class="page-item"><a class="page-link" onclick="get_previous_20_entries()">
+                                        {% if language_abbr == 'de' %}Zurück{% else %}Previous{% endif %}</a></li>
+                                {% endif %}
+                            {% endif %}
+
+                            <li class="page-item"><a class="page-link"
+                                                     {% if offset is undefined or offset == '0' %}tabindex=""{% endif %}
+                                                     onclick="get_entries_of_page(1)">1</a></li>
+
+                            {% if offset %}
+                                {% for page in range(1, (offset|int / 20)|int + 1) %}
+                                    <li class="page-item"><a class="page-link"
+                                                             {% if page == (offset|int / 20)|int %}tabindex=""{% endif %}
+                                                             onclick="get_entries_of_page({{ page + 1 }})">{{ page + 1 }}</a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if search_results|length == 20 %}
+                                <li class="page-item">
+                                    <a onclick="get_next_20_entries();" class="page-link">{% if language_abbr == 'de' %}
+                                        Weiter{% else %}Next{% endif %}</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+
+
+
+                {% if campaigns != None %}
+                    <div class="modal fade" id="pinInfluencer" tabindex="-1" role="dialog"
+                         aria-labelledby="pinInfluencer" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Influencer anpinnen</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" class="form-control form-control-sm" id="remark"
+                                           placeholder="Bemerkung (optional)">
+                                    {% for camapign in campaigns %}
+                                        <button class="btn btn-sm btn-outline-info pn-total-width pn-gl-mt-15"
+                                                onclick="pin_influencer_at_campaign({{ campaigns[loop.index0]["campaign_identifier"] }});">{{ campaigns[loop.index0]["name"] }}</button>
+                                    {% endfor %}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary pn-total-width btn-sm"
+                                            data-dismiss="modal">Abbrechen
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

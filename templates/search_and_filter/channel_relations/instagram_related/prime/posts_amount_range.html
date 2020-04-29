@@ -1,0 +1,57 @@
+<div class="col-lg-2">
+    <label for="instagram_post_amount_from">{% if language_abbr == 'de' %}Posts von{% else %}Posts
+        from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="instagram_post_amount_from"
+            id="instagram_post_amount_from">
+        <option value="UNDEFINED" {% if instagram_post_amount_from == 'UNDEFINED' %}selected{% endif %}>beliebig
+        </option>
+        <option value="1" {% if instagram_post_amount_from == '1' %}selected{% endif %}>1</option>
+        <option value="2" {% if instagram_post_amount_from == '2' %}selected{% endif %}>2</option>
+        <option value="5" {% if instagram_post_amount_from == '5' %}selected{% endif %}>5</option>
+        <option value="7" {% if instagram_post_amount_from == '7' %}selected{% endif %}>7</option>
+        <option value="12" {% if instagram_post_amount_from == '12' %}selected{% endif %}>12</option>
+        <option value="17" {% if instagram_post_amount_from == '17' %}selected{% endif %}>17</option>
+        <option value="25" {% if instagram_post_amount_from == '25' %}selected{% endif %}>25</option>
+        <option value="30" {% if instagram_post_amount_from == '30' %}selected{% endif %}>30</option>
+        <option value="35" {% if instagram_post_amount_from == '35' %}selected{% endif %}>35</option>
+        <option value="40" {% if instagram_post_amount_from == '40' %}selected{% endif %}>40</option>
+        <option value="50" {% if instagram_post_amount_from == '50' %}selected{% endif %}>50</option>
+        <option value="60" {% if instagram_post_amount_from == '60' %}selected{% endif %}>60</option>
+        <option value="70" {% if instagram_post_amount_from == '70' %}selected{% endif %}>70</option>
+        <option value="80" {% if instagram_post_amount_from == '80' %}selected{% endif %}>80</option>
+        <option value="100" {% if instagram_post_amount_from == '100' %}selected{% endif %}>100</option>
+        <option value="200" {% if instagram_post_amount_from == '200' %}selected{% endif %}>200</option>
+        <option value="300" {% if instagram_post_amount_from == '300' %}selected{% endif %}>300</option>
+        <option value="400" {% if instagram_post_amount_from == '400' %}selected{% endif %}>400</option>
+        <option value="500" {% if instagram_post_amount_from == '500' %}selected{% endif %}>500</option>
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="instagram_post_amount_to">{% if language_abbr == 'de' %}Posts bis{% else %}Posts to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="instagram_post_amount_to"
+            id="instagram_post_amount_to">
+        <option value="1" {% if instagram_post_amount_to == '1' %}selected{% endif %}>1</option>
+        <option value="2" {% if instagram_post_amount_to == '2' %}selected{% endif %}>2</option>
+        <option value="5" {% if instagram_post_amount_to == '5' %}selected{% endif %}>5</option>
+        <option value="7" {% if instagram_post_amount_to == '7' %}selected{% endif %}>7</option>
+        <option value="12" {% if instagram_post_amount_to == '12' %}selected{% endif %}>12</option>
+        <option value="17" {% if instagram_post_amount_to == '17' %}selected{% endif %}>17</option>
+        <option value="25" {% if instagram_post_amount_to == '25' %}selected{% endif %}>25</option>
+        <option value="30" {% if instagram_post_amount_to == '30' %}selected{% endif %}>30</option>
+        <option value="35" {% if instagram_post_amount_to == '35' %}selected{% endif %}>35</option>
+        <option value="40" {% if instagram_post_amount_to == '40' %}selected{% endif %}>40</option>
+        <option value="50" {% if instagram_post_amount_to == '50' %}selected{% endif %}>50</option>
+        <option value="60" {% if instagram_post_amount_to == '60' %}selected{% endif %}>60</option>
+        <option value="70" {% if instagram_post_amount_to == '70' %}selected{% endif %}>70</option>
+        <option value="80" {% if instagram_post_amount_to == '80' %}selected{% endif %}>80</option>
+        <option value="100" {% if instagram_post_amount_to == '100' %}selected{% endif %}>100</option>
+        <option value="200" {% if instagram_post_amount_to == '200' %}selected{% endif %}>200</option>
+        <option value="300" {% if instagram_post_amount_to == '300' %}selected{% endif %}>300</option>
+        <option value="400" {% if instagram_post_amount_to == '400' %}selected{% endif %}>400</option>
+        <option value="500" {% if instagram_post_amount_to == '500' %}selected{% endif %}>500</option>
+        <option value="UNDEFINED"
+                {% if instagram_post_amount_to == 'UNDEFINED' or instagram_post_amount_to is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

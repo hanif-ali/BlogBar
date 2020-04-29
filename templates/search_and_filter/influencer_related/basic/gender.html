@@ -1,0 +1,7 @@
+<div class="col-lg-2">
+    <label for="genders">{% if language_abbr == 'de' %} Geschlecht {% else %} Gender {% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" multiple="true" name="genders" id="genders">
+        <option value="female" {% if "female" in genders or genders is undefined %}selected{% endif %}>weiblich</option>
+        <option value="male" {% if 'male' in genders or genders is undefined %}selected{% endif %}>männlich</option>
+    </select>
+</div>

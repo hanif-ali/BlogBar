@@ -1,0 +1,71 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">Einstellungen</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Zugangsdaten</li>
+                </ol>
+            </nav>
+        </nav>
+        <h1 class="display-4">Zugangsdaten</h1>
+        <form method="POST"
+              oninput='confirmNewPWD.setCustomValidity(newPWD.value != confirmNewPWD.value ? "Passwörter stimmen nicht überein." : "")'>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="currentPWD" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Aktuelles Passwort{% else %}Current
+                                password{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="password" class="form-control form-control-sm" required="true"
+                                           id="currentPWD" name="currentPWD"
+                                           placeholder="{% if language_abbr == 'de' %}Passwort{% else %}Password{% endif %}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="form-group row">
+                        <label for="newPWD" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>{% if language_abbr == 'de' %}Neues Passwort{% else %}New
+                                password{% endif %}</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control form-control-sm" required="true"
+                                           id="newPWD" name="newPWD"
+                                           placeholder="{% if language_abbr == 'de' %}Neues Passwort{% else %}New password{% endif %}">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control form-control-sm" required="true"
+                                           id="confirmNewPWD" name="confirmNewPWD"
+                                           placeholder="{% if language_abbr == 'de' %}Neues Passwort bestätigen{% else %}Confirm new password{% endif %}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="submit"
+                           value="{% if language_abbr == 'de' %}Passwort unwideruflich ändern{% else %}Change password irrevocably{% endif %}"
+                           class="btn btn-sm btn-outline-warning pn-total-width pn-gl-mt-15">
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

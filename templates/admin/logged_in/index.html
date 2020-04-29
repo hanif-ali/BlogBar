@@ -1,0 +1,60 @@
+{% extends "admin/base_admin.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-75">
+        <h1 class="display-4">Heute:</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title"><span class="display-2"
+                                                    style="color: limegreen;">{{ signups_today_influencer|round(0) }}</span><span
+                                class="text-secondary">Influenceranmeldungen </span></p>
+                        <p class="card-text">Woche: Insgesamt {{ sums[1]|round(0) }} Anmeldungen
+                            (ø {{ averages[1]|round(2) }} Anmeldungen / Tag)</p>
+                        <a href="/admin/kpis" class="btn btn-outline-primary btn-sm">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title"><span class="display-2"
+                                                    style="color: limegreen;">{{ signups_today_companies|round(0) }}</span><span
+                                class="text-secondary">Unternehmensanmeldungen </span></p>
+                        <p class="card-text">Woche: Insgesamt {{ sums[0]|round(0) }} Anmeldungen
+                            (ø {{ averages[0]|round(2) }} Anmeldungen / Tag)</p>
+                        <a href="/admin/kpis" class="btn btn-outline-primary btn-sm">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pn-gl-mt-35">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title"><span class="display-2"
+                                                    style="color: red;">{{ profile_deletions_today_influencer|round(0) }}</span><span
+                                class="text-secondary">Influencerabmeldungen </span></p>
+                        <p class="card-text">Insgesamt: {{ profile_deletions_ever_influencer|round(0) }} Abmeldungen</p>
+                        <a href="/admin/kpis" class="btn btn-outline-primary btn-sm">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title"><span class="display-2"
+                                                    style="color: red;">{{ profile_deletions_today_companies|round(0) }}</span><span
+                                class="text-secondary">Unternehmensabmeldungen </span></p>
+                        <p class="card-text">Insgesamt: Insgesamt {{ profile_deletions_ever_companies|round(0) }}
+                            Abmeldungen</p>
+                        <a href="/admin/kpis" class="btn btn-outline-primary btn-sm">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

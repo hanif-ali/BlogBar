@@ -1,0 +1,111 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences/profile">
+                    {% if language_abbr == 'de' %}Profil{% else %}Profile{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}bisherige
+                    Kooperationen{% else %}previous cooperations{% endif %}</li>
+            </ol>
+        </nav>
+        <h1 class="display-4">{% if language_abbr == 'de' %}bisherige Kooperationen{% else %}previous
+            cooperations{% endif %}</h1>
+
+        <div class="text-left">
+            <a class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                {% if language_abbr == 'de' %}Kooperation hinzufügen{% else %}Add cooperation{% endif %}
+            </a>
+        </div>
+
+        <ul class="list-group list-group-flush pn-gl-mt-35">
+            {% for cooperation in cooperations %}
+                <li class="list-group-item" id="COOPERATION_{{ cooperation['ID'] }}">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h2 style="font-size: 1.4rem; font-weight: 300;">{{ cooperation['title_of_cooperation'] }}</h2>
+                        </div>
+                        <div class="col-md-3">
+                            <h2 class="text-muted text-right"
+                                style="font-size: 1.2rem; font-weight: 300;">{{ cooperation['date_of_cooperation'] }}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 text-justify">
+                            {{ cooperation['description'] }}
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-secondary btn-sm pn-total-width"
+                                    onclick="delete_cooperation({{ cooperation['ID'] }});">
+                                {% if language_abbr == 'de' %}Kooperation löschen{% else %}Delete
+                                    cooperation{% endif %}</button>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{% if language_abbr == 'de' %}Kooperation
+                            hinzufügen{% else %}Add cooperation{% endif %}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="cooperationTitle" class="col-sm-2 col-form-label col-form-label-sm">
+                                <strong>{% if language_abbr == 'de' %}Titel{% else %}title{% endif %}</strong>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control-sm form-control"
+                                       placeholder="Titel der Kooperation (sei so präzise wie möglich)"
+                                       id="cooperationTitle" name="title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cooperationDate" class="col-sm-2 col-form-label col-form-label-sm">
+                                <strong>{% if language_abbr == 'de' %}Datum{% else %}date{% endif %}</strong>
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control-sm form-control" id="cooperationDate"
+                                       name="date">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cooperationDescription" class="col-sm-2 col-form-label col-form-label-sm">
+                                <strong>{% if language_abbr == 'de' %}Beschreibung{% else %}
+                                    Description{% endif %}</strong>
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control-sm form-control" id="cooperationDescription"
+                                          name="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-outline-secondary col-md-4"
+                                data-dismiss="modal">{% if language_abbr == 'de' %}Abbrechen{% else %}
+                            Close{% endif %}</button>
+                        <input type="submit" class="btn btn-sm btn-outline-primary col-md-4"
+                               value="{% if language_abbr == 'de' %}Kooperation hinzufügen{% else %}Add cooperation{% endif %}">
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

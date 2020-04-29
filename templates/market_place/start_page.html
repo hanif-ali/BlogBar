@@ -1,0 +1,129 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <h1 class="display-4">{% if language_abbr == 'de' %} Kampagnenmarktplatz {% else %} Camapign
+            market {% endif %}</h1>
+        <br>
+        {% if logged_in and kind == 1 and language_abbr != 'de' %}
+            On the campaign marketplace you will find current cooperation offers from companies that want to cooperate
+            with influencers. Decide for yourself which campaign is attractive for you and apply for it. You negotiate
+            directly with the companies and receive 100% of your remuneration without paying a commission to us.
+            Start the search directly and find a suitable offer.
+        {% elif logged_in and kind == 1 and language_abbr == 'de' %}
+            Auf dem Kampagnenmarktplatz findest du aktuelle Kooperationsangebote von Unternehmen, die mit Influencern
+            zusammenarbeiten wollen. Entscheide selbst, welche Kampagne für dich attraktiv ist und bewirb dich darauf.
+            Du verhandelst direkt mit den Unternehmen und erhältst 100% deiner Vergütung, ohne eine Provision an uns zu
+            zahlen.
+            Starte direkt die Suche und finde ein passendes Angebot.
+        {% endif %}
+        {% if logged_in and kind == 2 and subscr_package == "prime" %}
+            {% if language_abbr == 'de' %}
+                <p>Erstellen Sie eine Ausschreibung mit allen Informationen zu Ihrer Kampagne und veröffentlichen diese
+                    auf unserem Kampagnenmarktplatz. Sie erhalten die Bewerbungen direkt an Ihre hinterlegte
+                    Mailadresse. Sie verhandeln mit den Influencern, ohne eine Provision an uns zu zahlen. Starten Sie
+                    direkt Ihre erste Kampagne.</p>
+            {% else %}
+                <p>
+                    Create a tender with all the information about your campaign and publish it on our campaign
+                    marketplace. You will receive the applications directly to your stored e-mail address. You negotiate
+                    with the influencers without paying a commission to us. Start your first campaign directly.
+                </p>
+            {% endif %}
+            <div class="text-left" style="margin-top: 50px;">
+                <a href="/{{ language_abbr }}/publiccampaigns/overview" class="btn btn-outline-dark">
+                    {% if language_abbr == 'de' %}Meine öffentlichen Kampagnen{% else %}My public
+                        campaigns{% endif %}</a>
+                <a href="/{{ language_abbr }}/publiccampaigns/create" class="btn btn-outline-dark">
+                    {% if language_abbr == 'de' %}Kampagne veröffentlichen{% else %}Publish campaign{% endif %}</a>
+            </div>
+        {% endif %}
+        <div id="filters" class="pn-gl-mt-25">
+            <form method="GET">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <select class="selectpicker form-control-sm form-control dropdown" multiple
+                                    data-live-search="true" name="topic" id="topic">
+                                {% if language_abbr == 'de' %}
+                                    {% set categories = ['Auto und Motorrad','Beauty / Kosmetik','Bildung','Computer und Elektronik','DIY','Design',
+                                    'Erfolg und Karriere','Essen und Trinken / Food','Fashion / Mode','Finanzen','Fotografie','Frauen / Männer',
+                                    'Garten und Natur','Gesellschaft und Politik','Gesundheit','Home und Living','Humor und Spaß','Kinder und Familie',
+                                    'Kino, Film, TV','Kunst und Kultur','Liebe und Sexualität','Lifestyle','Luxus','Marketing','Musik','Recht und Gesetz',
+                                    'Reise / Travel','Social Media','Spiele und Gaming','Sport und Fitness','Tattos','Technik','Tiere'] %}
+                                {% else %}
+                                    {% set categories = ['Car and Motorcycle','Beauty / Cosmetics','Education','Computers and Electronics','DIY','Design',
+                                    'success and career','food and drink / food','fashion / fashion','finances','photography','women / men',
+                                    'Garden and nature', 'Society and politics', 'Health', 'Home and living', 'Humour and fun', 'Children and family',
+                                    'cinema, film, TV','art and culture','love and sexuality','lifestyle','luxury','marketing','music','law and order',
+                                    'Travel','Social Media','Games and Gaming','Sports and Fitness','Tattos','Technology','Animals'] %}
+                                {% endif %}
+
+                                {% for category in categories %}
+                                    <option value="{{ loop.index }}"
+                                            {% if loop.index|string in topic %}selected{% endif %}>{{ category }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="selectpicker form-control-sm form-control dropdown" multiple name="channels"
+                                id="channels">
+                            <option value="1" {% if '1' in channels %}selected{% endif %}>Instagram</option>
+                            <option value="2" {% if '2' in channels %}selected{% endif %}>Facebook</option>
+                            <option value="3" {% if '3' in channels %}selected{% endif %}>YouTube</option>
+                            <option value="4" {% if '4' in channels %}selected{% endif %}>Pinterest</option>
+                            <option value="5" {% if '5' in channels %}selected{% endif %}>Blog</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="btn btn-sm btn-outline-success pn-total-width"
+                               value="{% if language_abbr == 'de' %}Suche starten{% else %}Start search{% endif %}">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="results">
+            {% for entry in campaigns %}
+
+                <div class="card pn-gl-mt-25">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">{{ entry["campaign_title"] }}</h5>
+                                <p><strong>{% if language_abbr == 'de' %}Auftraggeber{% else %}Principal{% endif %}
+                                    :</strong> {{ entry["company_name"] }}</p>
+                                {% if language_abbr == 'de' %}
+                                    {% set categories = ['Auto und Motorrad','Beauty / Kosmetik','Bildung','Computer und Elektronik','DIY','Design',
+                                    'Erfolg und Karriere','Essen und Trinken / Food','Fashion / Mode','Finanzen','Fotografie','Frauen / Männer',
+                                    'Garten und Natur','Gesellschaft und Politik','Gesundheit','Home und Living','Humor und Spaß','Kinder und Familie',
+                                    'Kino, Film, TV','Kunst und Kultur','Liebe und Sexualität','Lifestyle','Luxus','Marketing','Musik','Recht und Gesetz',
+                                    'Reise / Travel','Social Media','Spiele und Gaming','Sport und Fitness','Tattos','Technik','Tiere'] %}
+                                {% else %}
+                                    {% set categories = ['Car and Motorcycle','Beauty / Cosmetics','Education','Computers and Electronics','DIY','Design',
+                                    'success and career','food and drink / food','fashion / fashion','finances','photography','women / men',
+                                    'Garden and nature', 'Society and politics', 'Health', 'Home and living', 'Humour and fun', 'Children and family',
+                                    'cinema, film, TV','art and culture','love and sexuality','lifestyle','luxury','marketing','music','law and order',
+                                    'Travel','Social Media','Games and Gaming','Sports and Fitness','Tattos','Technology','Animals'] %}
+                                {% endif %}
+                                <p><strong>{% if language_abbr == 'de' %}Themenbereich{% else %}Theme{% endif %}
+                                    : </strong>{{ categories[entry["topic_identifier"]|int - 1] }}</p>
+                                <p><strong>{% if language_abbr == 'de' %}Beschreibung{% else %}Description{% endif %}
+                                    :<br></strong>{{ entry["campaign_description"][:200] }}...</p>
+                                <a href="/{{ language_abbr }}/publiccampagins/{{ entry["campaign_identifier"] }}"
+                                   class="card-link">{% if language_abbr == 'de' %}mehr erfahren{% else %}learn
+                                    more{% endif %}</a>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{% if entry["logo"] == None %}/static/img/placeholder/placeholder-company.png{% else %}/static/company_logos/{{ entry["logo"] }}{% endif %}"
+                                     width="100%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

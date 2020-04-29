@@ -1,0 +1,28 @@
+<div class="col-lg-2">
+    <label for="instagramFollowerFrom">Follower {% if language_abbr == 'de' %}von{% else %}from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="instagramFollowerFrom"
+            id="instagramFollowerFrom">
+        <option value="UNDEFINED"
+                {% if instagramFollowerFrom == 'UNDEFINED' or instagramFollowerFrom is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if instagramFollowerFrom == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="instagramFollowerTo">Folower {% if language_abbr == 'de' %}bis{% else %}to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="instagramFollowerTo"
+            id="instagramFollowerTo">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if instagramFollowerTo == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if instagramFollowerTo == 'UNDEFINED' or instagramFollowerTo is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

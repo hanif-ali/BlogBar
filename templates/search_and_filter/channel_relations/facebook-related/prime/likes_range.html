@@ -1,0 +1,26 @@
+<div class="col-lg-2">
+    <label for="facebook_likes_From">Likes {% if language_abbr == 'de' %}von{% else %}from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="facebook_likes_From"
+            id="facebook_likes_From">
+        <option value="UNDEFINED"
+                {% if facebook_likes_From == 'UNDEFINED' or facebook_likes_From is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if facebook_likes_From == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="facebook_likes_To">Likes {% if language_abbr == 'de' %}bis{% else %}to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="facebook_likes_To" id="facebook_likes_To">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if facebook_likes_To == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if facebook_likes_To == 'UNDEFINED' or facebook_likes_To is undefined %}selected{% endif %}>beliebig
+        </option>
+    </select>
+</div>

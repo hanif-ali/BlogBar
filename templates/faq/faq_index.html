@@ -1,0 +1,96 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+
+
+    {% if language_abbr == "de" %}
+        {% set questions = [
+        'Was ist die Idee von BlogBar?',
+        'Warum sollten Sie sich anmelden?',
+        'Was ist der Marktplatz?',
+        'Gibt es versteckte Kosten für Influencer?',
+        'Wie ist es mit den Kosten für Unternehmen?',
+        'Sind meine Daten sicher?',
+        'Kann ich mich jederzeit abmelden?'
+        ] %}
+
+        {% set answers = [
+        'Wir haben BlogBar gegründet, um Unternehmen zu helfen, auf einfachem Weg Influencer zu finden, die zu Ihrem Unternehmen passen.
+        Aus eigener Erfahrung wissen wir, wie zeitaufwendig die Suche nach einem passenden Kooperationspartner ist. Das wollen wir mit unserem Tool
+        vereinfachen.',
+        'Da es für Unternehmen ein gutes Tool ist, um passende Kooperationspartner zu finden, steigt die Chance für jeden angemeldeten Influencer gefunden zu werden,
+        und neue Projekte umsetzen zu können. Bei Buchung des Prime Pakets können Unternehmen einerseits Influencer suchen und gleichzeitig Bewerbungen erhalten.
+        Influencer können sich wiederum finden lassen oder sich direkt auf Projekte bewerben.
+        Eine Win-Win-Situation für beide Seiten.',
+        'Der Marktplatz ist eine Lösung für Unternehmen, um Projekte auszuschreiben, auf die sich Influencer bewerben können.
+        Bei Buchung des Prime Pakets können Unternehmen einerseits Influencer suchen und gleichzeitig Bewerbungen erhalten.
+        Influencer können sich wiederum finden lassen oder sich direkt auf Projekte bewerben.
+        Eine Win-Win-Situation für beide Seiten.',
+        'Nein! Influencer können sich komplett kostenlos anmelden und direkt gefunden werden.
+        Daneben muss keine Provision oder Umsatzbeteiligung für Kooperationen gezahlt werden.',
+        "Unternehmen können das Pro und Prime Paket für jeweils 6 oder 12 Monate buchen.
+        In diesem Zeitraum können unbegrenzt Suchen nach Influencern gestartet werden.
+        Die einzelnen Features der Pakete findet ihr hier: ",
+        'Ja, wir erfüllen die Sicherheitsstandards und die DSGVO-Richtlinien.
+        Beim Löschen deines Profils werden alle Daten gelöscht und können auch nicht wiederhergestellt werden.',
+        'Ja, eine Abmeldung ist jederzeit möglich.
+        Nach deiner Abmeldung werden alle deine Daten vollständig gelöscht.'
+        ] %}
+    {% else %}
+        {% set questions = [
+        'What is the idea of BlogBar?',
+        'Why you should register?',
+        'What is the Campaign Marketplace?',
+        'Are there any hidden costs for influencers?',
+        'What about the costs for companies?',
+        'Is my data safe?',
+        'Can I unsubscribe at any time?'
+        ] %}
+
+        {% set answers = [
+        'We have created BlogBar to help companies to find influencers easily that match with your business. From our own experience, we know how time-consuming it is to find a suitable cooperation partner. We want to simplify this with our tool.',
+        'As it is a good tool for companies to find suitable cooperation partners, the chance for every registered influencer to be found and to be able to implement new projects increases. When booking the Prime Package, companies can search for influencers and receive applications at the same time. Influencers can be found or apply directly for projects. A win-win situation for both sides.',
+        'The marketplace is a solution for companies to advertise projects for which influencers can apply. When booking the Prime Package, companies can search for influencers and receive applications at the same time. Influencers can be found or apply directly for projects. A win-win situation for both sides.',
+        'No! Influencers can register completely free of charge and be found directly. In addition, there is no commission or revenue share to be paid for cooperations.',
+        'Companies can book the PRO and PRIME packages for 6 or 12 months respectively. During this period, unlimited searches for influencers can be started. The individual features of the packages can be found here: Premium Packages',
+        'Yes, we meet the safety standards and the DSGVO guidelines. When you delete your profile, all data will be deleted and cannot be recovered.',
+        'Yes, you can unsubscribe at any time. After you unsubscribed, all your data will be completely deleted.'
+        ] %}
+    {% endif %}
+
+    <div class="container pn-gl-mt-25">
+        <h1>
+            {% if language_abbr == "de" %}Häufig gestellte Fragen{% else %}Frequently asked questions{% endif %}</h1>
+        <div class="accordion pn-gl-mt-35" id="accordion">
+            {% for question in questions %}
+                <div class="card">
+                    <div class="card-header" id="heading{{ loop.index0|string }}">
+                        <h2 class="mb-0">
+                            <button class="btn text-dark text-left" type="button" data-toggle="collapse"
+                                    data-target="#collapse{{ loop.index0|string }}" aria-expanded="true"
+                                    aria-controls="collapse{{ loop.index0|string }}">{{ question }}</button>
+                        </h2>
+                    </div>
+                    <div id="collapse{{ loop.index0|string }}" class="collapse"
+                         aria-labelledby="heading{{ loop.index0|string }}" data-parent="#accordion">
+                        <div class="card-body">
+                            {{ answers[loop.index0] }}
+                            {% if loop.index0 == 4 %}
+                                <a href='/de/solution#company_solution_overview'>{% if language_abbr == 'de' %}
+                                    Premiumpakete {% else %} Premium packages {% endif %}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <p class="pn-gl-mt-35 text-secondary">
+            {% if language_abbr == 'de' %} Wenn du weitere Fragen hast, schreibe uns eine Mail an {% else %} If you have
+                further questions, please send us an email to {% endif %} <a href="mailto:cheers@blogbar.eu">cheers@blogbar.eu</a>
+        </p>
+    </div>
+
+{% endblock %}

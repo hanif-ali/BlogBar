@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+    <div class="container pn-gl-mt-25">
+        <h1 class="display-4 text-center">{% if language_abbr == 'de' %} Registrieren als Unternehmen {% else %} Company
+            Sign Up {% endif %}</h1>
+        <p>
+            {% if language_abbr == 'de' %}
+                Registrieren Sie sich jetzt und finden Sie den Influencer, der zu Ihrem Unternehmen und Ihrem Produkt
+                passt. Starten Sie direkt mit der Basic Suche oder profitieren Sie von den Vorteilen unserer Packages
+                PRO und PRIME.
+            {% else %}
+                Register now and find the influencer that fits to your company and product. Start directly with the
+                Basic Search or benefit from the advantages of our PRO and PRIME packages.
+            {% endif %}
+        </p>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                Error: {{ error }}
+            </div>
+        {% endif %}
+        <form method="post"
+              oninput='pwd2.setCustomValidity(pwd2.value != pwd.value ? "Passwörter stimmen nicht überein." : "")'>
+            {% include "forms/company_input/company_name.html" %}
+            {% include "forms/company_input/contact.html" %}
+            {% include "forms/company_input/contact_mail.html" %}
+            {% include "forms/company_input/address.html" %}
+            {% include "forms/influencer_input/area_1/passwords.html" %}
+            {% include "forms/company_input/ust-id.html" %}
+            <input type="submit" class="btn btn-sm btn-outline-info pn-one-third-width pn-gl-mt-35" value="Registrieren"
+                   id="signUpCompSubmit"/>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<div class="col-lg-3">
+    <label for="youtube_rhythm_types">{% if language_abbr == 'de' %}Rhythmus{% else %}Rhythm{% endif %}</label>
+    <select multiple="true" class="selectpicker form-control-sm form-control dropdown" name="youtube_rhythm_types"
+            id="youtube_rhythm_types">
+        <option value="1"
+                {% if '1' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}täglich{% else %}daily{% endif %}</option>
+        <option value="2"
+                {% if '2' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}wöchentlich{% else %}weekly{% endif %}</option>
+        <option value="3"
+                {% if '3' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}alle 2 Wochen{% else %}every 2 weeks{% endif %}</option>
+        <option value="4"
+                {% if '4' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}alle 2 - 3 Wochen{% else %}every 2-3 weeks{% endif %}</option>
+        <option value="5"
+                {% if '5' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}alle 3 Wochen{% else %}every 3 weeks{% endif %}</option>
+        <option value="6"
+                {% if '6' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}alle 3 - 4 Wochen{% else %}every 3-4 weeks{% endif %}</option>
+        <option value="7"
+                {% if '7' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}monatlich{% else %}monthly{% endif %}</option>
+        <option value="8"
+                {% if '8' in youtube_rhythm_types or youtube_rhythm_types is not defined %}selected{% endif %}>
+            {% if language_abbr == 'de' %}alle 4 - 5 Wochen{% else %}every 4-5 weeks{% endif %}</option>
+    </select>
+</div>

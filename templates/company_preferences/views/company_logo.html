@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <form class="container pn-gl-mt-75" method="POST" enctype="multipart/form-data">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Einstellungen{% else %}Settings{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}Logo
+                    hochladen{% else %}Logo upload{% endif %}</li>
+            </ol>
+        </nav>
+        <h1 class="display-4">{% if language_abbr == 'de' %}Logo hochladen{% else %}Logo upload{% endif %}</h1>
+        <span class="text-muted">{% if language_abbr == 'de' %}Dieses Logo taucht bei öffentlichen Kampagnen auf
+            (PRIME-exclusive){% else %}This logo appears in public campaigns (PRIME-exclusive){% endif %}</span>
+        <ul class="list-group list-group-flush pn-gl-mt-35">
+
+            <li class="list-group-item">
+                <h3 class="pn-gl-mt-35">{% if language_abbr == 'de' %}Logo hier hochladen (max. 2MB){% else %}Please
+                    load up here (max. 2 MB){% endif %}</h3>
+                <img src="{% if path != None %}/static/company_logos/{{ path }}{% endif %}"
+                     class="{% if path == None %}hidden{% endif %} col-md-4" id="image" width="100%">
+                <div class="imageupload panel panel-default {% if path != None %}hidden{% endif %}" id="img_add_btn">
+                    <div class="file-tab panel-body pn-gl-mt-35">
+                        <label class="btn btn-outline-dark btn-file">
+                            <span>{% if language_abbr == 'de' %}Logo hinzufügen{% else %}Add Logo{% endif %}</span>
+                            <input type="file" name="company_logo">
+                        </label>
+                        <button type="button" class="btn btn-outline-danger">{% if language_abbr == 'de' %}
+                            Löschen{% else %}Delete{% endif %}</button>
+                    </div>
+                </div>
+                <div class="pn-gl-mt-15">
+                    <a class="btn btn-outline-danger btn-sm pn-total-width {% if path == None %}hidden{% endif %}"
+                       id="add_image" onclick="del_img()">Logo löschen</a>
+                </div>
+            </li>
+
+        </ul>
+
+        <div class="row pn-gl-mt-35">
+            <div class="col-md-4">
+                <input type="submit" class="btn btn-sm btn-outline-success pn-total-width"
+                       value="{% if language_abbr == 'de' %}Logo speichern{% else %}Save Logo{% endif %}">
+            </div>
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="/static/lib/fileupload/bootstrap-imageupload.min.js"></script>
+    <script src="/static/js/imageupload_delete.js"></script>
+    <script>
+        var $imageupload = $('.imageupload');
+        $imageupload.imageupload();
+
+        $('#imageupload-disable').on('click', function () {
+            $imageupload.imageupload('disable');
+            $(this).blur();
+        });
+
+        $('#imageupload-enable').on('click', function () {
+            $imageupload.imageupload('enable');
+            $(this).blur();
+        });
+
+        $('#imageupload-reset').on('click', function () {
+            $imageupload.imageupload('reset');
+            $(this).blur();
+        });
+    </script>
+
+{% endblock %}

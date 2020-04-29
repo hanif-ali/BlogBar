@@ -1,0 +1,64 @@
+<div class="col-lg-3">
+    <label for="youtube_gender_distribution_female_from">{% if language_abbr == 'de' %}Anteil weiblich von{% else %}
+        Percentage female from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="youtube_gender_distribution_female_from"
+            id="youtube_gender_distribution_female_from">
+        <option value="UNDEFINED"
+                {% if 'UNDEFINED' == youtube_gender_distribution_female_from or youtube_gender_distribution_female_from is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for index in range(1, 101) %}
+            <option value="{{ index }}"
+                    {% if youtube_gender_distribution_female_from == index|string %}selected{% endif %}>{{ index }}%
+            </option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-3">
+    <label for="youtube_gender_distribution_female_to">{% if language_abbr == 'de' %}Anteil weiblich bis{% else %}
+        Percentage female to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="youtube_gender_distribution_female_to"
+            id="youtube_gender_distribution_female_to">
+        {% for index in range(1, 101) %}
+            <option value="{{ index }}"
+                    {% if youtube_gender_distribution_female_to == index|string %}selected{% endif %}>{{ index }}%
+            </option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if 'UNDEFINED' == youtube_gender_distribution_female_to or youtube_gender_distribution_female_to is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>
+<div class="col-lg-3">
+    <label for="youtube_gender_distribution_male_from">{% if language_abbr == 'de' %}Anteil männlich von{% else %}
+        Percentage male from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="youtube_gender_distribution_male_from"
+            id="youtube_gender_distribution_male_from">
+        <option value="UNDEFINED"
+                {% if 'UNDEFINED' == youtube_gender_distribution_male_from or youtube_gender_distribution_male_from is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for index in range(1, 101) %}
+            <option value="{{ index }}"
+                    {% if youtube_gender_distribution_male_from == index|string %}selected{% endif %}>{{ index }}%
+            </option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-3">
+    <label for="youtube_gender_distribution_male_to">{% if language_abbr == 'de' %}Anteil männlich bis{% else %}
+        Percentage male to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="youtube_gender_distribution_male_to"
+            id="youtube_gender_distribution_male_to">
+        {% for index in range(1, 101) %}
+            <option value="{{ index }}"
+                    {% if youtube_gender_distribution_male_to == index|string %}selected{% endif %}>{{ index }}%
+            </option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if 'UNDEFINED' == youtube_gender_distribution_male_to or youtube_gender_distribution_male_to is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

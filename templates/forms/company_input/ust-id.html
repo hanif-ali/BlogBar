@@ -1,0 +1,14 @@
+<div class="form-group row">
+    <label for="ust-id" class="col-sm-2 col-form-label col-form-label-sm">
+        <strong>{% if language_abbr == 'de' %}USt.-ID{% else %}VAT ID{% endif %}</strong>
+    </label>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" class="form-control form-control-sm" required="true" id="ust-id" maxlength="11"
+                       name="ust_id" value="{{ ust_id }}"
+                       placeholder="{% if language_abbr == 'de' %}Umsatzsteuer-Identifikationsnummer {% else %}Sales tax identification number{% endif %}">
+            </div>
+        </div>
+    </div>
+</div>

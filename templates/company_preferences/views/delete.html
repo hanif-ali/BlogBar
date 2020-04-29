@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">Einstellungen</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}Profil
+                        löschen{% else %}Delete profile{% endif %}</li>
+                </ol>
+            </nav>
+        </nav>
+        <h1 class="display-4">{% if language_abbr == 'de' %}Profil löschen{% else %}Delete profile{% endif %}</h1>
+        <p>
+            {% if language_abbr == 'de' %}
+                Schade, dass Sie BlogBar nicht weiter nutzen möchten.<br>
+                Wir freuen uns über ein Feedback, warum Sie Ihr Profil löschen möchten:
+            {% else %}
+                So sad that you don't want to use BlogBar anymore.<br>
+                We appreciate your feedback as to why you would like to delete your profile:
+            {% endif %}
+        </p>
+        <form method="POST">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h2 class="card-title">{% if language_abbr == 'de' %}Unwideruflich löschen{% else %}Delete
+                        irrevocably{% endif %}</h2>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input text-danger" id="exampleCheck1"
+                               name="deletePersistent">
+                        <label class="form-check-label text-danger" for="exampleCheck1">{% if language_abbr == 'de' %}
+                            Profil wirklich dauerhaft löschen{% else %}Delete profile irrevocable and
+                            permanent{% endif %}</label>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="deletionReason" class="col-sm-2 col-form-label col-form-label-sm">
+                            <strong>Grund</strong>
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="selectpicker form-control-sm form-control dropdown" required="true"
+                                            name="deletionReason" id="deletionReason">
+                                        <option value="5">{% if language_abbr == 'de' %}Social Media Aktivität wurde
+                                            eingestellt{% else %}Social media activity was
+                                            discontinued{% endif %}</option>
+                                        <option value="6">{% if language_abbr == 'de' %}keine passenden Influencer
+                                            gefunden{% else %}No suitable influencer found{% endif %}</option>
+                                        <option value="7">{% if language_abbr == 'de' %}Preis-Leistungsverhältnis
+                                            gefällt mir nicht{% else %}I do not like price-performance
+                                            ratio{% endif %}</option>
+                                        <option value="8">{% if language_abbr == 'de' %}kein Interesse mehr{% else %}No
+                                            longer interested{% endif %}</option>
+                                        <option value="9">{% if language_abbr == 'de' %}Sonstiges{% else %}
+                                            Other{% endif %}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="submit" class="btn btn-sm btn-outline-primary pn-gl-mt-15 pn-total-width"
+                                   name="submit"
+                                   value="{% if language_abbr == 'de' %}Profil unwiederuflich und dauerhaft löschen{% else %}Delete profile irrevocable and permanent{% endif %}">
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </form>
+    </div>
+
+{% endblock %}

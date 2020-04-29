@@ -1,0 +1,36 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <h1 class="display-4">{% if language_abbr == 'de' %}Meine öffentlichen Kampagnen{% else %}My published
+            campaigns{% endif %}</h1> <span class="text-muted">{% if language_abbr == 'de' %}(aufrufbar über den
+        Marktplatz){% else %}{% endif %}</span>
+        <ul class="list-group list-group-flush">
+            {% for campaign in campaigns %}
+                <li class="list-group-item" id="campaign_{{ campaign["campaign_identifier"] }}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ campaign["campaign_title"] }}
+                        </div>
+                        <div class="col-md-2">
+                            <a href="/{{ language_abbr }}/publiccampagins/{{ campaign["campaign_identifier"] }}"
+                               class="btn btn-sm btn-outline-success pn-total-width">Details</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="/{{ language_abbr }}/publiccampaigns/{{ campaign["campaign_identifier"] }}/edit"
+                               class="btn btn-sm btn-outline-warning pn-total-width">{% if language_abbr == 'de' %}
+                                Bearbeiten{% else %}Edit{% endif %}</a>
+                        </div>
+                        <div class="col-md-2">
+                            <button onclick="delete_public_camapign({{ campaign["campaign_identifier"] }});"
+                                    class="btn btn-sm btn-outline-danger pn-total-width">{% if language_abbr == 'de' %}
+                                Löschen{% else %}Delete{% endif %}</button>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

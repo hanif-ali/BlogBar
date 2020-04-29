@@ -1,0 +1,29 @@
+<div class="col-lg-2">
+    <label for="pinterestFollowerFrom">{% if language_abbr == 'de' %}Follower von{% else %}Follower
+        from{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="pinterestFollowerFrom"
+            id="pinterestFollowerFrom">
+        <option value="UNDEFINED"
+                {% if pinterestFollowerFrom == 'UNDEFINED' or pinterestFollowerFrom is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if pinterestFollowerFrom == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-lg-2">
+    <label for="pinterestFollowerTo">{% if language_abbr == 'de' %}Follower bis{% else %}Follower to{% endif %}</label>
+    <select class="selectpicker form-control-sm form-control dropdown" name="pinterestFollowerTo"
+            id="pinterestFollowerTo">
+        {% for amount in [100, 250, 750, 1000, 1500, 2500, 5000, 7500, 10000, 12500, 15000, 20000, 25000, 30000, 40000, 50000, 750000, 100000, 125000, 250000, 500000, 750000, 1000000, 2000000] %}
+            <option value="{{ amount }}"
+                    {% if pinterestFollowerTo == amount|string %}selected{% endif %}>{{ amount }}</option>
+        {% endfor %}
+        <option value="UNDEFINED"
+                {% if pinterestFollowerTo == 'UNDEFINED' or pinterestFollowerTo is undefined %}selected{% endif %}>
+            beliebig
+        </option>
+    </select>
+</div>

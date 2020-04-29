@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    {% if cookiesConfirmed == True %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2418QFRDRP"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-2418QFRDRP');
+        </script>
+    {% endif %}
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,900;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/lib/fontawesome-free-5.9.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="/static/lib/fileupload/bootstrap-imageupload.min.css">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="/static/css/global.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>BlogBar (InfluencerSearch)</title>
+    {% block head_extension %}
+    {% endblock %}
+</head>
+<body>
+<div>
+    {% block navigation %}
+        <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-info shadow">
+            <img src="/static/img/logo/glass_white.png" width="30px;"><a class="navbar-brand"
+                                                                         style="font-family: Megrim;"
+                                                                         href="/{{ language_abbr }}/"><span
+                style="font-family: Megrim, sans-serif;">BLOGBAR</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    {% if logged_in and (kind == 1 or subscribtion_package == "prime") %}
+                        </li>
+                        <li class="nav-item {{ marketplace_act }}">
+                            <a class="nav-link" href="/{{ language_abbr }}/publiccampaigns"> <i
+                                    class="fas fa-search-dollar"></i>{% if language_abbr == 'de' %}
+                                Kampagnenmarkplatz {% else %} Campaign-marketplace {% endif %} <span
+                                    class="sr-only"></span></a>
+                        </li>
+                    {% endif %}
+                    {% if not logged_in and solution_act == 'active' %}
+                        <li class="nav-item {{ solution_act }}">
+                            <a class="nav-link" href="/{{ language_abbr }}/solution"> Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        {% if solution_act is defined %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#influencer_solution_overview"> <i
+                                        class="fas fa-user-tag"></i> {% if language_abbr == 'de' %}
+                                    Influencer {% else %} Influencers {% endif %} <span class="sr-only"></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#company_solution_overview"> <i class="far fa-building"></i>
+                                    {% if language_abbr == 'de' %} Unternehmen {% else %} Companies {% endif %} <span
+                                            class="sr-only"></span></a>
+                            </li>
+                        {% endif %}
+                    {% elif logged_in and kind == 1 %}
+                        <li class="nav-item {{ profile_act }}">
+                            <a class="nav-link" href="/{{ language_abbr }}/profile"> <i class="far fa-id-card"></i>
+                                {% if language_abbr == 'de' %} Mein Profil {% else %} My profile {% endif %} <span
+                                        class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item {{ preferences_act }}">
+                            <a class="nav-link" href="/{{ language_abbr }}/preferences"> <i
+                                    class="fas fa-sliders-h"></i> {% if language_abbr == 'de' %}
+                                Profilmanagement {% else %} Profilemanagement {% endif %} <span class="sr-only"></span></a>
+                        </li>
+                    {% elif logged_in and kind == 2 %}
+                        <li class="nav-item {{ nonpublic_campaigns_act }}">
+                            <a class="nav-link" href="/{{ language_abbr }}/campaigns"> {% if language_abbr == 'de' %}
+                                Meine Kampagnen {% else %} My campaigns {% endif %} <span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item {{ saved_queries_act }}">
+                            <a class="nav-link" href="/{{ language_abbr }}/saved_queries"> <i class="fas fa-search"></i>
+                                {% if language_abbr == 'de' %} Gespeicherte Suchanfragen {% else %} Saved
+                                    queries {% endif %} <span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item {{ preferences_act }}">
+                            <a class="nav-link" href="/{{ language_abbr }}/preferences"> <i
+                                    class="fas fa-sliders-h"></i> {% if language_abbr == 'de' %}
+                                Einstellungen {% else %} Preferences {% endif %} <span class="sr-only"></span></a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item {{ faq_act }}">
+                        <a class="nav-link" href="/{{ language_abbr }}/faq"> <i class="fas fa-wave-square"></i> FAQ
+                            <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item {{ search_act }}">
+                        <a class="nav-link" href="/{{ language_abbr }}/search">{% if language_abbr == 'de' %}
+                            Suche {% else %} Search {% endif %}</a>
+                    </li>
+                </ul>
+                <div class="btn-group dropleft">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        <span class="text-white"><i class="fas fa-globe"></i></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="set_langauge_to('de')">German (Deutsch)
+                            {% if language_abbr == 'de' %} <i class="fas fa-check"></i>{% endif %}</a>
+                        <a class="dropdown-item" onclick="set_langauge_to('en')">English (Englisch)
+                            {% if language_abbr == 'en' %} <i class="fas fa-check"></i>{% endif %}</a>
+                    </div>
+                </div>
+                {% if not logged_in %}
+                    <a href="/{{ language_abbr }}/login" class="btn text-white"><i class="fas fa-sign-in-alt"> </i>
+                        {% if language_abbr == 'de' %} Einloggen {% else %} Log In {% endif %}</a>
+                {% else %}
+                    <a href="/{{ language_abbr }}/logout" class="btn text-white" id="logoutAnker"><i
+                            class="fas fa-sign-out-alt"> </i>{% if language_abbr == 'de' %} Ausloggen {% else %} Log
+                        Out {% endif %}</a>
+                {% endif %}
+            </div>
+        </nav>
+        </div>
+    {% endblock %}
+
+{% block container %}
+    <h5>Home</h5>
+{% endblock %}
+
+<div class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" id="cookieAlert">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% if language_abbr == 'de' %} Diese Webseite verwendet Cookies {% else %}This website uses cookies{% endif %}</h5>
+            </div>
+            <div class="modal-body">
+                {% if language_abbr == 'de' %}
+                    <p class="text-justify">
+                        Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können
+                        und die Zugriffe auf
+                        unsere Website zu analysieren. Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner für soziale
+                        Medien, Werbung und Analysen weiter. Unsere Partner führen diese Informationen möglicherweise mit weiteren Daten zusammen, die Sie ihnen
+                        bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben.</p>
+                    <p class="text-justify">Detaillierte Informationen über unsere Datenerhebung und Ihre diesbezüglichen Rechte finden Sie in unserer <a
+                            class="btn-link" href="/de/download/privacy_policy">Datenschutzerklärung</a>. Dort können Sie inbesondere nachlesen, wie Sie eine
+                        einmal erteilte Einwilligung in eine Datenerhebung widerrufen können.</p>
+                    <p>Sind Sie damit einverstanden?</p>
+                {% else %}
+                    <p class="text-justify">
+                        We use cookies to personalize content and advertisements, to provide social media features
+                        and the accesses to
+                        to analyze our website. We also provide information about your use of our website to our social partners.
+                        Media, Advertising and Analysis. Our partners may merge this information with other data that you provide to them.
+                        or which they have collected as part of your use of the Services.</p>
+                    <p class="text-justify">Detailed information about our data collection and your rights in this regard can be found in our <a
+                            class="btn-link" href="/en/download/privacy_policy">Privacy Statement</a>. In particular, you can read there how to create a
+                        can revoke consent to a data collection once it has been given.</p>
+                    <p>Do you agree?</p>
+                {% endif %}
+            </div>
+
+            <div class="modal-footer">
+                <button onclick="sendDecision(false);" type="button" class="btn btn-outline-secondary">{% if language_abbr == "de" %}Nein, nur notwendige
+                    Cookies verwenden{% else %}No, use only necessary cookies{% endif %}</button>
+                <button onclick="sendDecision(true);" type="button" class="btn btn-outline-primary">{% if language_abbr == "de" %}Ja, einverstanden{% else %}
+                    Yes, I agree{% endif %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script lang="js">
+    function sendDecision(decision) {
+        const url = '/api/cookieDecision';
+        const data = {
+            decision: decision.toString(),
+        };
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(data => {
+            $('#cookieAlert').modal('hide');
+        }).catch(error => console.error(error));
+    }
+</script>
+
+{% if cookiesConfirmed == None %}
+    <script lang="js">
+        window.onload = function () {
+            $('#cookieAlert').modal('show');
+        };
+    </script>
+{% endif %}
+
+{% include "layouts/supporting_files/footer.html" %}
+</div>
+<script src="/static/lib/jquery/jquery.min.js"></script>
+<script SRC="/static/lib/popper/popper.min.js"></script>
+<script src="/static/lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="/static/lib/bootstrap-select-modern/select.js"></script>
+<script src="/static/js/sender.js"></script>
+<script src="/static/js/modal_handling.js"></script>
+<script src="/static/js/language_handler.js"></script>
+</body>
+</html>

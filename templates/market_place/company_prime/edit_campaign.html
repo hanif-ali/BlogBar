@@ -1,0 +1,139 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-25">
+        <div class="display-4">{% if language_abbr == 'de' %}Kampagne bearbeiten{% else %}Edit Campaign{% endif %}</div>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label for="campaign_name" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Kampagnenname{% else %}campaign name{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" maxlength="75" class="form-control font-weight-bold" required="true"
+                                   id="campaign_name" name="campaign_name" value="{{ campaign_title }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="campaign_name" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Beschreibung{% else %}Description of the{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea required="true" id="campaign_name" maxlength="500"
+                                      class="form-control form-control-sm"
+                                      name="campaign_description">{{ campaign_description }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="price" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Themenbereich{% else %}subject area{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class="selectpicker form-control-sm form-control dropdown" data-live-search="true"
+                                    required="true" name="topic" id="topic">
+                                {% if language_abbr == 'de' %}
+                                    {% set categories = ['Auto und Motorrad','Beauty / Kosmetik','Bildung','Computer und Elektronik','DIY','Design',
+                                    'Erfolg und Karriere','Essen und Trinken / Food','Fashion / Mode','Finanzen','Fotografie','Frauen / Männer',
+                                    'Garten und Natur','Gesellschaft und Politik','Gesundheit','Home und Living','Humor und Spaß','Kinder und Familie',
+                                    'Kino, Film, TV','Kunst und Kultur','Liebe und Sexualität','Lifestyle','Luxus','Marketing','Musik','Recht und Gesetz',
+                                    'Reise / Travel','Social Media','Spiele und Gaming','Sport und Fitness','Tattos','Technik','Tiere'] %}
+                                {% else %}
+                                    {% set categories = ['Car and Motorcycle','Beauty / Cosmetics','Education','Computers and Electronics','DIY','Design',
+                                    'success and career','food and drink / food','fashion / fashion','finances','photography','women / men',
+                                    'Garden and nature', 'Society and politics', 'Health', 'Home and living', 'Humour and fun', 'Children and family',
+                                    'cinema, film, TV','art and culture','love and sexuality','lifestyle','luxury','marketing','music','law and order',
+                                    'Travel','Social Media','Games and Gaming','Sports and Fitness','Tattos','Technology','Animals'] %}
+                                {% endif %}
+
+                                {% for category in categories %}
+                                    <option value="{{ loop.index }}"
+                                            {% if loop.index|int == topic_identifier %}selected{% endif %}>{{ category }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="format" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>Format</strong>
+                </label>
+                <div class="col-sm-10">
+                    <select class="selectpicker form-control-sm form-control dropdown" required name="format"
+                            id="format">
+                        <option value="1" {% if format == "Pictures" %}selected{% endif %}>Bilder</option>
+                        <option value="2" {% if format == "Videos" %}selected{% endif %}>Video</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="channels" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Kanäle{% else %}Channels{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <select class="selectpicker form-control-sm form-control dropdown" multiple required name="channels"
+                            id="channels">
+                        <option value="1" {% if 1 in channel_identifiers %}selected{% endif %}>Instagram</option>
+                        <option value="2" {% if 2 in channel_identifiers %}selected{% endif %}>Facebook</option>
+                        <option value="3" {% if 3 in channel_identifiers %}selected{% endif %}>YouTube</option>
+                        <option value="4" {% if 4 in channel_identifiers %}selected{% endif %}>Pinterest</option>
+                        <option value="5" {% if 5 in channel_identifiers %}selected{% endif %}>Blog</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="format" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Vergütung{% else %}remuneration{% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <select class="selectpicker form-control-sm form-control dropdown" required name="remuneration"
+                            id="format">
+                        <option value="1" {% if remuneration == '1' %}selected{% endif %}>{% if language_abbr == 'de' %}
+                            Bartausch{% else %}cash exchange{% endif %}</option>
+                        <option value="2" {% if remuneration == '2' %}selected{% endif %}>{% if language_abbr == 'de' %}
+                            Rabattcode{% else %}discount code{% endif %}</option>
+                        <option value="3" {% if remuneration == '3' %}selected{% endif %}>Cash</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="format" class="col-sm-2 col-form-label col-form-label-sm">
+                    <strong>{% if language_abbr == 'de' %}Mehr Details (PDF){% else %}More details
+                        (PDF){% endif %}</strong>
+                </label>
+                <div class="col-sm-10">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                   name="pdf_further_information" aria-describedby="inputGroupFileAddon01"
+                                   accept="application/pdf">
+                            <label class="custom-file-label" for="inputGroupFile01">Details-PDF</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-sm btn-outline-success pn-total-width" value="Änderungen speichern">
+        </form>
+    </div>
+
+{% endblock %}

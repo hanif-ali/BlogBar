@@ -1,0 +1,90 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+
+    <form class="container pn-gl-mt-75" method="POST" enctype="multipart/form-data">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences">{% if language_abbr == 'de' %}
+                    Profilmanagement{% else %}Profilemanagement{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="/{{ language_abbr }}/preferences/profile">
+                    {% if language_abbr == 'de' %}Profil{% else %}Profile{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{% if language_abbr == 'de' %}
+                    Profilbilder{% else %}Profile pictures{% endif %}</li>
+            </ol>
+        </nav>
+        <h1 class="display-4">{% if language_abbr == 'de' %}Profilbilder{% else %}profile pictures{% endif %}</h1>
+        <ul class="list-group list-group-flush">
+
+            {% for index in (0, 1, 2, 3, 4) %}
+
+                <li class="list-group-item">
+                    <h3 class="">{% if loop.index0 == 0 %}{% if language_abbr == 'de' %}Titelbild{% else %}Cover
+                        image{% endif %}{% else %}{% if language_abbr == 'de' %}Bild{% else %}image{% endif %} #
+                        {{ loop.index }}{% endif %}</h3>
+                    <img src="{% if images[loop.index0] != None %}{{ images[loop.index0] }}{% endif %}"
+                         class="{% if images[loop.index0] == None %}hidden{% endif %}" id="image_{{ loop.index0 }}"
+                         width="25%">
+                    <div class="imageupload panel panel-default {% if images[loop.index0] != None %}hidden{% endif %}"
+                         id="add_image_{{ loop.index0 }}">
+                        <div class="file-tab panel-body">
+                            <label class="btn btn-outline-dark btn-file">
+                                <span>{% if language_abbr == 'de' %}Foto hinzufügen{% else %}Add a
+                                    photo{% endif %}</span>
+                                <input type="file" name="image_file_{{ loop.index0 }}">
+                            </label>
+                            <button type="button" class="btn btn-outline-danger">{% if language_abbr == 'de' %}
+                                Löschen{% else %}Delete{% endif %}</button>
+                        </div>
+                    </div>
+                    <div class="pn-gl-mt-15">
+                        <a class="btn btn-outline-danger btn-sm {% if images[loop.index0] == None %}hidden{% endif %}"
+                           id="img_add_btn_{{ loop.index0 }}"
+                           onclick="delete_profile_img({{ loop.index0 }}, '{{ images[loop.index0] }}')"
+                           style="width: 33%;">{% if language_abbr == 'de' %}Bild löschen{% else %}Delete
+                            image{% endif %}</a>
+                    </div>
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+        <div class="row pn-gl-mt-25">
+            <input type="submit" class="btn btn-sm btn-outline-success col-md-4" value="Bilder speichern">
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="/static/lib/fileupload/bootstrap-imageupload.min.js"></script>
+    <script src="/static/js/imageupload_delete.js"></script>
+    <script>
+        function delete_profile_img(identifier, href) {
+            delete_image(identifier);
+            delete_profile_image(href);
+        }
+
+        var $imageupload = $('.imageupload');
+        $imageupload.imageupload();
+
+        $('#imageupload-disable').on('click', function () {
+            $imageupload.imageupload('disable');
+            $(this).blur();
+        });
+
+        $('#imageupload-enable').on('click', function () {
+            $imageupload.imageupload('enable');
+            $(this).blur();
+        });
+
+        $('#imageupload-reset').on('click', function () {
+            $imageupload.imageupload('reset');
+            $(this).blur();
+        });
+    </script>
+{% endblock %}

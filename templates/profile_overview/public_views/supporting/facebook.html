@@ -1,0 +1,72 @@
+{% if influencer_data["is_listed_on_facebook"] is defined %}
+    <div class="card pn-gl-mt-15">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-9">
+                    <h5 class="card-title"><i class="fab fa-facebook" style="color:#bcbcbc;"></i> Facebook</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        @{{ influencer_data["is_listed_on_facebook"]["facebook_username"] }}</h6>
+                </div>
+                <div class="col-md-3">
+                    <div class="display-3 text-right inline-group" style="padding-right: 20px;">
+                        <i class="fab fa-facebook" style="color:#bcbcbc;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ influencer_data["is_listed_on_facebook"]["facebook_follower_amount"] }}
+                        Follower
+                    </li>
+                    <li class="list-group-item">{% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_facebook"]["facebook_post_amount"] }} Posts
+                        {% else %}{% if language_abbr == 'de' %}Postanzahl{% else %}Number of posts{% endif %}:
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">Content: {% if subscription_packet == "prime" %}
+                        {% for content in influencer_data["is_listed_on_facebook"]["content_types"] %}{{ content }}
+                            , {% endfor %}{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Rhythmus{% else %}Rhythm{% endif %}:
+                        {% if subscription_packet == "prime" %}
+                            {{ influencer_data["is_listed_on_facebook"]["facebook_rhythm"] }}{% else %}
+                            <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible
+                                from PRIME{% endif %}</span> {% endif %}</li>
+                    {#                <li class="list-group-item">aktive Länder: {% for deal in influencer_data["is_listed_on_facebook"]["languages"] %}{{ deal }}, {% endfor %}</li> TODO: Implement this!#}
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Geschlechtsverteilung{% else %}Gender
+                        distribution{% endif %}: {% if subscription_packet == "pro" or subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_facebook"]["facebook_gender_distribution_male"] }}% männlich,
+                        {{ influencer_data["is_listed_on_facebook"]["facebook_gender_distribution_female"] }}%
+                        weiblich{% else %}
+                        <span class="text-primary"> {% if language_abbr == 'de' %}ab PRO sichtbar{% else %}visible from
+                            PRO{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Seitenaktivität{% else %}Page
+                        activity{% endif %}: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_facebook"]["facebook_page_activity_amount"] }}{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Seitenaufrufe{% else %}Page
+                        views{% endif %}: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_facebook"]["facebook_page_views"] }}{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">Likes: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_facebook"]["facebook_likes_amount"] }}{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Reichweite{% else %}Range{% endif %}:
+                        {% if subscription_packet == "prime" %}
+                            {{ influencer_data["is_listed_on_facebook"]["facebook_reach_value"] }}{% else %}
+                            <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible
+                                from PRIME{% endif %}</span> {% endif %}</li>
+                    <li class="list-group-item">{% if language_abbr == 'de' %}Beitragsinteraktionen{% else %}
+                        Contribution interactions{% endif %}: {% if subscription_packet == "prime" %}
+                        {{ influencer_data["is_listed_on_facebook"]["facebook_post_interaction"] }}{% else %}
+                        <span class="text-danger">{% if language_abbr == 'de' %}ab PRIME sichtbar{% else %}visible from
+                            PRIME{% endif %}</span> {% endif %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endif %}

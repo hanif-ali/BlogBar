@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-75">
+        <div class="alert" style="background-color: #f4f4f4" role="alert">
+            <h4 class="alert-heading">{% if language_abbr == 'de' %}Bitte bestätige Deine Mail-Adresse!{% else %}Please
+                confirm your email address!{% endif %}</h4>
+            <p>{% if language_abbr == 'de' %}Klicke einfach auf den Link in der Email.{% else %}Just click on the link
+                in the email.{% endif %}</p>
+            <p>{% if language_abbr == 'de' %}Prüfe ggf. auch deinen Spam-Ordner.{% else %}Check your spam-directory,
+                too.{% endif %}</p>
+            <p>Falls du keine Mail erhalten haben solltest, kannst du dich bei unserem technischen Support melden: <a
+                    class="text-info" href="mailto:technical-support@blogbar.eu">technical-support@blogbar.eu</a></p>
+            <hr>
+            <p class="mb-0">{% if language_abbr == 'de' %}Zur Anmeldemaske{% else %}To the Sign-In form{% endif %}: <a
+                    class="text-info" href="/{{ language_abbr }}/login">Sign-In</a></p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+
+{% block container %}
+
+    <div class="container pn-gl-mt-75">
+        <h1 class="display-4">{% if language_abbr == 'de' %}Gespeicherte Suchanfragen{% else %}Saved
+            queries{% endif %}</h1>
+        <ul class="list-group-flush list-group">
+            {% for query in queries %}
+                <li class="list-group-item" id="stored_query_{{ query[0] }}">
+                    <h2>{% if language_abbr == 'de' %}Suchtitel{% else %}Title{% endif %}: {{ query[3] }}</h2>
+                    <h5 class="text-muted">{% if language_abbr == 'de' %}erstellt am{% else %}Creation Date{% endif %}
+                        : {{ query[1] }}</h5>
+                    <div class="row">
+                        <a href="/{{ language_abbr }}/search?{{ query[2] }}"
+                           class="col-md-6 btn btn-sm btn-outline-success">
+                            {% if language_abbr == 'de' %}{% else %}Execute {% endif %}{{ query[3] }}
+                            {% if language_abbr == 'de' %}ausführen{% endif %}</a>
+                        <button onclick="delete_stored_query('{{ query[0] }}')"
+                                class="col-md-6 btn btn-sm btn-outline-danger">
+                            {% if language_abbr == 'de' %}{% else %}Delete {% endif %}{{ query[3] }}
+                            {% if language_abbr == 'de' %}löschen{% endif %}</button>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

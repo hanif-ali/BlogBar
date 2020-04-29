@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <link rel="stylesheet" href="/static/lib/fontawesome-free-5.9.0-web/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="/static/lib/fileupload/bootstrap-imageupload.min.css">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="/static/css/global.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <title>BlogBar –ADMINDASHBOARD</title>
+</head>
+<body>
+<div>
+    {% if admin == True %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/admin">BlogBar - Administration</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/admin">Startseite <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/kpis">Kennzahlen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/usermanagement">Usermanagement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/d">Profilmeldungen</a>
+                    </li>
+                </ul>
+                <a href="/{{ language_abbr }}/logout" class="btn btn-outline-success my-2 my-sm-0">Ausloggen</a>
+
+            </div>
+        </nav>
+    {% endif %}
+    {% block container %}
+        <h5>ADMIN</h5>
+    {% endblock %}
+
+</div>
+<script src="/static/js/charts.js"></script>
+<script src="/static/lib/jquery/jquery.min.js"></script>
+<script SRC="/static/lib/popper/popper.min.js"></script>
+<script src="/static/lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="/static/lib/bootstrap-select-modern/select.js"></script>
+<script src="/static/js/sender.js"></script>
+<script src="/static/js/dashboard_rest_getter.js"></script>
+<script src="/static/js/modal_handling.js"></script>
+</body>
+</html>
