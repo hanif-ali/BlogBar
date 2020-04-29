@@ -7,15 +7,15 @@
             <div style="margin-top: 50px;">
                 <img src="/static/img/logo/main.png" width="40%">
             </div>
-            <div class="display-4 text-center" style="margin-top: 50px;color:white;font-size:34px">{% if language_abbr == 'de' %} Wir sind "DIE"
+            <div class="display-4 text-center" style="margin-top: 50px;color:white;font-size:34px;font-weight: 600">{% if language_abbr == 'de' %} Wir sind "DIE"
                 Blogger Suchmaschine {% else %} We are "THE" Blogger search engine! {% endif %}</div>
             <br>
             <p class="" style="color:white">
                 {% if language_abbr == 'de' %}
-                    <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span>, die kostenlose Suchmaschine
+                    BLOGBAR, die kostenlose Suchmaschine
                     für Influencer und Blogger.
                 {% else %}
-                    <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span>, the free search engine for
+                    BLOGBAR, the free search engine for
                     influencers and bloggers
                 {% endif %}
             </p>
@@ -171,7 +171,7 @@
                                 <li>1 {% if language_abbr == 'de' %} Bild {% else %} Image {% endif %}</li>
                             </ul>
                         </div>
-                        <a href="/{{ language_abbr }}/search" class="btn btn-sm btn-outline-info"
+                        <a href="/{{ language_abbr }}/search" class="ws-button"
                             style="margin: 20px">
                             {% if language_abbr == 'de' %} Kostenlose Suche starten {% else %} Find you
                                 influencer {% endif %}
@@ -214,7 +214,7 @@
                                     to Instagram profile {% endif %}</li>
                             </ul>
                         </div>
-                        <a href="/{{ language_abbr }}/signupcomp" class="btn btn-sm btn-outline-info"
+                        <a href="/{{ language_abbr }}/signupcomp" class="ws-button"
                             style="margin: 20px">{% if language_abbr == 'de' %} Registrieren und Buchen {% else %}
                             Register and book now {% endif %}</a>
                     </div>
@@ -267,12 +267,13 @@
                                     Market-place {% endif %}</li>
                             </ul>
                         </div>
-                        <a href="/{{ language_abbr }}/signupcomp" class="btn btn-sm btn-outline-info"
+                        <a href="/{{ language_abbr }}/signupcomp" class="ws-button"
                             style="margin: 20px">{% if language_abbr == 'de' %} Registrieren und Buchen {% else %}
                             Register and book now {% endif %}</a>
                     </div>
                 </div>
 
+<!-----
                 <div class="card">
                     <div class="card-body small" style="background-color: rgba(255, 255, 255, 0.4) !important;">
                         {% if language_abbr == 'de' %}  *= Nicht alle Angaben sind für jeden Social Media Kanal
@@ -283,38 +284,40 @@
                         <a href="/{{ language_abbr }}/download/kpis">{% if language_abbr == 'de' %}Hier finden Sie
                             eine detaillierte Auflistung{% else %}Here you will find a detailed
                             listing{% endif %}</a>
+                            ----->
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="row pn-gl-mt-75">
+        <div class="row d5">
             <div class="col-sm-12 pn-solution-elev-pitch">
+                <img src="/static/img/bloggers.png" class="bloggers" />
                 <h1 class="text-left container elev-pitch-header">
-                    <span class="text-info">{% if language_abbr == 'de' %} Vorteile für {% else %} Advantages
-                        for {% endif %}<br> {% if language_abbr == 'de' %} Influencer {% else %} Influencers {% endif %}</span>
+                    <span class="text-info">{% if language_abbr == 'de' %} VORTEILE FÜR {% else %} ADVANTAGES
+                        FOR {% endif %}<br> {% if language_abbr == 'de' %} INFLUENCER {% else %} INFLUENCERS {% endif %}</span>
                 </h1>
                 <div class="font-weight-light text-justify container pn-gl-mt-35">
                     <p class="font-weight-light">{% if language_abbr == 'de' %} Suchst du noch selber nach Werbepartnern
                         und Kooperationen??? Lass dich finden!!! {% else %} Are you still looking for advertising
-                        partners and cooperations??? Let them find you!!{% endif %}</p>
+                        partners and cooperations??? Let them find you!!{% endif %}
+                        </p>
                     <p class="font-weight-light">{% if language_abbr == 'de' %} Registriere dich bei
-                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> und lass dich einfach von
+                        BLOGBAR und lass dich einfach von
                         Unternehmen und Agenturen finden, damit du Zeit hast für das was dir am meisten Spaß macht:
                         tolle Kampagnen kreieren, die deine Community interessiert. {% else %} Register at
-                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> and let companies and agencies
+                        BLOGBAR and let companies and agencies
                         find you, so that you have time for what you enjoy the most: creating great campaigns that
                         interest your community. {% endif %}</p>
                     <p class="font-weight-light">{% if language_abbr == 'de' %} Egal ob Insta, Facebook, YouTube,
                         Pinterest oder dein eigener Blog,
-                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> ist für alle Micro- und Macro
+                        BLOGBAR ist für alle Micro- und Macro
                         Influencer geeignet {% else %} No matter if Insta, Facebook, YouTube or your own blog,
-                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> is suitable for all micro and
+                        BLOGBAR is suitable for all micro and
                         macro influencers. {% endif %}</p>
 
                     <p>{% if language_abbr == 'de' %} Werde ganz easy Teil des
-                        <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span> Netzwerks: {% else %} Become an
-                        easy part of the <span style="font-family: 'Megrim', sans-serif;">BLOGBAR</span>
+                        BLOGBAR Netzwerks: {% else %} Become an
+                        easy part of the BLOGBAR
                         network: {% endif %}</p>
                     <ul class="font-weight-light">
                         <li>{% if language_abbr == 'de' %} registriere dich kostenlos {% else %} register for
@@ -351,8 +354,17 @@
                             you in campaigns.
                         {% endif %}
                     </p>
-                    <a href="/{{ language_abbr }}/signupinfl" class="btn btn-sm btn-outline-info">
+                    <a href="/{{ language_abbr }}/signupinfl" class="ws-button">
                         {% if language_abbr == 'de' %} Jetzt Profil anlegen {% else %} Sign Up now {% endif %}</a>
+                    <a  style="margin-top: 50px" href="/{{ language_abbr }}/signupinfl" class="ws-button">
+                        {% if language_abbr == 'de' %} Jetzt Profil anlegen {% else %} Sign Up now {% endif %}</a>
+                </div>
+
+                <div class="icons">
+                    <img src="/static/img/icons/register.png"/>
+                    <img src="/static/img/icons/profile.png"/>
+                    <img src="/static/img/icons/girl.png"/>
+                    <img src="/static/img/icons/money.png"/>
                 </div>
             </div>
         </div>

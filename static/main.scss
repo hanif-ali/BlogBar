@@ -1,6 +1,6 @@
 body{
     background: url("/static/img/background.jpg");
-    background-size: contain;
+    background-size: cover;
     background-position: left 0px top 10px;
     background-attachment: fixed;
     font-family: "Nunito Sans", sans-serif !important;
@@ -20,6 +20,19 @@ $theme-colors: (
 .main-form {
     width: 450px;
     margin: auto;
+}
+
+.div-header{
+    font-size: 45px;
+    text-transform: capitalize;
+    letter-spacing: 5px;
+    line-height: 50px;
+}
+
+
+.d3, .d4, .d5, .d6 {margin-top: 75px}
+.d2, .d3, .d5{
+    padding: 100px 15% 100px 15%;
 }
 
 .d1{
@@ -45,17 +58,10 @@ $theme-colors: (
 
 .d2{
     background: white;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-left: 15%;
-    padding-right: 15%;
-
     .elev-pitch-header{
-        font-size: 45px;
-        font-weight: 900;
-        letter-spacing: 5px;
-        margin-bottom: 50px;
+        @extend .div-header;
     }
+
     .pn-solution-elev-pitch{
         display: flex;
         flex-direction: row;
@@ -70,14 +76,9 @@ $theme-colors: (
 
 
 .d3{
-    margin-top: 75px;
     background: white;
-    padding: 100px 20% 100px 16%;
     .elev-pitch-header{
-        font-size: 45px;
-        text-transform: capitalize;
-        letter-spacing: 5px;
-        line-height: 50px;
+        @extend .div-header;
     }
     p{
         font-size: 15px;
@@ -104,8 +105,22 @@ $theme-colors: (
 
 
 .d4{
-    margin-top: 75px;
-    padding-bottom: 100px;
-    padding-top: 100px;
+    padding-bottom: 50px;
+    padding-top: 50px;
     background: rgba(#57BBBF, 0.7);
+}
+
+.d5{
+    background: white;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    .elev-pitch-header{
+        @extend .div-header;
+    }
+    .bloggers{
+        float: right;
+        margin-left: 10px;
+        height: 400px;
+    }
 }

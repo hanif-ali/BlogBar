@@ -1,6 +1,6 @@
 body {
   background: url("/static/img/background.jpg");
-  background-size: contain;
+  background-size: cover;
   background-position: left 0px top 10px;
   background-attachment: fixed;
   font-family: "Nunito Sans", sans-serif !important;
@@ -10574,6 +10574,21 @@ a.text-dark:hover, a.text-dark:focus {
   margin: auto;
 }
 
+.div-header, .d2 .elev-pitch-header, .d3 .elev-pitch-header, .d5 .elev-pitch-header {
+  font-size: 45px;
+  text-transform: capitalize;
+  letter-spacing: 5px;
+  line-height: 50px;
+}
+
+.d3, .d4, .d5, .d6 {
+  margin-top: 75px;
+}
+
+.d2, .d3, .d5 {
+  padding: 100px 15% 100px 15%;
+}
+
 .d1 {
   margin-top: 150px;
 }
@@ -10599,17 +10614,6 @@ a.text-dark:hover, a.text-dark:focus {
 
 .d2 {
   background: white;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  padding-left: 15%;
-  padding-right: 15%;
-}
-
-.d2 .elev-pitch-header {
-  font-size: 45px;
-  font-weight: 900;
-  letter-spacing: 5px;
-  margin-bottom: 50px;
 }
 
 .d2 .pn-solution-elev-pitch {
@@ -10631,16 +10635,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .d3 {
-  margin-top: 75px;
   background: white;
-  padding: 100px 20% 100px 16%;
-}
-
-.d3 .elev-pitch-header {
-  font-size: 45px;
-  text-transform: capitalize;
-  letter-spacing: 5px;
-  line-height: 50px;
 }
 
 .d3 p {
@@ -10672,9 +10667,20 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .d4 {
-  margin-top: 75px;
-  padding-bottom: 100px;
-  padding-top: 100px;
+  padding-bottom: 50px;
+  padding-top: 50px;
   background: rgba(87, 187, 191, 0.7);
+}
+
+.d5 {
+  background: white;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.d5 .bloggers {
+  float: right;
+  margin-left: 10px;
+  height: 400px;
 }
 /*# sourceMappingURL=main.css.map */
