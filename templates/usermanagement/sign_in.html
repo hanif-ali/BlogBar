@@ -7,8 +7,8 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="card text-center">
-                    <div class="card-body">
-                        <h1 class="display-4">Sign-In</h1>
+                    <div class="card-body" style="padding: 50px;">
+                        <h1 style="font-weight:700;font-size:40px;">SIGN IN</h1>
                         <p class="text-muted">{% if language_abbr == 'de' %}als Influencer oder Unternehmen {% else %}as
                             influencer or company{% endif %}</p>
                         <p class="card-text">
@@ -18,10 +18,10 @@
                             {% endif %}
                             <input type="email" required {% if mail %}value="{{ mail }}"{% endif %} name="mail"
                                    id="mail" class="form-control form-control-sm pn-gl-mt-15"
-                                   placeholder="eMail-{% if language_abbr == 'de' %}Adresse{% else %}Address{% endif %}">
+                                   placeholder="Email {% if language_abbr == 'de' %}Adresse{% else %}Address{% endif %}">
                             <input type="password" required name="pwd" class="form-control form-control-sm pn-gl-mt-15"
                                    placeholder="{% if language_abbr == 'de' %}Passwort{% else %}Passwort{% endif %}">
-                            <input type="submit" class="pn-total-width btn btn-sm btn-outline-dark pn-gl-mt-15"
+                            <input type="submit" class="pn-total-width ws-button" style="margin-top: 30px;"
                                    id="submitLogin"
                                    value="{% if language_abbr == 'de' %}Einloggen{% else %}Log in{% endif %}">
                         </form>
