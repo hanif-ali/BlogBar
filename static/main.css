@@ -10689,4 +10689,61 @@ a.text-dark:hover, a.text-dark:focus {
   margin-left: 10px;
   height: 400px;
 }
+
+/*Cookie Consent Begin*/
+#cookieConsent {
+  background-color: rgba(20, 20, 20, 0.8);
+  min-height: 26px;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 26px;
+  padding: 8px 0 8px 30px;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  z-index: 9999;
+}
+
+#cookieConsent a {
+  color: #4B8EE7;
+  text-decoration: none;
+}
+
+#closeCookieConsent:hover {
+  color: #FFF;
+}
+
+#cookieConsent a.cookieConsentOK {
+  background-color: gray;
+  color: #000;
+  display: inline-block;
+  padding: 0 20px;
+  cursor: pointer;
+  float: right;
+  margin: 0 60px 0 10px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#cookieConsent a.cookieConsentOK:hover {
+  background-color: transparent;
+  color: white;
+  -webkit-box-shadow: inset 0px 0px 0px 2px black;
+          box-shadow: inset 0px 0px 0px 2px black;
+}
+
+#cookieConsent .text {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+/*Cookie Consent End*/
 /*# sourceMappingURL=main.css.map */

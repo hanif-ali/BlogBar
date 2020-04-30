@@ -131,3 +131,48 @@ $theme-colors: (
         height: 400px;
     }
 }
+
+/*Cookie Consent Begin*/
+#cookieConsent {
+    background-color: rgba(20,20,20,0.8);
+    min-height: 26px;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 26px;
+    padding: 8px 0 8px 30px;
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: row;
+    z-index: 9999;
+}
+#cookieConsent a {
+    color: #4B8EE7;
+    text-decoration: none;
+}
+#closeCookieConsent:hover {
+    color: #FFF;
+}
+#cookieConsent a.cookieConsentOK {
+    background-color: gray;
+    color: #000;
+    display: inline-block;
+    padding: 0 20px;
+    cursor: pointer;
+    float: right;
+    margin: 0 60px 0 10px;
+    transition: all 0.5s;
+}
+#cookieConsent a.cookieConsentOK:hover {
+    background-color: transparent;
+    color: white;
+    box-shadow: inset 0px 0px 0px 2px black;
+}
+
+#cookieConsent .text{
+    flex-grow:1;
+}
+/*Cookie Consent End*/

@@ -139,83 +139,71 @@
     <h5>Home</h5>
 {% endblock %}
 
-<div class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" id="cookieAlert">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">{% if language_abbr == 'de' %} Diese Webseite verwendet Cookies {% else %}This website uses cookies{% endif %}</h5>
-            </div>
-            <div class="modal-body">
-                {% if language_abbr == 'de' %}
-                    <p class="text-justify">
-                        Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können
-                        und die Zugriffe auf
-                        unsere Website zu analysieren. Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner für soziale
-                        Medien, Werbung und Analysen weiter. Unsere Partner führen diese Informationen möglicherweise mit weiteren Daten zusammen, die Sie ihnen
-                        bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben.</p>
-                    <p class="text-justify">Detaillierte Informationen über unsere Datenerhebung und Ihre diesbezüglichen Rechte finden Sie in unserer <a
-                            class="btn-link" href="/de/download/privacy_policy">Datenschutzerklärung</a>. Dort können Sie inbesondere nachlesen, wie Sie eine
-                        einmal erteilte Einwilligung in eine Datenerhebung widerrufen können.</p>
-                    <p>Sind Sie damit einverstanden?</p>
-                {% else %}
-                    <p class="text-justify">
-                        We use cookies to personalize content and advertisements, to provide social media features
-                        and the accesses to
-                        to analyze our website. We also provide information about your use of our website to our social partners.
-                        Media, Advertising and Analysis. Our partners may merge this information with other data that you provide to them.
-                        or which they have collected as part of your use of the Services.</p>
-                    <p class="text-justify">Detailed information about our data collection and your rights in this regard can be found in our <a
-                            class="btn-link" href="/en/download/privacy_policy">Privacy Statement</a>. In particular, you can read there how to create a
-                        can revoke consent to a data collection once it has been given.</p>
-                    <p>Do you agree?</p>
-                {% endif %}
-            </div>
+<div id="cookieConsent">
+    <span class="text">
+        {% if language_abbr=="de"%}
+            Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern. 
+            Wenn Sie diese Website weiterhin besuchen, stimmen Sie der Verwendung von Cookies zu.
+        {% else %}
+            This website is using cookies to enhance your experience. By continuing
+            to visit this website, you agree to our use of cookies. 
+        {% endif %}
+        <a href="/{{language_abbr}}/download/privacy_policy" target="_blank">
+            {% if language_abbr=="de" %}Mehr Info{%else%}More Info{%endif%}
+        </a> 
+    </span>
 
-            <div class="modal-footer">
-                <button onclick="sendDecision(false);" type="button" class="btn btn-outline-secondary">{% if language_abbr == "de" %}Nein, nur notwendige
-                    Cookies verwenden{% else %}No, use only necessary cookies{% endif %}</button>
-                <button onclick="sendDecision(true);" type="button" class="btn btn-outline-primary">{% if language_abbr == "de" %}Ja, einverstanden{% else %}
-                    Yes, I agree{% endif %}</button>
-            </div>
-        </div>
-    </div>
+    <a class="cookieConsentOK">
+        {% if language_abbr=="de" %}Akzeptieren und schließen{%else%}Accept And Close{%endif%}
+    </a>
+
 </div>
 
 <script lang="js">
-    function sendDecision(decision) {
-        const url = '/api/cookieDecision';
-        const data = {
-            decision: decision.toString(),
-        };
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(data => {
-            $('#cookieAlert').modal('hide');
-        }).catch(error => console.error(error));
-    }
 </script>
-
-{% if cookiesConfirmed == None %}
-    <script lang="js">
-        window.onload = function () {
-            $('#cookieAlert').modal('show');
-        };
-    </script>
-{% endif %}
 
 {% include "layouts/supporting_files/footer.html" %}
 </div>
 <script src="/static/lib/jquery/jquery.min.js"></script>
 <script SRC="/static/lib/popper/popper.min.js"></script>
 <script src="/static/lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/static/lib/bootstrap-select-modern/select.js"></script>
 <script src="/static/js/sender.js"></script>
 <script src="/static/js/modal_handling.js"></script>
 <script src="/static/js/language_handler.js"></script>
+
+{% if cookiesConfirmed == None %}
+
+    <script>
+        function sendDecision(decision) {
+            const url = '/api/cookieDecision';
+            const data = {
+                decision: decision.toString(),
+            };
+
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(data => {
+                $('#cookieAlert').modal('hide');
+            }).catch(error => console.error(error));
+        }
+
+            // Script for the cookie notification
+            setTimeout(function () {
+            $("#cookieConsent").css("display", "flex").hide().fadeIn(300);
+        }, 2000);
+        $("#closeCookieConsent, .cookieConsentOK").click(function() {
+            sendDecision(true)
+            $("#cookieConsent").fadeOut(200);
+    });
+    </script>
+
+{% endif %}
+
 </body>
 </html>
