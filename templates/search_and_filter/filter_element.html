@@ -1,4 +1,4 @@
-<div>
+<div style="background:rgba(255, 255, 255, 0.8); padding: 50px; border-radius: 5px;" >
     <form method="GET">
         <div class="pn-form-divider"></div>
         <div class="heading">{% if language_abbr == 'de' %} Influencerbezogen {% else %} Influencer
@@ -48,13 +48,13 @@
 
         <div class="row">
             <div class="col-md-4 pn-gl-mt-35">
-                <input type="submit" class="pn-total-width pn-gl-mt-15 btn btn-outline-info btn-sm text-center"
+                <input type="submit" class="pn-total-width pn-gl-mt-15 ws-button text-center"
                        id="performSearch"
                        value="{% if language_abbr == 'de' %}Suche starten{% else %}Start search{% endif %}">
             </div>
             <div class="col-md-4 pn-gl-mt-35">
                 {% if logged_in and kind == 2 and channelSelect %}
-                    <button type="button" class="pn-total-width pn-gl-mt-15 btn btn-outline-dark btn-sm text-center"
+                    <button type="button" class="pn-total-width pn-gl-mt-15 ws-button text-center"
                             id="save_search_button" data-toggle="modal" data-target="#save_query_modal">
                         <i class="fas fa-bookmark"></i> {% if language_abbr == 'de' %}Diese Suche speichern{% else %}
                         Save this query{% endif %}
@@ -77,7 +77,7 @@
                                            id="modal_query_title">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                                    <button type="button" class="ws-button" data-dismiss="modal">
                                         {% if language_abbr == 'de' %}Abbrechen{% else %}Close{% endif %}</button>
                                     <button type="button" class="btn btn-sm btn-outline-info" onclick="save_search()">
                                         {% if language_abbr == 'de' %}Diese Suche speichern{% else %}Save this
