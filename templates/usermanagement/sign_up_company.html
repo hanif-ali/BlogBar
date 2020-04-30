@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block container %}
-    <div class="container pn-gl-mt-25">
+    <div class="container pn-gl-mt-25" style="background:rgba(255, 255, 255, 0.9);padding: 70px">
         <h1 class="display-4 text-center">{% if language_abbr == 'de' %} Registrieren als Unternehmen {% else %} Company
             Sign Up {% endif %}</h1>
         <p>
@@ -27,8 +27,8 @@
             {% include "forms/company_input/address.html" %}
             {% include "forms/influencer_input/area_1/passwords.html" %}
             {% include "forms/company_input/ust-id.html" %}
-            <input type="submit" class="btn btn-sm btn-outline-info pn-one-third-width pn-gl-mt-35" value="Registrieren"
-                   id="signUpCompSubmit"/>
+            <input type="submit" class="ws-button" value="Registrieren"
+                   id="signUpCompSubmit" style="margin-top: 40px;"/>
         </form>
     </div>
 {% endblock %}
