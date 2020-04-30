@@ -2,7 +2,8 @@
 
 {% block container %}
 
-    <div class="container pn-gl-mt-25">
+    <div class="container pn-gl-mt-25" style="background:rgba(255, 255, 255, 0.8);
+                                        padding: 40px">
         <h1 class="display-4">
             {% if language_abbr == 'de' %}{% if language_abbr == 'de' %}Influencer-Profil melden{% else %}
                 Influencer-Profil melden{% endif %}{% else %}{% if language_abbr == 'de' %}Influencer-Profil melden
@@ -52,7 +53,7 @@
                 </div>
             </div>
 
-            <input type="submit" class="btn btn-outline-info btn-sm pn-total-width pn-gl-mt-75"
+            <input type="submit" class="ws-button pn-total-width pn-gl-mt-75"
                    value="{% if language_abbr == 'de' %}Profil wirklich melden{% else %}Really report profile{% endif %}">
 
         </form>
