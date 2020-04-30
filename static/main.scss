@@ -1,3 +1,7 @@
+body,html{
+    scroll-behavior: smooth;;
+}
+
 body{
     background: url("/static/img/background.jpg");
     background-size: cover;
@@ -34,6 +38,7 @@ $theme-colors: (
 .d2, .d3, .d5{
     padding: 100px 15% 100px 15%;
 }
+
 
 .d1{
     margin-top: 150px;

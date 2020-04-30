@@ -2,8 +2,8 @@
 
 {% block container %}
 
-    <div data-spy="scroll" data-offset="0" class="scrollspy-example">
-        <div class="container text-center d1" style="padding-bottom: 100px !important;">
+    <div class="scrollspy-example">
+        <div id="#" class="container text-center d1" style="padding-bottom: 100px !important;">
             <div style="margin-top: 50px;">
                 <img src="/static/img/logo/main.png" width="40%">
             </div>
@@ -60,7 +60,7 @@
                 </div>
                 </div>
         </div>
-        <div class="row d3">
+        <div class="row d3" id="company_solution_overview">
             <div class="col-sm-12 pn-solution-elev-pitch">
                 <h1 class="container elev-pitch-header">
                     <span class="text-info">{% if language_abbr == 'de' %} VORTEILE FÜR {% else %} ADVANTAGES
@@ -289,7 +289,7 @@
                 </div>
             </div>
         </div>
-        <div class="row d5">
+        <div class="row d5" id="influencer_solution_overview">
             <div class="col-sm-12 pn-solution-elev-pitch">
                 <img src="/static/img/bloggers.png" class="bloggers" />
                 <h1 class="text-left container elev-pitch-header">

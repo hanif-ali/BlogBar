@@ -33,7 +33,7 @@
     {% block head_extension %}
     {% endblock %}
 </head>
-<body>
+<body data-spy="scroll" data-offset="0" style="position:relative" data-target=".navbar">
 <div>
     {% block navigation %}
         <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-info shadow">
@@ -59,19 +59,19 @@
                         </li>
                     {% endif %}
                     {% if not logged_in and solution_act == 'active' %}
-                        <li class="nav-item {{ solution_act }}">
-                            <a class="nav-link" href="/{{ language_abbr }}/solution"> Home <span class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"> Home <span class="sr-only">(current)</span></a>
                         </li>
                         {% if solution_act is defined %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#influencer_solution_overview"> <i
-                                        class="fas fa-user-tag"></i> {% if language_abbr == 'de' %}
-                                    Influencer {% else %} Influencers {% endif %} <span class="sr-only"></span></a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#company_solution_overview"> <i class="far fa-building"></i>
                                     {% if language_abbr == 'de' %} Unternehmen {% else %} Companies {% endif %} <span
                                             class="sr-only"></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#influencer_solution_overview"> <i
+                                        class="fas fa-user-tag"></i> {% if language_abbr == 'de' %}
+                                    Influencer {% else %} Influencers {% endif %} <span class="sr-only"></span></a>
                             </li>
                         {% endif %}
                     {% elif logged_in and kind == 1 %}
